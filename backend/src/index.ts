@@ -50,6 +50,27 @@ if (!mongoUri) {
 }
 
 // Routes
+app.get('/', (_req, res) => {
+  res.json({
+    status: 'online',
+    service: 'QuantumFolio API & WebSocket Server',
+    version: '1.0.0',
+    endpoints: {
+      projects: '/api/projects',
+      skills: '/api/skills',
+      contact: '/api/contact',
+      visitors: '/api/visitors',
+      chat: '/api/chat',
+      admin: '/api/admin',
+    },
+    timestamp: new Date().toISOString(),
+  });
+});
+
+app.get('/health', (_req, res) => {
+  res.status(200).json({ status: 'ok', uptime: process.uptime() });
+});
+
 app.use('/api/projects', projectRoutes);
 app.use('/api/skills', skillRoutes);
 app.use('/api/contact', contactRoutes);
