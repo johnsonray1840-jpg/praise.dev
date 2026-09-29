@@ -86,7 +86,7 @@ app.prepare().then(async () => {
   server.use('/api/admin', adminRoutes);
 
   // Next.js handles all other routes (UI, pages, static assets, etc.)
-  server.all('*', (req, res) => {
+  server.use((req, res) => {
     return handle(req, res);
   });
 
