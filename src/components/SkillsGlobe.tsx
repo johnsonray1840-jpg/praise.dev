@@ -12,6 +12,25 @@ interface Skill {
   proficiency: number; // 0-100
 }
 
+const DEFAULT_SKILLS: Skill[] = [
+  { _id: '1', name: 'TypeScript', category: 'Frontend', proficiency: 92 },
+  { _id: '2', name: 'React', category: 'Frontend', proficiency: 94 },
+  { _id: '3', name: 'Next.js', category: 'Frontend', proficiency: 90 },
+  { _id: '4', name: 'Three.js', category: 'Frontend', proficiency: 85 },
+  { _id: '5', name: 'TailwindCSS', category: 'Frontend', proficiency: 95 },
+  { _id: '6', name: 'Node.js', category: 'Backend', proficiency: 88 },
+  { _id: '7', name: 'Express.js', category: 'Backend', proficiency: 86 },
+  { _id: '8', name: 'MongoDB', category: 'Database', proficiency: 90 },
+  { _id: '9', name: 'Docker', category: 'DevOps', proficiency: 84 },
+  { _id: '10', name: 'Socket.IO', category: 'Backend', proficiency: 88 },
+  { _id: '11', name: 'Git & GitHub', category: 'Tools', proficiency: 92 },
+  { _id: '12', name: 'REST APIs', category: 'Backend', proficiency: 95 },
+  { _id: '13', name: 'WebSockets', category: 'Backend', proficiency: 86 },
+  { _id: '14', name: 'JavaScript', category: 'Frontend', proficiency: 95 },
+  { _id: '15', name: 'HTML5 & CSS3', category: 'Frontend', proficiency: 95 },
+  { _id: '16', name: 'Cloud Deploy', category: 'DevOps', proficiency: 85 },
+];
+
 // Map proficiency to blue gradient color
 const getBlueColor = (proficiency: number) => {
   if (proficiency < 30) return '#93C5FD'; // Light blue
@@ -118,11 +137,12 @@ function SkillSphere({ skills }: { skills: Skill[] }) {
               {/* Label */}
               <Html distanceFactor={6} center>
                 <div 
-                  className={`px-3 py-1.5 text-[11px] font-mono font-medium rounded-full border backdrop-blur-sm pointer-events-none whitespace-nowrap transition-all duration-300 ${
+                  className={`px-3 py-1.5 text-[11px] font-mono font-medium rounded-full border backdrop-blur-md pointer-events-none whitespace-nowrap transition-all duration-300 select-none ${
                     isHovered ? 'scale-110' : 'scale-100'
                   }`}
                   style={{
-                    backgroundColor: isHovered ? '#FFFFFF' : 'rgba(255, 255, 255, 0.9)',
+                    backgroundColor: isHovered ? '#FFFFFF' : 'rgba(255, 255, 255, 0.92)',
+                    WebkitBackdropFilter: 'blur(8px)',
                     borderColor: isHovered ? '#2563EB' : '#E2E8F0',
                     color: '#0B1120',
                     boxShadow: isHovered 
@@ -177,100 +197,104 @@ function SkillSphere({ skills }: { skills: Skill[] }) {
 }
 
 export default function SkillsGlobe() {
-  const [skills, setSkills] = useState<Skill[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [skills, setSkills] = useState<Skill[]>(DEFAULT_SKILLS);
   const [isHovering, setIsHovering] = useState(false);
+  const [hasWebGL, setHasWebGL] = useState(true);
 
   useEffect(() => {
+    // Detect WebGL support for universal browser compatibility
+    try {
+      const canvas = document.createElement('canvas');
+      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+      if (!gl) setHasWebGL(false);
+    } catch {
+      setHasWebGL(false);
+    }
+
     fetchSkills()
       .then((data) => {
-        const sorted = data.sort((a: Skill, b: Skill) => b.proficiency - a.proficiency);
-        setSkills(sorted);
+        if (Array.isArray(data) && data.length > 0) {
+          const sorted = data.sort((a: Skill, b: Skill) => b.proficiency - a.proficiency);
+          setSkills(sorted);
+        }
       })
-      .catch(() => setSkills([]))
-      .finally(() => setLoading(false));
+      .catch(() => {
+        setSkills(DEFAULT_SKILLS);
+      });
   }, []);
-
-  if (loading) {
-    return (
-      <div className="h-96 w-full max-w-3xl mx-auto flex flex-col items-center justify-center">
-        <div className="relative">
-          <div className="w-16 h-16 rounded-full border-4 border-[#E2E8F0] border-t-[#2563EB] animate-spin" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-8 h-8 rounded-full bg-[#2563EB]/10 animate-pulse" />
-          </div>
-        </div>
-        <p className="mt-4 text-sm text-[#94A3B8] font-mono">Loading skills arsenal...</p>
-      </div>
-    );
-  }
-
-  if (skills.length === 0) {
-    return (
-      <div className="h-96 flex flex-col items-center justify-center text-[#94A3B8]">
-        <span className="text-4xl mb-2">🔧</span>
-        <p className="text-sm font-mono">No skills data available</p>
-      </div>
-    );
-  }
 
   // Calculate average proficiency
   const avgProficiency = Math.round(
-    skills.reduce((acc, s) => acc + s.proficiency, 0) / skills.length
+    skills.reduce((acc, s) => acc + s.proficiency, 0) / (skills.length || 1)
   );
 
   return (
-    <div className="relative">
+    <div className="relative w-full">
       {/* Stats Badge */}
       <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
-        <div className="flex items-center gap-2 px-4 py-2 bg-[#F8FAFC] rounded-full border border-[#E2E8F0]">
-          <span className="text-xs font-mono text-[#475569]">Skills:</span>
-          <span className="text-xs font-mono font-bold text-[#0B1120]">{skills.length}</span>
+        <div className="flex items-center gap-2 px-4 py-2 bg-[#F8FAFC] dark:bg-slate-900 rounded-full border border-[#E2E8F0] dark:border-slate-800">
+          <span className="text-xs font-mono text-[#475569] dark:text-slate-400">Skills:</span>
+          <span className="text-xs font-mono font-bold text-[#0B1120] dark:text-white">{skills.length}</span>
         </div>
-        <div className="flex items-center gap-2 px-4 py-2 bg-[#F8FAFC] rounded-full border border-[#E2E8F0]">
-          <span className="text-xs font-mono text-[#475569]">Avg Proficiency:</span>
+        <div className="flex items-center gap-2 px-4 py-2 bg-[#F8FAFC] dark:bg-slate-900 rounded-full border border-[#E2E8F0] dark:border-slate-800">
+          <span className="text-xs font-mono text-[#475569] dark:text-slate-400">Avg Proficiency:</span>
           <span className="text-xs font-mono font-bold text-[#2563EB]">{avgProficiency}%</span>
         </div>
-        <div className="flex items-center gap-2 px-4 py-2 bg-[#F8FAFC] rounded-full border border-[#E2E8F0]">
+        <div className="flex items-center gap-2 px-4 py-2 bg-[#F8FAFC] dark:bg-slate-900 rounded-full border border-[#E2E8F0] dark:border-slate-800">
           <span className="w-2 h-2 bg-[#22C55E] rounded-full animate-pulse" />
-          <span className="text-xs font-mono text-[#475569]">Live</span>
+          <span className="text-xs font-mono text-[#475569] dark:text-slate-400">3D Active</span>
         </div>
       </div>
 
-      {/* 3D Canvas */}
+      {/* 3D Canvas Container */}
       <div 
-        className="h-[420px] w-full max-w-3xl mx-auto rounded-2xl overflow-hidden border border-[#E2E8F0] bg-gradient-to-br from-white via-[#F8FAFC] to-white shadow-xl shadow-[#2563EB]/5"
+        className="h-[420px] w-full max-w-3xl mx-auto rounded-2xl overflow-hidden border border-[#E2E8F0] dark:border-slate-800 bg-gradient-to-br from-white via-[#F8FAFC] to-white dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 shadow-xl shadow-[#2563EB]/5 relative"
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
       >
-        <Canvas camera={{ position: [0, 1.5, 6], fov: 45 }}>
-          <ambientLight intensity={0.5} />
-          <pointLight position={[10, 10, 10]} intensity={1.2} color="#FFFFFF" />
-          <pointLight position={[-5, -5, 10]} intensity={0.8} color="#3B82F6" />
-          <pointLight position={[5, -5, -5]} intensity={0.5} color="#06B6D4" />
-          
-          <Suspense fallback={null}>
-            <SkillSphere skills={skills} />
-          </Suspense>
-          
-          <OrbitControls 
-            enableZoom={true}
-            zoomSpeed={0.5}
-            enablePan={false}
-            autoRotate={!isHovering}
-            autoRotateSpeed={1.0}
-            enableDamping
-            dampingFactor={0.08}
-            minPolarAngle={Math.PI / 3}
-            maxPolarAngle={Math.PI / 1.5}
-            rotateSpeed={0.5}
-          />
-        </Canvas>
+        {hasWebGL ? (
+          <Canvas 
+            camera={{ position: [0, 1.5, 6], fov: 45 }}
+            dpr={[1, 2]}
+            gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
+            style={{ width: '100%', height: '100%', touchAction: 'none' }}
+          >
+            <ambientLight intensity={0.6} />
+            <pointLight position={[10, 10, 10]} intensity={1.2} color="#FFFFFF" />
+            <pointLight position={[-5, -5, 10]} intensity={0.8} color="#3B82F6" />
+            <pointLight position={[5, -5, -5]} intensity={0.5} color="#06B6D4" />
+            
+            <Suspense fallback={null}>
+              <SkillSphere skills={skills} />
+            </Suspense>
+            
+            <OrbitControls 
+              enableZoom={true}
+              zoomSpeed={0.5}
+              enablePan={false}
+              autoRotate={!isHovering}
+              autoRotateSpeed={1.0}
+              enableDamping
+              dampingFactor={0.08}
+              minPolarAngle={Math.PI / 3}
+              maxPolarAngle={Math.PI / 1.5}
+              rotateSpeed={0.5}
+            />
+          </Canvas>
+        ) : (
+          <div className="h-full w-full flex flex-wrap items-center justify-center p-8 gap-3 overflow-y-auto">
+            {skills.map((s) => (
+              <span key={s._id} className="px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-xs font-mono font-semibold border border-blue-200">
+                {s.name} ({s.proficiency}%)
+              </span>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Hint text */}
       <p className="text-center text-[10px] text-[#94A3B8] font-mono mt-3 select-none">
-        Hover on a skill to see proficiency • Drag to rotate • Scroll to zoom
+        Hover on a skill node • Drag to rotate in 3D • Scroll to zoom (Supported on Chrome, Safari, Firefox, Edge, Mobile)
       </p>
     </div>
   );
