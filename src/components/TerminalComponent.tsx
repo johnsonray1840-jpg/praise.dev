@@ -285,11 +285,11 @@ export default function TerminalComponent() {
               brightCyan: '#67E8F9',
               brightWhite: '#FFFFFF',
             },
-            fontSize: typeof window !== 'undefined' && window.innerWidth < 480 ? 10.5 : typeof window !== 'undefined' && window.innerWidth < 768 ? 12 : 13.5,
+            fontSize: 14,
             fontFamily: 'Menlo, Monaco, "JetBrains Mono", "Courier New", monospace',
             fontWeight: '400',
-            letterSpacing: 0.3,
-            lineHeight: 1.35,
+            letterSpacing: 0.5,
+            lineHeight: 1.4,
             scrollback: 1000,
           });
 
@@ -430,7 +430,7 @@ export default function TerminalComponent() {
       </div>
 
       {/* Terminal Container */}
-      <div ref={terminalRef} className="w-full h-[360px] sm:h-[400px] md:h-[430px] p-1 bg-[#0B1120]" />
+      <div ref={terminalRef} className="w-full h-[420px] p-1 bg-[#0B1120]" />
     </div>
   );
 }
