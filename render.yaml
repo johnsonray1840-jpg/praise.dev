@@ -1,11 +1,10 @@
 services:
   # -------------------------------------------------------------
-  # QuantumFolio Express & Socket.IO Backend Service
+  # QuantumFolio Unified Full-Stack Service (Next.js + Express + Socket.IO)
   # -------------------------------------------------------------
   - type: web
-    name: quantumfolio-backend
+    name: quantumfolio
     runtime: node
-    rootDir: backend
     plan: free
     buildCommand: npm install && npm run build
     startCommand: npm start
@@ -14,8 +13,6 @@ services:
         value: production
       - key: PORT
         value: 10000
-      - key: CLIENT_ORIGIN
-        sync: false
       - key: MONGODB_URI
         sync: false
       - key: JWT_SECRET
@@ -25,22 +22,4 @@ services:
       - key: RESEND_API_KEY
         sync: false
       - key: OPENAI_API_KEY
-        sync: false
-
-  # -------------------------------------------------------------
-  # QuantumFolio Next.js Frontend Service
-  # -------------------------------------------------------------
-  - type: web
-    name: quantumfolio-frontend
-    runtime: node
-    rootDir: frontend
-    plan: free
-    buildCommand: npm install && npm run build
-    startCommand: npm start
-    envVars:
-      - key: NODE_ENV
-        value: production
-      - key: NEXT_PUBLIC_API_URL
-        sync: false
-      - key: NEXT_PUBLIC_SOCKET_URL
         sync: false
