@@ -7,12 +7,12 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 
 // Server routes
-import projectRoutes from './src/server/routes/projects';
-import skillRoutes from './src/server/routes/skills';
-import contactRoutes from './src/server/routes/contact';
-import visitorRoutes from './src/server/routes/visitors';
-import chatRoutes from './src/server/routes/chat';
-import adminRoutes from './src/server/routes/admin';
+import projectRoutes from './server/routes/projects';
+import skillRoutes from './server/routes/skills';
+import contactRoutes from './server/routes/contact';
+import visitorRoutes from './server/routes/visitors';
+import chatRoutes from './server/routes/chat';
+import adminRoutes from './server/routes/admin';
 
 dotenv.config();
 

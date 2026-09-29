@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import io, { Socket } from 'socket.io-client';
+import type { Socket } from 'socket.io-client';
 import { SOCKET_BASE } from '@/lib/api';
 
 export default function VisitorPulse() {
@@ -28,16 +28,25 @@ export default function VisitorPulse() {
     updateUptime();
     const uptimeInterval = setInterval(updateUptime, 30000);
 
-    const socket = io(SOCKET_BASE);
-    socketRef.current = socket;
+    let isMounted = true;
+    import('socket.io-client').then(({ io }) => {
+      if (!isMounted) return;
+      const socket = io(SOCKET_BASE || undefined, {
+        transports: ['websocket', 'polling'],
+      });
+      socketRef.current = socket;
 
-    socket.on('visitor-count', (c: number) => {
-      setCount(c);
-      setPeakCount((prev) => Math.max(prev, c));
+      socket.on('visitor-count', (c: number) => {
+        setCount(c);
+        setPeakCount((prev) => Math.max(prev, c));
+      });
     });
 
     return () => {
-      socket.disconnect();
+      isMounted = false;
+      if (socketRef.current) {
+        socketRef.current.disconnect();
+      }
       clearInterval(uptimeInterval);
     };
   }, []);

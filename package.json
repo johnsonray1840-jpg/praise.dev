@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "tsx watch server.ts",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "NODE_ENV=production tsx server.ts",
-    "seed": "tsx src/server/seed.ts",
+    "seed": "tsx server/seed.ts",
     "lint": "eslint"
   },
   "dependencies": {
@@ -36,6 +36,7 @@
     "socket.io-client": "^4.8.3",
     "three": "^0.185.1",
     "tsx": "^4.19.3",
+    "xmlhttprequest-ssl": "^2.1.2",
     "xterm": "^5.3.0",
     "zod": "^4.4.3"
   },
