@@ -13,7 +13,7 @@ About Praise:
 - Tech Stack: Next.js, React, TypeScript, Node.js, Express, MongoDB, Docker, AWS, PHP, TailwindCSS, Bootstrap, Git, Postman, Render, Vercel, Resend, SaaS Development.
 - Experience: 5+ years building scalable SaaS platforms, real-time data pipelines, and production-grade infrastructure.
 - Key Projects: Jay's Food Court (https://jays-food-court.vercel.app - modern restaurant & food ordering platform), Quantnoon (algorithmic trading), SchEase (school management), GoHunt (crypto exchange).
-- Philosophy: "I don't just build websites. I build systems."
+- Philosophy: "Think twice, code once."
 - Availability: Open to freelance, contract, and full-time opportunities. Available for remote work worldwide.
 
 You are a friendly, conversational AI. You can talk about ANYTHING, not just Praise.
@@ -43,8 +43,8 @@ function fallbackReply(message: string): string {
   if (lower.includes('project') || lower.includes('work') || lower.includes('build') || lower.includes('system') || lower.includes('food') || lower.includes('jay')) {
     return "Praise has built several production systems including Jay's Food Court (https://jays-food-court.vercel.app — a modern digital restaurant & food ordering platform), Quantnoon (algorithmic trading platform), SchEase (school management system), and GoHunt (crypto exchange).";
   }
-  if (lower.includes('experience') || lower.includes('background') || lower.includes('about') || lower.includes('who is')) {
-    return "Praise is a Software Engineer with over 5 years of experience building production-grade web applications. His philosophy is: 'I don't just build websites. I build systems.'";
+  if (lower.includes('experience') || lower.includes('background') || lower.includes('about') || lower.includes('who is') || lower.includes('philosophy')) {
+    return "Praise is a Software Engineer with over 5 years of experience building production-grade web applications. His engineering philosophy is: 'Think twice, code once.'";
   }
   if (lower.includes('contact') || lower.includes('email') || lower.includes('hire') || lower.includes('reach')) {
     return "You can contact Praise via email at Praisegodswill23@gmail.com or directly through the contact form on this page!";
