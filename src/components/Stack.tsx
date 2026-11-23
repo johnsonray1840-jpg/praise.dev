@@ -1,5 +1,6 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
+import { Zap } from 'lucide-react';
 
 interface Layer {
   id: string;
@@ -170,7 +171,9 @@ export default function Stack() {
       {/* Control Signal */}
       <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-[#EFF6FF] to-[#F0F9FF] border border-[#BFDBFE]">
         <div className="flex items-center gap-4">
-          <span className="text-2xl">⚡</span>
+          <div className="w-10 h-10 rounded-xl bg-[#2563EB]/10 border border-[#BFDBFE] flex items-center justify-center shrink-0">
+            <Zap className="w-5 h-5 text-[#2563EB]" />
+          </div>
           <div>
             <h4 className="text-sm font-mono font-bold text-[#2563EB] tracking-widest uppercase">
               Control Signal
