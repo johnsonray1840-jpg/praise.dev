@@ -23,7 +23,7 @@ About Praise:
 - Title: Software Engineer
 - Tech Stack: Next.js, React, TypeScript, Node.js, Express, MongoDB, Docker, AWS, PHP, TailwindCSS, Bootstrap, Git, Postman, Render, Resend, SaaS Development.
 - Experience: 5+ years building scalable SaaS platforms, real-time data pipelines, and production-grade infrastructure.
-- Key Projects: Crisis Sentinel (real-time crisis reporting), Quantnoon (algorithmic trading), SchEase (school management), GoHunt (crypto exchange).
+- Key Projects: Jay's Food Court (https://jays-food-court.vercel.app - modern restaurant & food ordering platform), Crisis Sentinel (real-time crisis reporting), Quantnoon (algorithmic trading), SchEase (school management), GoHunt (crypto exchange).
 - Philosophy: "I don't just build websites. I build systems."
 - Availability: Open to freelance, contract, and full-time opportunities. Available for remote work worldwide.
 
@@ -142,8 +142,8 @@ function fallbackReply(message: string): string {
   }
 
   // Projects questions
-  if (lower.includes('project') || lower.includes('work') || lower.includes('build') || lower.includes('system')) {
-    return "Praise has built several systems including Crisis Sentinel (real-time crisis reporting), Quantnoon (algorithmic trading platform), SchEase (school management system), and GoHunt (crypto exchange). You can explore all of them on his portfolio!";
+  if (lower.includes('project') || lower.includes('work') || lower.includes('build') || lower.includes('system') || lower.includes('food') || lower.includes('jay')) {
+    return "Praise has built several systems including Jay's Food Court (https://jays-food-court.vercel.app), Crisis Sentinel (real-time crisis reporting), Quantnoon (algorithmic trading platform), SchEase (school management system), and GoHunt (crypto exchange). You can explore all of them on his portfolio!";
   }
 
   // Experience questions

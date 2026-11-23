@@ -4,6 +4,15 @@ import Project from '../../../../server/models/project';
 
 export const DEFAULT_PROJECTS = [
   {
+    _id: 'default-0',
+    title: "Jay's Food Court",
+    description: 'Modern digital restaurant & food ordering platform with interactive menu browsing, seamless cart experience, and fast checkout.',
+    techStack: ['Next.js', 'React', 'TypeScript', 'TailwindCSS', 'Vercel'],
+    liveUrl: 'https://jays-food-court.vercel.app',
+    repoUrl: 'https://github.com/johnsonray1840-jpg',
+    deployedAt: new Date().toISOString(),
+  },
+  {
     _id: 'default-1',
     title: 'Crisis Sentinel',
     description: 'Real-time crisis reporting, geospatial incident tracking, and emergency telemetry platform.',
@@ -47,6 +56,23 @@ export async function GET() {
     if (!db) {
       return NextResponse.json(DEFAULT_PROJECTS);
     }
+
+    // Ensure Jay's Food Court is persisted in MongoDB so it always appears
+    await Project.findOneAndUpdate(
+      { liveUrl: 'https://jays-food-court.vercel.app' },
+      {
+        $setOnInsert: {
+          title: "Jay's Food Court",
+          description: 'Modern digital restaurant & food ordering platform with interactive menu browsing, seamless cart experience, and fast checkout.',
+          techStack: ['Next.js', 'React', 'TypeScript', 'TailwindCSS', 'Vercel'],
+          liveUrl: 'https://jays-food-court.vercel.app',
+          repoUrl: 'https://github.com/johnsonray1840-jpg',
+          deployedAt: new Date(),
+        },
+      },
+      { upsert: true, new: true }
+    ).catch(() => {});
+
     const projects = await Project.find().sort({ createdAt: -1 });
     if (!projects || projects.length === 0) {
       return NextResponse.json(DEFAULT_PROJECTS);

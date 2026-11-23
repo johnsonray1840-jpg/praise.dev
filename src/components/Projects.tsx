@@ -17,6 +17,22 @@ async function getProjectsServerSide(): Promise<ProjectItem[]> {
   try {
     const db = await connectDB();
     if (!db) return DEFAULT_PROJECTS;
+
+    await Project.findOneAndUpdate(
+      { liveUrl: 'https://jays-food-court.vercel.app' },
+      {
+        $setOnInsert: {
+          title: "Jay's Food Court",
+          description: 'Modern digital restaurant & food ordering platform with interactive menu browsing, seamless cart experience, and fast checkout.',
+          techStack: ['Next.js', 'React', 'TypeScript', 'TailwindCSS', 'Vercel'],
+          liveUrl: 'https://jays-food-court.vercel.app',
+          repoUrl: 'https://github.com/johnsonray1840-jpg',
+          deployedAt: new Date(),
+        },
+      },
+      { upsert: true, new: true }
+    ).catch(() => {});
+
     const raw = await Project.find().sort({ createdAt: -1 }).lean();
     if (!raw || raw.length === 0) return DEFAULT_PROJECTS;
     return raw.map((p: Record<string, unknown>) => ({
