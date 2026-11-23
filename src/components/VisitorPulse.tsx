@@ -2,11 +2,11 @@
 import { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Socket } from 'socket.io-client';
-import { SOCKET_BASE } from '@/lib/api';
+import { API_BASE, SOCKET_BASE } from '@/lib/api';
 
 export default function VisitorPulse() {
-  const [count, setCount] = useState(0);
-  const [peakCount, setPeakCount] = useState(0);
+  const [count, setCount] = useState(1);
+  const [peakCount, setPeakCount] = useState(1);
   const [isExpanded, setIsExpanded] = useState(false);
   const [uptime, setUptime] = useState('0m');
   const socketRef = useRef<Socket | null>(null);
@@ -29,18 +29,60 @@ export default function VisitorPulse() {
     const uptimeInterval = setInterval(updateUptime, 30000);
 
     let isMounted = true;
-    import('socket.io-client').then(({ io }) => {
-      if (!isMounted) return;
-      const socket = io(SOCKET_BASE || undefined, {
-        transports: ['websocket', 'polling'],
-      });
-      socketRef.current = socket;
+    let socketConnected = false;
 
-      socket.on('visitor-count', (c: number) => {
-        setCount(c);
-        setPeakCount((prev) => Math.max(prev, c));
-      });
-    });
+    // Generate or retrieve persistent visitor client ID for serverless heartbeat
+    let clientId = localStorage.getItem('visitorClientId');
+    if (!clientId) {
+      clientId = `v_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
+      localStorage.setItem('visitorClientId', clientId);
+    }
+
+    const sendHeartbeat = async (recordVisit = false) => {
+      if (socketConnected || !isMounted) return;
+      try {
+        const res = await fetch(`${API_BASE}/visitors`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ clientId, recordVisit }),
+        });
+        if (res.ok && isMounted) {
+          const data = await res.json();
+          const active = data.activeCount || 1;
+          setCount(active);
+          setPeakCount((prev) => Math.max(prev, active));
+        }
+      } catch {
+        // Fallback to 1 online
+      }
+    };
+
+    // Initial visit record + heartbeat
+    sendHeartbeat(true);
+    const heartbeatInterval = setInterval(() => sendHeartbeat(false), 20000);
+
+    // Optional Socket.IO connection if custom server / Render socket URL is active
+    if (SOCKET_BASE) {
+      import('socket.io-client').then(({ io }) => {
+        if (!isMounted) return;
+        const socket = io(SOCKET_BASE, {
+          transports: ['websocket', 'polling'],
+          reconnectionAttempts: 2,
+        });
+        socketRef.current = socket;
+
+        socket.on('connect', () => {
+          socketConnected = true;
+        });
+
+        socket.on('visitor-count', (c: number) => {
+          if (!isMounted) return;
+          socketConnected = true;
+          setCount(c);
+          setPeakCount((prev) => Math.max(prev, c));
+        });
+      }).catch(() => {});
+    }
 
     return () => {
       isMounted = false;
@@ -48,6 +90,7 @@ export default function VisitorPulse() {
         socketRef.current.disconnect();
       }
       clearInterval(uptimeInterval);
+      clearInterval(heartbeatInterval);
     };
   }, []);
 
@@ -62,7 +105,7 @@ export default function VisitorPulse() {
   const status = getStatus();
 
   return (
-    <div className="fixed bottom-6 left-6 z-50">
+    <div className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-50">
       <motion.div
         initial={{ opacity: 0, y: 20, scale: 0.9 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -103,7 +146,7 @@ export default function VisitorPulse() {
                     {count}
                   </motion.span>
                 ) : (
-                  '0'
+                  '1'
                 )}
               </span>
               <span className="text-xs text-[#475569] font-medium">{status.label}</span>

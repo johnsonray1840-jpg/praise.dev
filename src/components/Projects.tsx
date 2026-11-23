@@ -1,5 +1,7 @@
-import { fetchProjects } from '@/lib/api';
 import ProjectCard from './ProjectCard';
+import { connectDB } from '@/lib/mongodb';
+import Project from '../../server/models/project';
+import { DEFAULT_PROJECTS } from '@/app/api/projects/route';
 
 interface ProjectItem {
   _id: string;
@@ -11,13 +13,28 @@ interface ProjectItem {
   deployedAt?: string;
 }
 
-export default async function Projects() {
-  let projects: ProjectItem[] = [];
+async function getProjectsServerSide(): Promise<ProjectItem[]> {
   try {
-    projects = await fetchProjects();
-  } catch (error) {
-    console.error('Failed to load projects:', error);
+    const db = await connectDB();
+    if (!db) return DEFAULT_PROJECTS;
+    const raw = await Project.find().sort({ createdAt: -1 }).lean();
+    if (!raw || raw.length === 0) return DEFAULT_PROJECTS;
+    return raw.map((p: Record<string, unknown>) => ({
+      _id: String(p._id),
+      title: String(p.title || ''),
+      description: String(p.description || ''),
+      techStack: Array.isArray(p.techStack) ? p.techStack.map(String) : [],
+      liveUrl: String(p.liveUrl || ''),
+      repoUrl: String(p.repoUrl || ''),
+      deployedAt: p.deployedAt ? new Date(String(p.deployedAt)).toISOString() : undefined,
+    }));
+  } catch {
+    return DEFAULT_PROJECTS;
   }
+}
+
+export default async function Projects() {
+  const projects = await getProjectsServerSide();
 
   const totalProjects = projects.length;
   const sectionNumber = '03';

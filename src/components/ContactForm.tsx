@@ -32,7 +32,7 @@ export default function ContactForm() {
     try {
       const res = await sendContact(data);
       if (res.ok) {
-        toast.success('Message sent successfully! 🚀');
+        toast.success('Message sent successfully!');
         setIsSuccess(true);
         reset();
         setTimeout(() => setIsSuccess(false), 3000);
