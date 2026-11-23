@@ -12,7 +12,7 @@ About Praise:
 - Title: Software Engineer
 - Tech Stack: Next.js, React, TypeScript, Node.js, Express, MongoDB, Docker, AWS, PHP, TailwindCSS, Bootstrap, Git, Postman, Render, Vercel, Resend, SaaS Development.
 - Experience: 5+ years building scalable SaaS platforms, real-time data pipelines, and production-grade infrastructure.
-- Key Projects: Jay's Food Court (https://jays-food-court.vercel.app - modern restaurant & food ordering platform), Crisis Sentinel (real-time crisis reporting), Quantnoon (algorithmic trading), SchEase (school management), GoHunt (crypto exchange).
+- Key Projects: Jay's Food Court (https://jays-food-court.vercel.app - modern restaurant & food ordering platform), Quantnoon (algorithmic trading), SchEase (school management), GoHunt (crypto exchange).
 - Philosophy: "I don't just build websites. I build systems."
 - Availability: Open to freelance, contract, and full-time opportunities. Available for remote work worldwide.
 
@@ -41,7 +41,7 @@ function fallbackReply(message: string): string {
     return "Praise is proficient in Next.js, React, TypeScript, Three.js, Node.js, Express, MongoDB, Docker, AWS, PHP, and TailwindCSS. He specializes in building scalable SaaS platforms and production-grade infrastructure.";
   }
   if (lower.includes('project') || lower.includes('work') || lower.includes('build') || lower.includes('system') || lower.includes('food') || lower.includes('jay')) {
-    return "Praise has built several production systems including Jay's Food Court (https://jays-food-court.vercel.app — a modern digital restaurant & food ordering platform), Crisis Sentinel (real-time crisis reporting), Quantnoon (algorithmic trading platform), SchEase (school management system), and GoHunt (crypto exchange).";
+    return "Praise has built several production systems including Jay's Food Court (https://jays-food-court.vercel.app — a modern digital restaurant & food ordering platform), Quantnoon (algorithmic trading platform), SchEase (school management system), and GoHunt (crypto exchange).";
   }
   if (lower.includes('experience') || lower.includes('background') || lower.includes('about') || lower.includes('who is')) {
     return "Praise is a Software Engineer with over 5 years of experience building production-grade web applications. His philosophy is: 'I don't just build websites. I build systems.'";

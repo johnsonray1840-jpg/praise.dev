@@ -5,6 +5,13 @@ const router = Router();
 
 router.get('/', async (_req, res) => {
   try {
+    await Project.deleteMany({
+      $or: [
+        { title: { $in: [/^ct corporation/i, /^crisis sentinel/i] } },
+        { liveUrl: { $regex: /crisis-sentinel|ctcorporation/i } },
+      ],
+    }).catch(() => {});
+
     await Project.findOneAndUpdate(
       { liveUrl: 'https://jays-food-court.vercel.app' },
       {

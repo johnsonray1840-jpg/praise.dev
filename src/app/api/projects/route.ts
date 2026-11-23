@@ -3,12 +3,25 @@ import { connectDB } from '@/lib/mongodb';
 import { DEFAULT_PROJECTS } from '@/lib/defaults';
 import Project from '../../../../server/models/project';
 
+const REMOVED_PROJECT_TITLES = [
+  /^ct corporation/i,
+  /^crisis sentinel/i,
+];
+
 export async function GET() {
   try {
     const db = await connectDB();
     if (!db) {
       return NextResponse.json(DEFAULT_PROJECTS);
     }
+
+    // Remove deprecated projects from MongoDB record
+    await Project.deleteMany({
+      $or: [
+        { title: { $in: REMOVED_PROJECT_TITLES } },
+        { liveUrl: { $regex: /crisis-sentinel|ctcorporation/i } },
+      ],
+    }).catch(() => {});
 
     // Ensure Jay's Food Court is persisted in MongoDB so it always appears
     await Project.findOneAndUpdate(

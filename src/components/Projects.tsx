@@ -18,6 +18,13 @@ async function getProjectsServerSide(): Promise<ProjectItem[]> {
     const db = await connectDB();
     if (!db) return DEFAULT_PROJECTS;
 
+    await Project.deleteMany({
+      $or: [
+        { title: { $in: [/^ct corporation/i, /^crisis sentinel/i] } },
+        { liveUrl: { $regex: /crisis-sentinel|ctcorporation/i } },
+      ],
+    }).catch(() => {});
+
     await Project.findOneAndUpdate(
       { liveUrl: 'https://jays-food-court.vercel.app' },
       {

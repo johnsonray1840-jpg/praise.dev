@@ -38,7 +38,7 @@ router.post('/', contactLimiter, async (req, res) => {
     if (resend) {
       try {
         await resend.emails.send({
-          from: 'ctcorporationbusiness.com', // Replace with your verified Resend domain
+          from: 'onboarding@resend.dev',
           to: 'praisegodswill23@gmail.com',       // Replace with your real email
           subject: `New message from ${name}`,
           text: `${body}\n\nReply to: ${email}`,

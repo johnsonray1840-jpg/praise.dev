@@ -9,15 +9,6 @@ export const DEFAULT_PROJECTS = [
     deployedAt: new Date().toISOString(),
   },
   {
-    _id: 'default-1',
-    title: 'Crisis Sentinel',
-    description: 'Real-time crisis reporting, geospatial incident tracking, and emergency telemetry platform.',
-    techStack: ['Next.js', 'TypeScript', 'Node.js', 'Socket.IO', 'MongoDB', 'TailwindCSS'],
-    liveUrl: 'https://crisis-sentinel.onrender.com',
-    repoUrl: 'https://github.com/johnsonray1840-jpg',
-    deployedAt: new Date().toISOString(),
-  },
-  {
     _id: 'default-2',
     title: 'Quantnoon',
     description: 'High-frequency algorithmic trading analytics engine with real-time market data pipelines.',
