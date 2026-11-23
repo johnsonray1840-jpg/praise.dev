@@ -1,7 +1,7 @@
 import ProjectCard from './ProjectCard';
 import { connectDB } from '@/lib/mongodb';
 import Project from '../../server/models/project';
-import { DEFAULT_PROJECTS } from '@/app/api/projects/route';
+import { DEFAULT_PROJECTS } from '@/lib/defaults';
 
 interface ProjectItem {
   _id: string;
