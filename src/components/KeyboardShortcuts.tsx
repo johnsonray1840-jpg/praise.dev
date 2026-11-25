@@ -77,7 +77,7 @@ export default function KeyboardShortcuts() {
 
   return (
     <div 
-      className={`fixed bottom-24 left-6 z-40 transition-all duration-500 ${
+      className={`hidden lg:block fixed bottom-24 left-6 z-40 transition-all duration-500 ${
         isVisible ? 'opacity-50 hover:opacity-100' : 'opacity-0 hover:opacity-100'
       }`}
     >

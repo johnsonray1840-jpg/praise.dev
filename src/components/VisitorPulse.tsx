@@ -8,8 +8,21 @@ export default function VisitorPulse() {
   const [count, setCount] = useState(1);
   const [peakCount, setPeakCount] = useState(1);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [chatOpen, setChatOpen] = useState(false);
   const [uptime, setUptime] = useState('0m');
   const socketRef = useRef<Socket | null>(null);
+
+  useEffect(() => {
+    const handleChatToggle = (e: Event) => {
+      const customEvent = e as CustomEvent<{ open: boolean }>;
+      if (customEvent.detail) {
+        setChatOpen(customEvent.detail.open);
+        if (customEvent.detail.open) setIsExpanded(false);
+      }
+    };
+    window.addEventListener('chatbot-toggle', handleChatToggle);
+    return () => window.removeEventListener('chatbot-toggle', handleChatToggle);
+  }, []);
 
   useEffect(() => {
     const startTime = Date.now();
@@ -31,7 +44,6 @@ export default function VisitorPulse() {
     let isMounted = true;
     let socketConnected = false;
 
-    // Generate or retrieve persistent visitor client ID for serverless heartbeat
     let clientId = localStorage.getItem('visitorClientId');
     if (!clientId) {
       clientId = `v_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
@@ -57,31 +69,31 @@ export default function VisitorPulse() {
       }
     };
 
-    // Initial visit record + heartbeat
     sendHeartbeat(true);
     const heartbeatInterval = setInterval(() => sendHeartbeat(false), 20000);
 
-    // Optional Socket.IO connection if custom server / Render socket URL is active
     if (SOCKET_BASE) {
-      import('socket.io-client').then(({ io }) => {
-        if (!isMounted) return;
-        const socket = io(SOCKET_BASE, {
-          transports: ['websocket', 'polling'],
-          reconnectionAttempts: 2,
-        });
-        socketRef.current = socket;
-
-        socket.on('connect', () => {
-          socketConnected = true;
-        });
-
-        socket.on('visitor-count', (c: number) => {
+      import('socket.io-client')
+        .then(({ io }) => {
           if (!isMounted) return;
-          socketConnected = true;
-          setCount(c);
-          setPeakCount((prev) => Math.max(prev, c));
-        });
-      }).catch(() => {});
+          const socket = io(SOCKET_BASE, {
+            transports: ['websocket', 'polling'],
+            reconnectionAttempts: 2,
+          });
+          socketRef.current = socket;
+
+          socket.on('connect', () => {
+            socketConnected = true;
+          });
+
+          socket.on('visitor-count', (c: number) => {
+            if (!isMounted) return;
+            socketConnected = true;
+            setCount(c);
+            setPeakCount((prev) => Math.max(prev, c));
+          });
+        })
+        .catch(() => {});
     }
 
     return () => {
@@ -94,18 +106,21 @@ export default function VisitorPulse() {
     };
   }, []);
 
-  // Determine status based on count
   const getStatus = () => {
-    if (count === 0) return { label: 'Connecting...', color: '#94A3B8' };
-    if (count <= 2) return { label: `${count} online now`, color: '#22C55E' };
-    if (count <= 5) return { label: `${count} people online`, color: '#3B82F6' };
-    return { label: `🔥 ${count} active`, color: '#F59E0B' };
+    if (count === 0) return { label: 'Connecting...', shortLabel: 'Live', color: '#94A3B8' };
+    if (count <= 2) return { label: `${count} online now`, shortLabel: 'online', color: '#22C55E' };
+    if (count <= 5) return { label: `${count} people online`, shortLabel: 'online', color: '#3B82F6' };
+    return { label: `${count} active`, shortLabel: 'active', color: '#F59E0B' };
   };
 
   const status = getStatus();
 
   return (
-    <div className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-50">
+    <div
+      className={`fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-40 transition-all duration-300 ${
+        chatOpen ? 'opacity-0 pointer-events-none sm:opacity-100 sm:pointer-events-auto' : 'opacity-100'
+      }`}
+    >
       <motion.div
         initial={{ opacity: 0, y: 20, scale: 0.9 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -113,48 +128,31 @@ export default function VisitorPulse() {
         className="relative"
         onMouseLeave={() => setIsExpanded(false)}
       >
-        {/* Main Card */}
+        {/* Main Card — Compact on Mobile, Full Pill on Desktop */}
         <motion.div
-          className="flex items-center gap-3 px-4 py-2.5 bg-white/80 backdrop-blur-xl rounded-full border border-white/80 shadow-xl shadow-[#2563EB]/10 cursor-pointer transition-all duration-300 hover:shadow-[#2563EB]/20 hover:border-[#2563EB]/20"
+          className="flex items-center gap-2 sm:gap-3 px-3 py-2 sm:px-4 sm:py-2.5 bg-white/90 backdrop-blur-xl rounded-full border border-[#E2E8F0] shadow-lg shadow-[#2563EB]/10 cursor-pointer transition-all duration-300 hover:shadow-[#2563EB]/20 hover:border-[#2563EB]/20"
           whileHover={{ scale: 1.02 }}
           onClick={() => setIsExpanded(!isExpanded)}
         >
           {/* Radar Pulse Animation */}
-          <div className="relative flex items-center justify-center w-8 h-8">
-            {/* Outer pulse rings */}
-            <div className="absolute inset-0 rounded-full border-2 border-[#2563EB]/20 animate-ping" />
-            <div className="absolute inset-1 rounded-full border-2 border-[#2563EB]/15 animate-pulse" />
-            <div className="absolute inset-2 rounded-full bg-[#2563EB]/5" />
-
-            {/* Inner dot with glow */}
-            <div className="relative w-3 h-3 rounded-full bg-gradient-to-r from-[#2563EB] to-[#06B6D4] shadow-lg shadow-[#2563EB]/40">
-              <span className="absolute inset-0 rounded-full bg-[#2563EB] animate-ping opacity-75" />
-            </div>
+          <div className="relative flex items-center justify-center w-5 h-5 sm:w-7 sm:h-7">
+            <div className="absolute inset-0 rounded-full border border-[#2563EB]/25 animate-ping" />
+            <div className="relative w-2.5 h-2.5 rounded-full bg-gradient-to-r from-[#2563EB] to-[#06B6D4] shadow-sm" />
           </div>
 
           {/* Visitor Count */}
-          <div className="flex flex-col">
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-bold text-[#0B1120]">
-                {count > 0 ? (
-                  <motion.span
-                    key={count}
-                    initial={{ scale: 1.3, color: '#2563EB' }}
-                    animate={{ scale: 1, color: '#0B1120' }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {count}
-                  </motion.span>
-                ) : (
-                  '1'
-                )}
-              </span>
-              <span className="text-xs text-[#475569] font-medium">{status.label}</span>
-            </div>
+          <div className="flex items-center gap-1.5">
+            <span className="text-xs sm:text-sm font-bold text-[#0B1120]">{count || 1}</span>
+            <span className="text-[11px] text-[#475569] font-medium sm:hidden">
+              {status.shortLabel}
+            </span>
+            <span className="text-xs text-[#475569] font-medium hidden sm:inline">
+              {status.label}
+            </span>
           </div>
 
-          {/* Status Dot */}
-          <div className="flex items-center gap-1.5 ml-1">
+          {/* Status Dot (Desktop only to keep mobile pill compact) */}
+          <div className="hidden sm:flex items-center gap-1.5 ml-1">
             <span
               className="w-1.5 h-1.5 rounded-full animate-pulse"
               style={{ backgroundColor: status.color }}
@@ -168,7 +166,7 @@ export default function VisitorPulse() {
           <motion.div
             animate={{ rotate: isExpanded ? 180 : 0 }}
             transition={{ duration: 0.3 }}
-            className="text-[#94A3B8] text-xs ml-1"
+            className="text-[#94A3B8] text-[10px] sm:text-xs ml-0.5"
           >
             ▾
           </motion.div>
@@ -178,30 +176,30 @@ export default function VisitorPulse() {
         <AnimatePresence>
           {isExpanded && (
             <motion.div
-              initial={{ opacity: 0, y: -10, scale: 0.95 }}
+              initial={{ opacity: 0, y: 10, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -10, scale: 0.95 }}
+              exit={{ opacity: 0, y: 10, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="absolute bottom-full mb-3 left-0 min-w-[200px] bg-white/90 backdrop-blur-xl rounded-xl border border-[#E2E8F0] shadow-2xl shadow-[#2563EB]/10 p-4"
+              className="absolute bottom-full mb-3 left-0 min-w-[190px] bg-white/95 backdrop-blur-xl rounded-xl border border-[#E2E8F0] shadow-2xl shadow-[#2563EB]/15 p-3.5"
             >
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-mono text-[#94A3B8] tracking-wider uppercase">
                     Current
                   </span>
-                  <span className="text-sm font-bold text-[#0B1120]">{count}</span>
+                  <span className="text-xs sm:text-sm font-bold text-[#0B1120]">{count}</span>
                 </div>
                 <div className="flex items-center justify-between border-t border-[#F1F5F9] pt-2">
                   <span className="text-[10px] font-mono text-[#94A3B8] tracking-wider uppercase">
                     Peak
                   </span>
-                  <span className="text-sm font-bold text-[#2563EB]">{peakCount}</span>
+                  <span className="text-xs sm:text-sm font-bold text-[#2563EB]">{peakCount}</span>
                 </div>
                 <div className="flex items-center justify-between border-t border-[#F1F5F9] pt-2">
                   <span className="text-[10px] font-mono text-[#94A3B8] tracking-wider uppercase">
                     Uptime
                   </span>
-                  <span className="text-sm font-mono text-[#475569]">{uptime}</span>
+                  <span className="text-xs sm:text-sm font-mono text-[#475569]">{uptime}</span>
                 </div>
                 <div className="flex items-center justify-between border-t border-[#F1F5F9] pt-2">
                   <span className="text-[10px] font-mono text-[#94A3B8] tracking-wider uppercase">
@@ -216,11 +214,6 @@ export default function VisitorPulse() {
             </motion.div>
           )}
         </AnimatePresence>
-
-        {/* Heat Ring - Outer glow on high traffic */}
-        {count > 0 && (
-          <div className="absolute -inset-1 rounded-full border border-[#2563EB]/10 animate-pulse pointer-events-none" />
-        )}
       </motion.div>
     </div>
   );

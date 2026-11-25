@@ -214,8 +214,8 @@ export default function ProjectCard({ project, index }: { project: Project; inde
 
                   <div className={`relative transition-all duration-500 ${
                     deviceView === 'mobile' 
-                      ? 'mx-auto w-[375px] h-[667px] border-4 border-[#0B1120] rounded-3xl overflow-hidden' 
-                      : 'w-full h-96'
+                      ? 'mx-auto w-full max-w-[320px] sm:max-w-[375px] h-[540px] sm:h-[667px] border-4 border-[#0B1120] rounded-3xl overflow-hidden my-2' 
+                      : 'w-full h-72 sm:h-96'
                   }`}>
                     {isLoading ? (
                       <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#F8FAFC] gap-3">

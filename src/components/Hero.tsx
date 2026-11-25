@@ -34,7 +34,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative flex flex-col-reverse md:flex-row items-center justify-between min-h-screen px-6 max-w-7xl mx-auto py-12 md:py-20 overflow-hidden bg-mesh">
+    <section className="relative flex flex-col-reverse md:flex-row items-center justify-between min-h-screen px-4 sm:px-6 max-w-7xl mx-auto pt-24 pb-14 md:py-20 overflow-hidden bg-mesh">
       {/* Particle Canvas Background */}
       <ParticleCanvas />
 
@@ -83,7 +83,7 @@ export default function Hero() {
       {/* Right: Face Container – FULL IMAGE, NO SPLIT */}
       <div
         ref={containerRef}
-        className="relative z-10 w-[300px] h-[400px] sm:w-[400px] sm:h-[500px] md:w-[450px] md:h-[550px] lg:w-[550px] lg:h-[650px] shrink-0 mb-8 md:mb-0 transition-transform duration-100 ease-out"
+        className="relative z-10 w-[260px] h-[340px] sm:w-[380px] sm:h-[480px] md:w-[440px] md:h-[540px] lg:w-[520px] lg:h-[620px] shrink-0 mb-8 md:mb-0 transition-transform duration-100 ease-out rounded-2xl overflow-hidden"
         style={{ transformStyle: 'preserve-3d' }}
       >
         {/* Inner container */}

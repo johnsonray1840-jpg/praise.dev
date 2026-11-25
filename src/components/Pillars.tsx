@@ -80,14 +80,14 @@ export default function Pillars() {
   return (
     <section 
       ref={sectionRef} 
-      className="py-20 px-6 max-w-5xl mx-auto border-t border-[#F1F5F9]"
+      className="py-16 md:py-24 px-4 sm:px-6 max-w-5xl mx-auto border-t border-[#F1F5F9]"
     >
       {/* Section Header */}
-      <div className="flex items-center gap-6 mb-16">
-        <span className="text-5xl font-mono font-bold text-[#CBD5E1]">08</span>
+      <div className="flex items-center gap-4 sm:gap-6 mb-10 sm:mb-16">
+        <span className="text-4xl sm:text-5xl font-mono font-bold text-[#CBD5E1]">07</span>
         <span className="h-px flex-1 bg-[#E2E8F0]" />
-        <span className="text-sm font-mono text-[#2563EB] font-semibold tracking-[0.3em] uppercase">
-          Product & engineering pillars
+        <span className="text-xs sm:text-sm font-mono text-[#2563EB] font-semibold tracking-[0.15em] sm:tracking-[0.3em] uppercase text-right">
+          Engineering Pillars
         </span>
       </div>
 
