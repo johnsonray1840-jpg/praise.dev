@@ -162,17 +162,18 @@ export default function TerminalComponent() {
         term.writeln('\x1b[1;36m╔══════════════════════════════════════════════════════════════╗\x1b[0m');
         term.writeln('\x1b[36m║\x1b[0m  \x1b[1mCONNECT WITH ME\x1b[0m                                              \x1b[36m║\x1b[0m');
         term.writeln('\x1b[36m╠══════════════════════════════════════════════════════════════╣\x1b[0m');
-        term.writeln('\x1b[36m║\x1b[0m  \x1b[36m✉\x1b[0m  \x1b[1mEmail:\x1b[0m   \x1b[90mPraisegodswill23@gmail.com\x1b[0m                             \x1b[36m║\x1b[0m');
-        term.writeln('\x1b[36m║\x1b[0m  \x1b[36m🔗\x1b[0m  \x1b[1mLinkedIn:\x1b[0m \x1b[90mlinkedin.com/in/Praise-godswill\x1b[0m                \x1b[36m║\x1b[0m');
-        term.writeln('\x1b[36m║\x1b[0m  \x1b[36m🐙\x1b[0m  \x1b[1mGitHub:\x1b[0m   \x1b[90mgithub.com/Praise-dev\x1b[0m                           \x1b[36m║\x1b[0m');
+        term.writeln('\x1b[36m║\x1b[0m  \x1b[36m✉\x1b[0m  \x1b[1mEmail:\x1b[0m    \x1b[90mpraisegodswill23@gmail.com\x1b[0m                    \x1b[36m║\x1b[0m');
+        term.writeln('\x1b[36m║\x1b[0m  \x1b[36m☎\x1b[0m  \x1b[1mPhone:\x1b[0m    \x1b[90m09018403385\x1b[0m                                   \x1b[36m║\x1b[0m');
+        term.writeln('\x1b[36m║\x1b[0m  \x1b[36m🔗\x1b[0m  \x1b[1mLinkedIn:\x1b[0m \x1b[90mlinkedin.com/in/praise-godswill-85ab38205\x1b[0m    \x1b[36m║\x1b[0m');
+        term.writeln('\x1b[36m║\x1b[0m  \x1b[36m🐙\x1b[0m  \x1b[1mGitHub:\x1b[0m   \x1b[90mgithub.com/456-bytes\x1b[0m                          \x1b[36m║\x1b[0m');
         term.writeln('\x1b[1;36m╚══════════════════════════════════════════════════════════════╝\x1b[0m');
         return;
       }
 
       // CV
       if (mainCmd === 'cv') {
-        window.open('/cv.pdf', '_blank');
-        term.writeln('\x1b[32m📄 Opening CV...\x1b[0m');
+        window.open('/cv', '_blank');
+        term.writeln('\x1b[32m📄 Opening interactive CV & PDF download (/cv)...\x1b[0m');
         return;
       }
 

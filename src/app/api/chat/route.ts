@@ -12,7 +12,7 @@ About Praise:
 - Title: Software Engineer
 - Tech Stack: Next.js, React, TypeScript, Node.js, Express, MongoDB, Docker, AWS, PHP, TailwindCSS, Bootstrap, Git, Postman, Render, Vercel, Resend, SaaS Development.
 - Experience: 5+ years building scalable SaaS platforms, real-time data pipelines, and production-grade infrastructure.
-- Key Projects: Jay's Food Court (https://jays-food-court.vercel.app - modern restaurant & food ordering platform), Quantnoon (algorithmic trading), SchEase (school management), GoHunt (crypto exchange).
+- Key Projects: Jay's Food Court (https://jays-food-court.vercel.app - full-stack restaurant ordering & operations platform with Next.js, TypeScript, Supabase, PostgreSQL), Global Citizen Immigration Platform (https://global-immigration-platform.vercel.app/ - interactive 3D globe & AI immigration guidance assistant), Lone Star Autos (full-stack automotive dealership platform with Node.js, Express, MongoDB, Socket.IO, Cloudinary), ORC Investment Platform (investment programme management system with Node.js, Neon PostgreSQL, Resend/Nodemailer, Vercel Serverless & Cron).
 - Philosophy: "Think twice, code once."
 - Availability: Open to freelance, contract, and full-time opportunities. Available for remote work worldwide.
 
@@ -40,8 +40,8 @@ function fallbackReply(message: string): string {
   if (lower.includes('skills') || lower.includes('stack') || lower.includes('tech') || lower.includes('technologies')) {
     return "Praise is proficient in Next.js, React, TypeScript, Three.js, Node.js, Express, MongoDB, Docker, AWS, PHP, and TailwindCSS. He specializes in building scalable SaaS platforms and production-grade infrastructure.";
   }
-  if (lower.includes('project') || lower.includes('work') || lower.includes('build') || lower.includes('system') || lower.includes('food') || lower.includes('jay')) {
-    return "Praise has built several production systems including Jay's Food Court (https://jays-food-court.vercel.app — a modern digital restaurant & food ordering platform), Quantnoon (algorithmic trading platform), SchEase (school management system), and GoHunt (crypto exchange).";
+  if (lower.includes('project') || lower.includes('work') || lower.includes('build') || lower.includes('system') || lower.includes('food') || lower.includes('jay') || lower.includes('immigration') || lower.includes('auto') || lower.includes('orc')) {
+    return "Praise has engineered several production systems: 1) Jay's Food Court (https://jays-food-court.vercel.app — full-stack restaurant ordering, kitchen operations & delivery platform built with Next.js, TypeScript, Supabase & PostgreSQL), 2) Global Citizen Immigration Platform (https://global-immigration-platform.vercel.app/ — interactive 3D globe & AI immigration assistant), 3) Lone Star Autos (full-stack automotive dealership platform with Node.js, Express, MongoDB, Socket.IO & Cloudinary), and 4) ORC Investment Platform (investment programme management & admin CRUD platform built with Node.js, Neon PostgreSQL & Vercel Serverless Cron).";
   }
   if (lower.includes('experience') || lower.includes('background') || lower.includes('about') || lower.includes('who is') || lower.includes('philosophy')) {
     return "Praise is a Software Engineer with over 5 years of experience building production-grade web applications. His engineering philosophy is: 'Think twice, code once.'";

@@ -65,11 +65,10 @@ export default function Hero() {
         </p>
         <div className="flex flex-wrap gap-4 pt-4 justify-center md:justify-start">
           <a
-            href="/cv.pdf"
-            download
+            href="/cv"
             className="group inline-flex items-center px-8 py-4 bg-[#2563EB] text-white font-semibold rounded-xl shadow-lg shadow-[#2563EB]/30 hover:shadow-[#2563EB]/50 hover:-translate-y-0.5 transition-all duration-300"
           >
-            Download CV
+            View &amp; Download CV
             <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
           </a>
           <a
