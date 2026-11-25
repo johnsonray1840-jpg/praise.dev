@@ -1,31 +1,32 @@
 'use client';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import ThemeToggle from './ThemeToggle';  
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-      
+
       const sections = ['terminal', 'projects', 'skills', 'contact'];
       let current = '';
       for (const section of sections) {
         const el = document.getElementById(section);
         if (el) {
           const rect = el.getBoundingClientRect();
-          if (rect.top <= 100) {
+          if (rect.top <= 120) {
             current = section;
           }
         }
       }
       setActiveSection(current);
     };
-    
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -38,17 +39,17 @@ export default function Navbar() {
   ];
 
   return (
-    <nav 
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-white/80 backdrop-blur-xl border-b border-[#F1F5F9] shadow-sm' 
+        scrolled || mobileMenuOpen
+          ? 'bg-white/90 backdrop-blur-xl border-b border-[#F1F5F9] shadow-sm'
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-5xl mx-auto px-6 flex items-center justify-between h-16">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
         {/* Logo */}
-        <Link 
-          href="/" 
+        <Link
+          href="/"
           className="group flex items-center gap-2 font-mono font-bold text-[#0B1120] hover:text-[#2563EB] transition-colors"
         >
           <span className="text-xl tracking-tight">PG</span>
@@ -59,7 +60,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -76,24 +77,55 @@ export default function Navbar() {
               )}
             </a>
           ))}
-        </div>
+        </nav>
 
-        {/* Right side: Theme toggle */}
-        <div className="flex items-center gap-4">
-          {/* ✅ Replace placeholder with actual ThemeToggle */}
-          <ThemeToggle />
-          
-          {/* Mobile menu button */}
-          <button 
-            className="md:hidden p-2 rounded-lg hover:bg-[#F1F5F9] transition-colors"
+        {/* Mobile menu button */}
+        <div className="flex items-center md:hidden">
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 rounded-lg hover:bg-[#F1F5F9] transition-colors"
             aria-label="Toggle menu"
           >
             <svg className="w-5 h-5 text-[#0B1120]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              {mobileMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
             </svg>
           </button>
         </div>
       </div>
-    </nav>
+
+      {/* Mobile Drawer Menu */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden bg-white/95 backdrop-blur-xl border-b border-[#E2E8F0] px-6 py-4 shadow-lg"
+          >
+            <div className="flex flex-col gap-2">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`text-sm font-medium py-2.5 px-3 rounded-lg transition-colors ${
+                    activeSection === link.href.replace('#', '')
+                      ? 'bg-[#EFF6FF] text-[#2563EB] font-semibold'
+                      : 'text-[#475569] hover:bg-[#F8FAFC] hover:text-[#0B1120]'
+                  }`}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
 }
