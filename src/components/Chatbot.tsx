@@ -86,7 +86,7 @@ export default function Chatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.96 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="mb-3 w-[calc(100vw-2rem)] max-w-[380px] sm:w-[390px] sm:max-w-none h-[min(460px,72dvh)] sm:h-[510px] bg-white/95 backdrop-blur-2xl rounded-2xl shadow-2xl shadow-[#2563EB]/20 border border-[#E2E8F0] overflow-hidden flex flex-col"
+            className="w-[calc(100vw-2rem)] max-w-[380px] sm:w-[390px] sm:max-w-none h-[min(500px,78dvh)] sm:h-[520px] bg-white/95 backdrop-blur-2xl rounded-2xl shadow-2xl shadow-[#2563EB]/20 border border-[#E2E8F0] overflow-hidden flex flex-col"
           >
             {/* Header */}
             <div className="relative flex items-center justify-between px-4 py-3.5 sm:px-5 sm:py-4 bg-gradient-to-r from-[#2563EB] to-[#06B6D4] shrink-0">
@@ -204,35 +204,23 @@ export default function Chatbot() {
         )}
       </AnimatePresence>
 
-      {/* Floating Toggle Button */}
-      <motion.button
-        onClick={() => setOpen(!open)}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        aria-label={open ? 'Close AI chat' : 'Open AI chat'}
-        className={`relative w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-xl flex items-center justify-center transition-all duration-300 ${
-          open
-            ? 'bg-[#EF4444] hover:bg-[#DC2626] shadow-[#EF4444]/30'
-            : 'bg-gradient-to-r from-[#2563EB] to-[#06B6D4] hover:shadow-[#2563EB]/40 shadow-[#2563EB]/30'
-        }`}
-      >
-        {!open && (
-          <>
-            <span className="absolute inset-0 rounded-full bg-[#2563EB] animate-ping opacity-20" />
-            <span className="absolute inset-0 rounded-full bg-[#2563EB] animate-pulse opacity-30" />
-          </>
-        )}
-        <span className="relative z-10">
-          {open ? (
-            <X className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-          ) : (
+      {/* Floating Toggle Button (Only shown when chat is closed) */}
+      {!open && (
+        <motion.button
+          onClick={() => setOpen(true)}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          aria-label="Open AI chat"
+          className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-xl flex items-center justify-center transition-all duration-300 bg-gradient-to-r from-[#2563EB] to-[#06B6D4] hover:shadow-[#2563EB]/40 shadow-[#2563EB]/30"
+        >
+          <span className="absolute inset-0 rounded-full bg-[#2563EB] animate-ping opacity-20" />
+          <span className="absolute inset-0 rounded-full bg-[#2563EB] animate-pulse opacity-30" />
+          <span className="relative z-10">
             <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-          )}
-        </span>
-        {!open && (
+          </span>
           <span className="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 bg-[#22C55E] rounded-full border-2 border-white shadow-md" />
-        )}
-      </motion.button>
+        </motion.button>
+      )}
     </div>
   );
 }
