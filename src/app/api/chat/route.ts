@@ -13,7 +13,7 @@ About Praise:
 - Tech Stack: Next.js, React, TypeScript, Node.js, Express, MongoDB, Docker, AWS, PHP, TailwindCSS, Bootstrap, Git, Postman, Render, Vercel, Resend, SaaS Development.
 - Experience: 5+ years building scalable SaaS platforms, real-time data pipelines, and production-grade infrastructure.
 - Key Projects: Jay's Food Court (https://jays-food-court.vercel.app - full-stack restaurant ordering & operations platform with Next.js, TypeScript, Supabase, PostgreSQL), Global Citizen Immigration Platform (https://global-immigration-platform.vercel.app/ - interactive 3D globe & AI immigration guidance assistant), Lone Star Autos (full-stack automotive dealership platform with Node.js, Express, MongoDB, Socket.IO, Cloudinary), ORC Investment Platform (investment programme management system with Node.js, Neon PostgreSQL, Resend/Nodemailer, Vercel Serverless & Cron).
-- Philosophy: "Think twice, code once."
+- Philosophy: "Thoughtfully engineered. Intentionally built."
 - Availability: Open to freelance, contract, and full-time opportunities. Available for remote work worldwide.
 
 You are a friendly, conversational AI. You can talk about ANYTHING, not just Praise.
@@ -44,7 +44,7 @@ function fallbackReply(message: string): string {
     return "Praise has engineered several production systems: 1) Jay's Food Court (https://jays-food-court.vercel.app — full-stack restaurant ordering, kitchen operations & delivery platform built with Next.js, TypeScript, Supabase & PostgreSQL), 2) Global Citizen Immigration Platform (https://global-immigration-platform.vercel.app/ — interactive 3D globe & AI immigration assistant), 3) Lone Star Autos (full-stack automotive dealership platform with Node.js, Express, MongoDB, Socket.IO & Cloudinary), and 4) ORC Investment Platform (investment programme management & admin CRUD platform built with Node.js, Neon PostgreSQL & Vercel Serverless Cron).";
   }
   if (lower.includes('experience') || lower.includes('background') || lower.includes('about') || lower.includes('who is') || lower.includes('philosophy')) {
-    return "Praise is a Software Engineer with over 5 years of experience building production-grade web applications. His engineering philosophy is: 'Think twice, code once.'";
+    return "Praise is a Software Engineer with over 5 years of experience building production-grade web applications. His engineering philosophy is: 'Thoughtfully engineered. Intentionally built.'";
   }
   if (lower.includes('contact') || lower.includes('email') || lower.includes('hire') || lower.includes('reach')) {
     return "You can contact Praise via email at Praisegodswill23@gmail.com or directly through the contact form on this page!";

@@ -24,7 +24,7 @@ About Praise:
 - Tech Stack: Next.js, React, TypeScript, Node.js, Express, MongoDB, Docker, AWS, PHP, TailwindCSS, Bootstrap, Git, Postman, Render, Resend, SaaS Development.
 - Experience: 5+ years building scalable SaaS platforms, real-time data pipelines, and production-grade infrastructure.
 - Key Projects: Jay's Food Court (https://jays-food-court.vercel.app - modern restaurant & food ordering platform), Quantnoon (algorithmic trading), SchEase (school management), GoHunt (crypto exchange).
-- Philosophy: "Think twice, code once."
+- Philosophy: "Thoughtfully engineered. Intentionally built."
 - Availability: Open to freelance, contract, and full-time opportunities. Available for remote work worldwide.
 
 You are a friendly, conversational AI. You can talk about ANYTHING, not just Praise.
@@ -148,7 +148,7 @@ function fallbackReply(message: string): string {
 
   // Experience questions
   if (lower.includes('experience') || lower.includes('background') || lower.includes('about') || lower.includes('who is') || lower.includes('philosophy')) {
-    return "Praise is a Software Engineer with over 5 years of experience building production-grade web applications. He's passionate about clean architecture, performance, and great UX. His engineering philosophy is: 'Think twice, code once.'";
+    return "Praise is a Software Engineer with over 5 years of experience building production-grade web applications. He's passionate about clean architecture, performance, and great UX. His engineering philosophy is: 'Thoughtfully engineered. Intentionally built.'";
   }
 
   // Contact & hiring

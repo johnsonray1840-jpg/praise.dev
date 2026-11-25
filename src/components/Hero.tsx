@@ -49,13 +49,13 @@ export default function Hero() {
         <p className="text-sm font-mono text-[#2563EB] font-semibold tracking-[0.3em] uppercase">
           Software Engineer
         </p>
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
-          Think twice,
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.12]">
+          Thoughtfully
           <br />
-          <span className="text-gradient-blue">code once.</span>
+          <span className="text-gradient-blue">engineered.</span>
           <br />
           <span className="text-[#0B1120] relative text-3xl sm:text-4xl md:text-5xl">
-            Engineered to scale.
+            Intentionally built.
             <span className="absolute -bottom-2 left-0 w-24 h-1 bg-gradient-to-r from-[#2563EB] to-[#06B6D4] rounded-full md:left-0" />
           </span>
         </h1>

@@ -42,7 +42,7 @@ export default function TerminalComponent() {
         term.writeln('\x1b[1;36m━━━ PRAISE GODSWILL // QUANTUM OS v3.0 ━━━\x1b[0m');
         term.writeln('\x1b[90mRole:\x1b[0m   Full-Stack Software Engineer');
         term.writeln('\x1b[90mStatus:\x1b[0m \x1b[32m● ONLINE\x1b[0m');
-        term.writeln('\x1b[90mMotto:\x1b[0m  "Think twice, code once."');
+        term.writeln('\x1b[90mMotto:\x1b[0m  "Thoughtfully engineered. Intentionally built."');
         term.writeln('\x1b[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\x1b[0m');
         term.writeln('\x1b[90mTap a command above or type \x1b[1;36mhelp\x1b[0m\n');
       } else {
@@ -118,14 +118,14 @@ export default function TerminalComponent() {
           term.writeln('\x1b[1mFull-Stack Software Engineer\x1b[0m');
           term.writeln('\x1b[90m5+ years building production web apps,\x1b[0m');
           term.writeln('\x1b[90mREST APIs, databases & cloud systems.\x1b[0m');
-          term.writeln('\x1b[36m"Think twice, code once."\x1b[0m');
+          term.writeln('\x1b[36m"Thoughtfully engineered. Intentionally built."\x1b[0m');
         } else {
           term.writeln('\x1b[1;36m╔══════════════════════════════════════════════════════════════╗\x1b[0m');
           term.writeln('\x1b[36m║\x1b[0m  \x1b[1mPraise Godswill\x1b[0m — Full-Stack Software Engineer              \x1b[36m║\x1b[0m');
           term.writeln('\x1b[36m║\x1b[0m                                                              \x1b[36m║\x1b[0m');
           term.writeln('\x1b[36m║\x1b[0m  \x1b[90mFull-stack engineer with strong backend capabilities,\x1b[0m       \x1b[36m║\x1b[0m');
           term.writeln('\x1b[36m║\x1b[0m  \x1b[90mclean architecture, and reliable system delivery.\x1b[0m          \x1b[36m║\x1b[0m');
-          term.writeln('\x1b[36m║\x1b[0m  \x1b[36mPhilosophy: "Think twice, code once. Engineered to scale."\x1b[0m  \x1b[36m║\x1b[0m');
+          term.writeln('\x1b[36m║\x1b[0m  \x1b[36mPhilosophy: "Thoughtfully engineered. Intentionally built."\x1b[0m \x1b[36m║\x1b[0m');
           term.writeln('\x1b[1;36m╚══════════════════════════════════════════════════════════════╝\x1b[0m');
         }
         return;
