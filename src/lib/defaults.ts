@@ -7,7 +7,7 @@ export const DEFAULT_PROJECTS = [
     techStack: ['Next.js', 'TypeScript', 'Supabase', 'PostgreSQL', 'Tailwind CSS'],
     liveUrl: 'https://jays-food-court.vercel.app',
     repoUrl: 'https://github.com/456-bytes',
-    deployedAt: new Date().toISOString(),
+    deployedAt: '2026-07-18T12:00:00.000Z',
   },
   {
     _id: 'default-1',
@@ -17,7 +17,7 @@ export const DEFAULT_PROJECTS = [
     techStack: ['Next.js', 'React', 'TypeScript', 'Three.js / WebGL', 'Tailwind CSS'],
     liveUrl: 'https://global-immigration-platform.vercel.app/',
     repoUrl: 'https://github.com/456-bytes',
-    deployedAt: new Date().toISOString(),
+    deployedAt: '2026-05-14T12:00:00.000Z',
   },
   {
     _id: 'default-2',
@@ -27,7 +27,7 @@ export const DEFAULT_PROJECTS = [
     techStack: ['Node.js', 'Express.js', 'MongoDB', 'Socket.IO', 'Cloudinary', 'JWT'],
     liveUrl: 'https://praise-dev-pi.vercel.app/#projects',
     repoUrl: 'https://github.com/456-bytes',
-    deployedAt: new Date().toISOString(),
+    deployedAt: '2026-03-22T12:00:00.000Z',
   },
   {
     _id: 'default-3',
@@ -37,7 +37,7 @@ export const DEFAULT_PROJECTS = [
     techStack: ['Node.js', 'JavaScript', 'Tailwind CSS', 'Neon PostgreSQL', 'Vercel Cron', 'Resend'],
     liveUrl: 'https://praise-dev-pi.vercel.app/#projects',
     repoUrl: 'https://github.com/456-bytes',
-    deployedAt: new Date().toISOString(),
+    deployedAt: '2026-01-27T12:00:00.000Z',
   },
 ];
 
