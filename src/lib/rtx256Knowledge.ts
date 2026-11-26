@@ -623,6 +623,55 @@ While the employer's identity is protected under a signed NDA, his work focused 
   }
 
   // 9. Category C — Intelligent Project Evaluation, Filtering & Recommendations
+  // 8a. Conversation Memory: Real-time & Ordinal / Follow-up Project References
+  if (
+    lower.includes('real-time') ||
+    lower.includes('realtime') ||
+    lower.includes('websocket') ||
+    lower.includes('socket')
+  ) {
+    const jays = kb.projects[0];
+    const lone = kb.projects[2];
+    return `Two of Praise's projects use real-time functionality:
+
+• **${lone.name}** — Uses **Socket.IO** on a Node.js/Express backend to push live vehicle inventory updates to connected clients.
+• **${jays.name}** (${jays.liveUrl}) — Coordinates real-time order lifecycle tracking across **Customers, Kitchen Staff, and Delivery Riders** on **Supabase PostgreSQL**.
+
+Would you like to dig into how he implemented either one?`;
+  }
+
+  if (
+    (lower.includes('first one') || lower.includes('the first')) &&
+    (recentAssistantMsg.includes("jay's food court") || recentAssistantMsg.includes('projects'))
+  ) {
+    const p = kb.projects[0];
+    return `That's **${p.name}** (${p.liveUrl}), built with **${p.technologies.join(', ')}**. ${p.purpose} It separates permissions across **Customer, Kitchen Staff, Delivery Rider, and Super Admin** dashboards with server-side pricing validation.`;
+  }
+
+  if (
+    (lower.includes('second one') || lower.includes('the second')) &&
+    (recentAssistantMsg.includes('global citizen') || recentAssistantMsg.includes('projects'))
+  ) {
+    const p = kb.projects[1];
+    return `That's the **${p.name}** (${p.liveUrl}), built with **${p.technologies.join(', ')}**. It combines User/Admin CRUD dashboards, an automated travel eligibility checker, an AI immigration guidance assistant, a crypto deposit wallet module, and an interactive 3D WebGL globe.`;
+  }
+
+  if (
+    (lower.includes('third one') || lower.includes('the third')) &&
+    (recentAssistantMsg.includes('lone star') || recentAssistantMsg.includes('projects'))
+  ) {
+    const p = kb.projects[2];
+    return `That's **${p.name}**, built with **${p.technologies.join(', ')}**. It handles dealership vehicle inventory, JWT-protected RBAC admin analytics, **Socket.IO** live inventory updates, and **Cloudinary** multi-image optimization.`;
+  }
+
+  if (
+    (lower.includes('fourth one') || lower.includes('the fourth')) &&
+    (recentAssistantMsg.includes('orc') || recentAssistantMsg.includes('projects'))
+  ) {
+    const p = kb.projects[3];
+    return `That's the **${p.name}**, built with **${p.technologies.join(', ')}**. It manages timed investment programmes with **Neon PostgreSQL (\`pg\`)**, **Vercel Serverless Cron** jobs for automated duration/ROI tracking, and **Resend / Nodemailer** email alerts.`;
+  }
+
   // 8b. Visitor Intent Flows (Recruiters, Potential Clients, Peer Developers)
   if (
     lower.includes('recruiter') ||
@@ -788,8 +837,18 @@ His engineering philosophy—*"${kb.philosophy.primaryStatement}"* (rooted in *"
 You can also send a direct message using the **Connect (Section 08)** form at the bottom of this page.`;
   }
 
-  // 13. Context-Aware Follow-Up Resolution ("tell me more", "elaborate", "how does it work")
-  if (lower.includes('more') || lower.includes('elaborate') || lower.includes('detail') || lower.includes('first one') || lower.includes('second one') || lower.includes('how did he')) {
+  // 13. Context-Aware Follow-Up Resolution ("tell me more", "how did he implement that?", "what about the backend?")
+  if (
+    lower.includes('more') ||
+    lower.includes('elaborate') ||
+    lower.includes('detail') ||
+    lower.includes('how did he') ||
+    lower.includes('how does it') ||
+    lower.includes('how does that') ||
+    lower.includes('what about') ||
+    lower.includes('the backend') ||
+    lower.includes('that project')
+  ) {
     if (recentAssistantMsg.includes("jay's food court") || recentAssistantMsg.includes('4-sided')) {
       const p = kb.projects[0];
       return `In **${p.name}**, ${p.challengesSolved} Customers place and track orders, Kitchen Staff manage live prep queues, Delivery Riders handle dispatch status transitions, and Super Admins oversee pricing and operations—all backed by **Supabase and PostgreSQL**.`;
@@ -797,6 +856,14 @@ You can also send a direct message using the **Connect (Section 08)** form at th
     if (recentAssistantMsg.includes('global citizen') || recentAssistantMsg.includes('immigration')) {
       const p = kb.projects[1];
       return `In the **${p.name}**, ${p.challengesSolved} It pairs a 50+ topic conversational AI assistant and country travel eligibility checker with User/Admin CRUD dashboards and a cryptocurrency deposit wallet.`;
+    }
+    if (recentAssistantMsg.includes('lone star') || recentAssistantMsg.includes('dealership')) {
+      const p = kb.projects[2];
+      return `In **${p.name}**, ${p.challengesSolved} It pairs a Node.js/Express + MongoDB backend with **Socket.IO** for real-time inventory updates and **Cloudinary** for automated multi-image optimization.`;
+    }
+    if (recentAssistantMsg.includes('orc') || recentAssistantMsg.includes('investment')) {
+      const p = kb.projects[3];
+      return `In the **${p.name}**, ${p.challengesSolved} It uses **Neon PostgreSQL (\`pg\`)**, **Vercel Serverless Cron** jobs for automated duration/ROI tracking, and **Resend / Nodemailer** for transactional email alerts.`;
     }
     if (recentAssistantMsg.includes('lazerpay') || recentAssistantMsg.includes('confidential')) {
       return `Across both **Lazerpay** and his **2025–2026 NDA Backend Engineer role**, Praise focused heavily on service reliability, clean REST API contracts, JWT/OAuth RBAC enforcement, Docker containerization, and database query optimization across PostgreSQL and MongoDB.`;

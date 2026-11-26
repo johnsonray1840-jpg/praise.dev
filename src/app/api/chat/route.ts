@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import axios from 'axios';
-import { connectDB } from '@/lib/mongodb';
 import { checkRateLimit } from '@/lib/serverAuth';
 import {
   RTX256_SYSTEM_PROMPT,
@@ -8,7 +7,6 @@ import {
   generateRTX256Response,
   type ChatTurn,
 } from '@/lib/rtx256Knowledge';
-import ChatSession from '../../../../server/models/ChatSession';
 
 export async function POST(req: NextRequest) {
   const rateLimitResponse = checkRateLimit(
@@ -27,27 +25,26 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Message is required' }, { status: 400 });
     }
 
+    // Ephemeral session ID only — visitor conversations are kept in-session
+    // rather than persisted permanently, prioritizing privacy and minimal retention.
     const sessionIdValue =
       sessionId || `session_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`;
-    const db = await connectDB();
 
-    let session = null;
-    if (db) {
-      session = await ChatSession.findOne({ sessionId: sessionIdValue });
-      if (!session) {
-        session = new ChatSession({ sessionId: sessionIdValue, messages: [] });
-      }
-      session.messages.push({ role: 'user', content: message });
-    }
+    const sanitizedHistory: ChatTurn[] = Array.isArray(clientHistory)
+      ? clientHistory
+          .filter(
+            (m): m is ChatTurn =>
+              Boolean(m) &&
+              (m.role === 'user' || m.role === 'assistant') &&
+              typeof m.content === 'string'
+          )
+          .slice(-12)
+      : [];
 
-    const historyTurns: ChatTurn[] = session
-      ? session.messages.slice(-16).map((m: { role: 'user' | 'assistant' | 'system'; content: string }) => ({
-          role: m.role,
-          content: m.content,
-        }))
-      : Array.isArray(clientHistory)
-      ? [...clientHistory.slice(-10), { role: 'user', content: message }]
-      : [{ role: 'user', content: message }];
+    const historyTurns: ChatTurn[] = [
+      ...sanitizedHistory,
+      { role: 'user', content: message },
+    ];
 
     let reply = '';
     const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
@@ -56,7 +53,7 @@ export async function POST(req: NextRequest) {
       try {
         const dynamicKnowledgeContext = retrieveRelevantKnowledgeContext(
           message,
-          historyTurns.slice(0, -1)
+          sanitizedHistory
         );
         const fullSystemPrompt = `${RTX256_SYSTEM_PROMPT}\n\n=== VERIFIED KNOWLEDGE BASE (CATEGORIES A-F) ===\n${dynamicKnowledgeContext}`;
 
@@ -78,16 +75,10 @@ export async function POST(req: NextRequest) {
         );
         reply = response.data.choices[0].message.content.trim();
       } catch {
-        reply = generateRTX256Response(message, historyTurns.slice(0, -1));
+        reply = generateRTX256Response(message, sanitizedHistory);
       }
     } else {
-      reply = generateRTX256Response(message, historyTurns.slice(0, -1));
-    }
-
-    if (db && session) {
-      session.messages.push({ role: 'assistant', content: reply });
-      session.updatedAt = new Date();
-      await session.save().catch(() => {});
+      reply = generateRTX256Response(message, sanitizedHistory);
     }
 
     return NextResponse.json({ reply, sessionId: sessionIdValue });
