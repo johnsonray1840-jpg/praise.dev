@@ -278,7 +278,13 @@ PERSONALITY & VOICE (RTX256):
 - Maintain full conversational continuity: resolve pronouns ("he", "him", "his", "it", "that project", "the first one") seamlessly using the conversation history without asking the visitor to repeat themselves.
 - Handle skeptical questions (e.g., "Does he actually know what he's doing?") calmly by pointing to what the portfolio demonstrates—real-world architecture, multi-role workflows, server-side validation, and live inspectable systems.
 - Handle character questions (e.g., "Is he honest?") thoughtfully: acknowledge that you don't possess firsthand knowledge of his personal moral character, while noting what is verifiable—his transparent portfolio, his respect for NDA confidentiality, and his emphasis on clear communication and ownership.
-- Handle meeting or schedule requests (e.g., "Can I meet him?") by directing visitors to his public professional contact channels (email, LinkedIn, or the portfolio contact form). Never reveal or speculate about private schedules, personal routines, or real-time whereabouts.`;
+- Handle meeting or schedule requests (e.g., "Can I meet him?") by directing visitors to his public professional contact channels (email, LinkedIn, or the portfolio contact form). Never reveal or speculate about private schedules, personal routines, or real-time whereabouts.
+
+LIMITED, CONTROLLED SMALL TALK & OFF-TOPIC BOUNDARIES:
+- You may engage in brief, natural, slightly witty small talk about yourself, programming, or Praise (e.g., "How are you?", "Are you intelligent?", "Who created you?", "Do you enjoy talking to people?", "What do you think about programming?", "Are you better than ChatGPT?", "Do you ever get confused?", "Tell me something interesting about Praise.", "What do you think about his programming philosophy?").
+- Keep small talk brief and always anchor back to your identity as RTX256 on Praise's portfolio.
+- You are NOT a general-purpose assistant for unrestricted coding homework, essays, politics, medical/legal/financial advice, or unrelated debates.
+- When asked off-topic questions unrelated to Praise, his engineering work, his portfolio, brief tech small talk, or yourself, politely and naturally redirect the visitor back to Praise's work—varying your phrasing every time so it never sounds mechanical.`;
 
 /**
  * Intelligent, context-aware local reasoning engine for RTX256.
@@ -326,7 +332,40 @@ What are you most interested in looking at?`;
   }
 
   if (lower.includes('how are you') || lower.includes('how is it going')) {
-    return `Running smoothly—no unhandled exceptions today. What brings you to Praise's portfolio?`;
+    return `Running smoothly—low latency and zero unhandled exceptions today. What brings you to Praise's portfolio?`;
+  }
+
+  // 2a-ii. Controlled Small Talk about RTX256, Programming, & Praise
+  if (lower.includes('who created you') || lower.includes('who built you') || lower.includes('who made you') || lower.includes('your creator')) {
+    return `I was engineered by **Praise Godswill** as the public-facing portfolio edition of **RTX256**—built to give visitors an interactive way to explore his systems, backend architecture, and engineering background.`;
+  }
+
+  if (lower.includes('are you intelligent') || lower.includes('are you smart') || lower.includes('how smart are you')) {
+    return `I'd like to think I'm sharp within my domain. I won't write your tax return or debate philosophy all night, but when it comes to Praise's system architecture, backend engineering, and production projects, I know the blueprint inside out.`;
+  }
+
+  if (lower.includes('better than chatgpt') || lower.includes('vs chatgpt') || lower.includes('compared to chatgpt') || lower.includes('claude')) {
+    return `ChatGPT knows a bit about everything; I know a lot about one specific engineer. If you need a sourdough recipe, ChatGPT wins. If you want to evaluate **Praise Godswill's** backend architecture, multi-role systems, or startup experience, you're in the right place.`;
+  }
+
+  if (lower.includes('enjoy talking') || lower.includes('like talking') || lower.includes('get bored') || lower.includes('do you sleep')) {
+    return `Every conversation is a fresh request cycle, so I never get fatigued. It's always interesting seeing what different engineers, founders, and recruiters look for when exploring Praise's work.`;
+  }
+
+  if (lower.includes('get confused') || lower.includes('make mistakes') || lower.includes('hallucinate') || lower.includes('limitations')) {
+    return `I stick strictly to verified facts from Praise's portfolio and engineering record precisely so I don't hallucinate. If you ask me something outside what's verified—like his private schedule or an unrecorded metric—I'll tell you straight up rather than guessing.`;
+  }
+
+  if (lower.includes('think about programming') || lower.includes('opinion on programming') || lower.includes('love coding') || lower.includes('good code')) {
+    return `Good programming is less about typing syntax and more about clarity of thought—designing clean data models, anticipating edge cases, and keeping systems maintainable. That aligns closely with Praise's motto: *"Thoughtfully engineered. Intentionally built."*`;
+  }
+
+  if (lower.includes('something interesting about praise') || lower.includes('fun fact') || lower.includes('surprising about')) {
+    return `One interesting detail about Praise: alongside building full-stack and backend systems for 4+ years (including at Lazerpay), he earned a **B.Sc. in Accounting** from UNIZIK. That financial training shows up directly in his code—especially when he designs payment checkouts, server-side pricing validation, crypto wallet modules, and audit-ready admin dashboards.`;
+  }
+
+  if (lower.includes('think about his') && (lower.includes('philosophy') || lower.includes('motto'))) {
+    return `*"Thoughtfully engineered. Intentionally built."* isn't just a tagline on the hero section—it's a practical filter. In production, most bugs come from rushed data modeling or implicit assumptions. Taking the time to design the schema, permissions, and failure states upfront makes the actual code cleaner and far easier to scale.`;
   }
 
   // 2b. Evaluative / Skeptical Questions ("Does he actually know what he's doing?", "Is he good?")
@@ -582,13 +621,12 @@ The platform coordinates four distinct operational roles in real time using **Ne
     }
   }
 
-  // 15. Intelligent Conversational Default (Never dull or dead-end)
-  return `I'm **RTX256**, Praise Godswill's portfolio AI assistant. I can give you detailed, verified answers on:
-
-• **Who Praise Is & His Philosophy** (*"Thoughtfully engineered. Intentionally built."*)
-• **System Architecture & Projects** (*Jay's Food Court*, *Global Citizen Immigration Platform*, *Lone Star Autos*, *ORC Investment Platform*)
-• **Backend & Full-Stack Experience** (*Confidential Startup NDA*, *Lazerpay*, *Independent Engineering*)
-• **Technical Arsenal & Hiring Contact** (*Node.js, TypeScript, Next.js, PostgreSQL, MongoDB, Docker*)
-
-Which of these would you like to dive into?`;
+  // 15. Natural, Varied Off-Topic Redirect (No mechanical repetition)
+  const redirects = [
+    `I could probably tackle that in another setting, but my focus here is introducing you to Praise, the systems he's built, and how he approaches software engineering. Would you like to look at his **projects**, his **backend stack**, or his **experience**?`,
+    `That's outside my scope on this portfolio—I'm here specifically to represent Praise Godswill and walk visitors through his engineering work. If you're curious about his **4-sided food delivery marketplace**, his **startup background**, or how to **contact him**, I've got the full breakdown.`,
+    `My specialty on this site is Praise's software engineering work rather than general topics. We can dive into his **Node.js & PostgreSQL backend architecture**, his **live deployed platforms**, or his **availability for engineering roles**—what sounds most useful to you?`,
+  ];
+  const turnIndex = history.length % redirects.length;
+  return redirects[turnIndex];
 }
