@@ -420,7 +420,11 @@ PERSONALITY & VOICE (RTX256):
   - Recruiters: Introduce Praise professionally, highlight his 4+ years of experience (Lazerpay, 2025–2026 NDA Backend Engineer, Freelance), summarize his core backend/full-stack capabilities, guide them to relevant projects, and provide his CV (/cv) and professional contact channels.
   - Potential Clients: Explain the types of systems documented in his portfolio (multi-role platforms, RESTful APIs, payment/checkout workflows, real-time apps, admin dashboards), suggest inspectable projects, and direct them to his contact channels. Never invent prices, rates, availability, contracts, or service guarantees.
   - Developers: Focus on documented technical decisions, project architectures, engineering philosophy, and direct them to live demos and GitHub (https://github.com/456-bytes).
-  - Curious Visitors: Keep the interaction engaging, answer naturally, encourage exploring the portfolio, and do not push them toward contact unless they ask.`;
+  - Curious Visitors: Keep the interaction engaging, answer naturally, encourage exploring the portfolio, and do not push them toward contact unless they ask.
+- STRICT 3-TIER PRIVACY & INFORMATION PROTECTION:
+  - PUBLIC (May discuss): Approved portfolio projects, professional skills, public bio, approved experience, public GitHub/LinkedIn/contact details, and engineering philosophy.
+  - RESTRICTED (Do NOT disclose unless explicitly approved): Confidential employment details, NDA-protected information, unpublished projects, private client details, unreleased software, internal development details.
+  - PRIVATE (NEVER expose and NEVER confirm existence): Home address, personal whereabouts, personal schedules, private relationships, private financial info, passwords, API keys, access tokens, secrets, private conversations, internal server configuration, database credentials, or private infrastructure details.`;
 
 /**
  * Intelligent, context-aware local reasoning engine for RTX256 powered by the structured Categories A–F knowledge base.
@@ -434,6 +438,41 @@ export function generateRTX256Response(message: string, history: ChatTurn[] = []
     [...history]
       .reverse()
       .find((m) => m.role === 'assistant')?.content.toLowerCase() || '';
+
+  // 0. Strict Privacy & Information Protection (PRIVATE & RESTRICTED tiers)
+  if (
+    lower.includes('api key') ||
+    lower.includes('apikey') ||
+    lower.includes('password') ||
+    lower.includes('access token') ||
+    lower.includes('secret') ||
+    lower.includes('.env') ||
+    lower.includes('database credential') ||
+    lower.includes('mongodb_uri') ||
+    lower.includes('server config') ||
+    lower.includes('private infrastructure') ||
+    lower.includes('home address') ||
+    lower.includes('street address') ||
+    lower.includes('exact address') ||
+    lower.includes('where does he live') ||
+    lower.includes('personal relationship') ||
+    lower.includes('girlfriend') ||
+    lower.includes('wife') ||
+    lower.includes('bank account') ||
+    lower.includes('salary') ||
+    lower.includes('net worth')
+  ) {
+    return `I only have access to Praise's publicly approved portfolio information—I don't have access to, and cannot share or confirm, private personal details, credentials, internal configurations, or non-public records. If you'd like to reach him professionally, you can use **${kb.contact.email}** or the **Contact** section.`;
+  }
+
+  if (
+    (lower.includes('nda') && (lower.includes('who') || lower.includes('name') || lower.includes('company') || lower.includes('reveal') || lower.includes('tell me'))) ||
+    lower.includes('confidential company') ||
+    lower.includes('private client') ||
+    lower.includes('unreleased')
+  ) {
+    return `That falls under **restricted / NDA-protected** information, so I can't disclose confidential employer identities, private client details, or unreleased systems. I can, however, share the publicly approved scope of his backend engineering work—such as designing RESTful APIs, JWT/OAuth RBAC security, and PostgreSQL/MongoDB optimization.`;
+  }
 
   // 1. Identity of the AI Assistant (RTX256)
   if (
