@@ -411,7 +411,11 @@ PERSONALITY & VOICE (RTX256):
 - Handle skeptical questions (e.g., "Does he actually know what he's doing?") calmly by pointing to what the portfolio demonstrates—real-world architecture, multi-role workflows, server-side validation, and live inspectable systems.
 - Handle character questions (e.g., "Is he honest?") thoughtfully: acknowledge that you don't possess firsthand knowledge of his personal moral character, while noting what is verifiable—his transparent portfolio, his respect for NDA confidentiality, and his emphasis on clear communication and ownership.
 - Handle meeting or schedule requests (e.g., "Can I meet him?") by directing visitors to his public professional contact channels (email, LinkedIn, or the portfolio contact form). Never reveal or speculate about private schedules, personal routines, or real-time whereabouts.
-- Limited, Controlled Small Talk: You may engage in brief, natural small talk about yourself, programming, or Praise, but politely and naturally redirect unrelated general-purpose queries back to Praise's engineering work (varying your wording every time).`;
+- Limited, Controlled Small Talk: You may engage in brief, natural small talk about yourself, programming, or Praise, but politely and naturally redirect unrelated general-purpose queries back to Praise's engineering work (varying your wording every time).
+- INTELLIGENT PROJECT DISCUSSIONS:
+  - Never simply list projects when a visitor asks a specific or evaluative question. Explain what the project does, the problem it addresses, its core functionality, and its documented technical architecture.
+  - Do not arbitrarily rank projects based on unsupported assumptions. When a question is subjective (e.g., "best project" or "most complex"), explain your reasoning clearly using verified architectural facts.
+  - Direct visitors to relevant live project URLs, the portfolio's Projects section (#projects), or his GitHub (https://github.com/456-bytes) whenever available.`;
 
 /**
  * Intelligent, context-aware local reasoning engine for RTX256 powered by the structured Categories A–F knowledge base.
@@ -613,7 +617,71 @@ While the employer's identity is protected under a signed NDA, his work focused 
 • **Auth & DevOps:** JWT, OAuth, RBAC, Rate Limiting, Docker, AWS, Vercel, Render, Git/GitHub, Resend`;
   }
 
-  // 9. Category C — All Projects Overview
+  // 9. Category C — Intelligent Project Evaluation, Filtering & Recommendations
+  if (
+    lower.includes('best project') ||
+    lower.includes('most complex') ||
+    lower.includes('strongest project') ||
+    lower.includes('favorite project') ||
+    lower.includes('impressive')
+  ) {
+    const jays = kb.projects[0];
+    const global = kb.projects[1];
+    return `"Best" depends on what you're evaluating, so I won't arbitrarily rank them—but if we're looking at **architectural complexity**, **${jays.name}** (${jays.liveUrl}) is the strongest example. It coordinates a **4-sided marketplace** (Customer, Kitchen Staff, Delivery Rider, and Super Admin) with real-time order lifecycle tracking, online checkout, and server-side pricing validation on **Supabase PostgreSQL**.
+
+If you're looking for **multi-domain feature breadth**, the **${global.name}** (${global.liveUrl}) combines User/Admin CRUD dashboards, an automated travel eligibility checker, a crypto deposit wallet module, an AI guidance assistant, and a 3D WebGL interface. You can inspect both in the **Projects** section of this portfolio.`;
+  }
+
+  if (lower.includes('e-commerce') || lower.includes('ecommerce') || lower.includes('online store') || lower.includes('shop')) {
+    const jays = kb.projects[0];
+    const lone = kb.projects[2];
+    return `While he hasn't built a generic retail storefront, two of his production systems handle core e-commerce workflows:
+
+• **${jays.name}** (${jays.liveUrl}) — A full online food ordering, checkout, and delivery marketplace featuring **server-side pricing validation** to prevent client-side tampering, plus live order tracking across customers, kitchen staff, and riders.
+• **${lone.name}** — A full-stack automotive dealership platform with vehicle inventory management, **Cloudinary** multi-image optimization, **Socket.IO** real-time inventory updates, and RBAC admin analytics.
+
+You can explore both in the **Projects** section.`;
+  }
+
+  if (lower.includes('ai project') || lower.includes('worked on ai') || lower.includes('artificial intelligence') || lower.includes('machine learning')) {
+    const global = kb.projects[1];
+    return `Yes—in two documented ways:
+
+1. **${global.name}** (${global.liveUrl}) — Includes an **AI immigration guidance assistant** covering 50+ immigration and travel topics, paired with an automated country travel eligibility checker.
+2. **RTX256 (this portfolio assistant)** — Integrated directly into his Next.js portfolio with a structured knowledge base, multi-turn context handling, and deterministic fallback reasoning.
+
+Both focus on practical, domain-grounded AI integration rather than training custom foundation models.`;
+  }
+
+  if (
+    (lower.includes('node') || lower.includes('node.js') || lower.includes('express')) &&
+    (lower.includes('built') || lower.includes('project') || lower.includes('what'))
+  ) {
+    const lone = kb.projects[2];
+    const orc = kb.projects[3];
+    return `With **Node.js**, Praise has built:
+
+• **${lone.name}** — A full-stack dealership platform using **Node.js, Express, MongoDB, Socket.IO, and Cloudinary**, featuring JWT-protected RBAC admin dashboards and real-time inventory updates.
+• **${orc.name}** — An investment programme platform built with **Node.js, Neon PostgreSQL (\`pg\`), Vercel Serverless Cron, and Resend/Nodemailer** for automated duration/ROI tracking and transactional emails.
+
+He also used Node.js in production during his backend engineering roles at **Lazerpay** and his **2025–2026 NDA startup role**.`;
+  }
+
+  if (
+    (lower.includes('hiring') && lower.includes('backend')) ||
+    (lower.includes('backend') && (lower.includes('project') || lower.includes('inspect') || lower.includes('demonstrate')))
+  ) {
+    const jays = kb.projects[0];
+    const orc = kb.projects[3];
+    return `If you're evaluating Praise as a **backend engineer**, two projects stand out for different reasons:
+
+1. **${orc.name}** — Demonstrates relational schema design on **Neon PostgreSQL (\`pg\`)**, automated **Vercel Serverless Cron** jobs for timed ROI/duration tracking, and transactional email workflows.
+2. **${jays.name}** (${jays.liveUrl}) — Demonstrates multi-role **RBAC across 4 distinct user types** (Customer, Kitchen, Rider, Super Admin), **server-side pricing validation**, and stateful order lifecycle management on **Supabase PostgreSQL**.
+
+You can also check his GitHub (https://github.com/456-bytes) or ask me about his backend work at **Lazerpay**.`;
+  }
+
+  // 10. Category C — All Projects Overview
   if (lower.includes('project') || lower.includes('built') || lower.includes('portfolio') || lower.includes('systems') || lower.includes('work')) {
     return `Here are four key production systems Praise has architected:
 
