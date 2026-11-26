@@ -12,23 +12,71 @@ interface Skill {
   proficiency: number; // 0-100
 }
 
+const SKILL_DOMAINS = [
+  {
+    title: 'Core Stack (Daily Production)',
+    badge: '01 // CORE',
+    accent: '#2563EB',
+    items: [
+      'TypeScript',
+      'JavaScript (ES6+)',
+      'Node.js',
+      'Express.js',
+      'React',
+      'Next.js',
+      'PostgreSQL',
+      'Tailwind CSS',
+    ],
+  },
+  {
+    title: 'Backend, Auth & Real-Time',
+    badge: '02 // BACKEND & AUTH',
+    accent: '#1D4ED8',
+    items: [
+      'RESTful APIs',
+      'Socket.IO',
+      'WebSockets',
+      'JWT',
+      'OAuth',
+      'RBAC',
+      'Serverless & Cron Jobs',
+    ],
+  },
+  {
+    title: 'Databases, Cloud & DevOps',
+    badge: '03 // DATA & INFRA',
+    accent: '#06B6D4',
+    items: [
+      'MongoDB',
+      'Supabase',
+      'Neon',
+      'Prisma / Mongoose',
+      'Docker',
+      'AWS',
+      'Vercel',
+      'CI/CD',
+    ],
+  },
+];
+
 const DEFAULT_SKILLS: Skill[] = [
-  { _id: '1', name: 'TypeScript', category: 'Frontend', proficiency: 92 },
-  { _id: '2', name: 'React', category: 'Frontend', proficiency: 94 },
-  { _id: '3', name: 'Next.js', category: 'Frontend', proficiency: 90 },
-  { _id: '4', name: 'Three.js', category: 'Frontend', proficiency: 85 },
-  { _id: '5', name: 'TailwindCSS', category: 'Frontend', proficiency: 95 },
-  { _id: '6', name: 'Node.js', category: 'Backend', proficiency: 88 },
-  { _id: '7', name: 'Express.js', category: 'Backend', proficiency: 86 },
-  { _id: '8', name: 'MongoDB', category: 'Database', proficiency: 90 },
-  { _id: '9', name: 'Docker', category: 'DevOps', proficiency: 84 },
-  { _id: '10', name: 'Socket.IO', category: 'Backend', proficiency: 88 },
-  { _id: '11', name: 'Git & GitHub', category: 'Tools', proficiency: 92 },
-  { _id: '12', name: 'REST APIs', category: 'Backend', proficiency: 95 },
-  { _id: '13', name: 'WebSockets', category: 'Backend', proficiency: 86 },
-  { _id: '14', name: 'JavaScript', category: 'Frontend', proficiency: 95 },
-  { _id: '15', name: 'HTML5 & CSS3', category: 'Frontend', proficiency: 95 },
-  { _id: '16', name: 'Cloud Deploy', category: 'DevOps', proficiency: 85 },
+  { _id: '1', name: 'TypeScript', category: 'Core Stack', proficiency: 90 },
+  { _id: '2', name: 'JavaScript (ES6+)', category: 'Core Stack', proficiency: 90 },
+  { _id: '3', name: 'Node.js', category: 'Core Stack', proficiency: 90 },
+  { _id: '4', name: 'Express.js', category: 'Core Stack', proficiency: 90 },
+  { _id: '5', name: 'React', category: 'Core Stack', proficiency: 90 },
+  { _id: '6', name: 'Next.js', category: 'Core Stack', proficiency: 90 },
+  { _id: '7', name: 'PostgreSQL', category: 'Core Stack', proficiency: 90 },
+  { _id: '8', name: 'Tailwind CSS', category: 'Core Stack', proficiency: 90 },
+  { _id: '9', name: 'RESTful APIs', category: 'Backend & Auth', proficiency: 88 },
+  { _id: '10', name: 'Socket.IO', category: 'Backend & Auth', proficiency: 88 },
+  { _id: '11', name: 'JWT & OAuth', category: 'Backend & Auth', proficiency: 88 },
+  { _id: '12', name: 'RBAC Security', category: 'Backend & Auth', proficiency: 88 },
+  { _id: '13', name: 'Serverless & Cron', category: 'Backend & Auth', proficiency: 88 },
+  { _id: '14', name: 'MongoDB', category: 'Cloud & Data', proficiency: 88 },
+  { _id: '15', name: 'Supabase & Neon', category: 'Cloud & Data', proficiency: 88 },
+  { _id: '16', name: 'Docker & AWS', category: 'Cloud & Data', proficiency: 88 },
+  { _id: '17', name: 'Vercel & CI/CD', category: 'Cloud & Data', proficiency: 88 },
 ];
 
 // Map proficiency to blue gradient color
@@ -152,9 +200,9 @@ function SkillSphere({ skills }: { skills: Skill[] }) {
                   }}
                 >
                   {skill.name}
-                  {isHovered && (
+                  {isHovered && skill.category && (
                     <span className="ml-2 text-[10px] text-[#2563EB] font-bold">
-                      {skill.proficiency}%
+                      • {skill.category}
                     </span>
                   )}
                 </div>
@@ -223,26 +271,21 @@ export default function SkillsGlobe() {
       });
   }, []);
 
-  // Calculate average proficiency
-  const avgProficiency = Math.round(
-    skills.reduce((acc, s) => acc + s.proficiency, 0) / (skills.length || 1)
-  );
-
   return (
     <div className="relative w-full">
-      {/* Stats Badge */}
-      <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
-        <div className="flex items-center gap-2 px-4 py-2 bg-[#F8FAFC] dark:bg-slate-900 rounded-full border border-[#E2E8F0] dark:border-slate-800">
-          <span className="text-xs font-mono text-[#475569] dark:text-slate-400">Skills:</span>
-          <span className="text-xs font-mono font-bold text-[#0B1120] dark:text-white">{skills.length}</span>
+      {/* Domain Context Badges (No arbitrary percentage scores) */}
+      <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-6">
+        <div className="flex items-center gap-2 px-4 py-2 bg-[#F8FAFC] rounded-full border border-[#E2E8F0]">
+          <span className="text-xs font-mono text-[#475569]">Core Domains:</span>
+          <span className="text-xs font-mono font-bold text-[#0B1120]">3 Production Pillars</span>
         </div>
-        <div className="flex items-center gap-2 px-4 py-2 bg-[#F8FAFC] dark:bg-slate-900 rounded-full border border-[#E2E8F0] dark:border-slate-800">
-          <span className="text-xs font-mono text-[#475569] dark:text-slate-400">Avg Proficiency:</span>
-          <span className="text-xs font-mono font-bold text-[#2563EB]">{avgProficiency}%</span>
+        <div className="flex items-center gap-2 px-4 py-2 bg-[#F8FAFC] rounded-full border border-[#E2E8F0]">
+          <span className="text-xs font-mono text-[#475569]">Focus:</span>
+          <span className="text-xs font-mono font-bold text-[#2563EB]">Full-Stack & Backend Architecture</span>
         </div>
-        <div className="flex items-center gap-2 px-4 py-2 bg-[#F8FAFC] dark:bg-slate-900 rounded-full border border-[#E2E8F0] dark:border-slate-800">
+        <div className="flex items-center gap-2 px-4 py-2 bg-[#F8FAFC] rounded-full border border-[#E2E8F0]">
           <span className="w-2 h-2 bg-[#22C55E] rounded-full animate-pulse" />
-          <span className="text-xs font-mono text-[#475569] dark:text-slate-400">3D Active</span>
+          <span className="text-xs font-mono text-[#475569]">Interactive 3D Map</span>
         </div>
       </div>
 
@@ -285,7 +328,7 @@ export default function SkillsGlobe() {
           <div className="h-full w-full flex flex-wrap items-center justify-center p-8 gap-3 overflow-y-auto">
             {skills.map((s) => (
               <span key={s._id} className="px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-xs font-mono font-semibold border border-blue-200">
-                {s.name} ({s.proficiency}%)
+                {s.name}
               </span>
             ))}
           </div>
@@ -294,8 +337,36 @@ export default function SkillsGlobe() {
 
       {/* Hint text */}
       <p className="text-center text-[10px] text-[#94A3B8] font-mono mt-3 select-none">
-        Hover on a skill node • Drag to rotate in 3D • Scroll to zoom (Supported on Chrome, Safari, Firefox, Edge, Mobile)
+        Hover on a technology node • Drag to rotate in 3D • Scroll to zoom
       </p>
+
+      {/* Clean Domain Grouping (Matches Executive CV — No Arbitrary Percentages) */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 mt-8">
+        {SKILL_DOMAINS.map((domain) => (
+          <div
+            key={domain.title}
+            className="p-5 sm:p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm hover:shadow-lg hover:shadow-[#2563EB]/5 transition-all duration-300"
+            style={{ borderTopWidth: '3px', borderTopColor: domain.accent }}
+          >
+            <div className="text-[10px] font-mono font-bold tracking-widest uppercase mb-1.5" style={{ color: domain.accent }}>
+              {domain.badge}
+            </div>
+            <h3 className="text-sm sm:text-base font-bold text-[#0B1120] mb-3.5">
+              {domain.title}
+            </h3>
+            <div className="flex flex-wrap gap-1.5">
+              {domain.items.map((item) => (
+                <span
+                  key={item}
+                  className="px-2.5 py-1 text-xs font-mono font-medium rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] text-[#334155] hover:border-[#2563EB]/40 hover:text-[#0B1120] transition-colors"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
