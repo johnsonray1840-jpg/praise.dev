@@ -108,12 +108,13 @@ export default function Hero() {
           <div className="absolute bottom-6 left-6 w-12 h-12 border-b-2 border-l-2 border-[#2563EB]/15 pointer-events-none" />
           <div className="absolute top-6 right-6 w-12 h-12 border-t-2 border-r-2 border-[#2563EB]/15 pointer-events-none" />
 
-          {/* Status badge */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-white/80 backdrop-blur-sm rounded-full border border-[#E2E8F0] shadow-lg flex items-center gap-2 pointer-events-none">
-            <span className="w-1.5 h-1.5 bg-[#22C55E] rounded-full animate-pulse" />
-            <span className="text-[10px] font-mono text-[#475569] font-medium tracking-wider uppercase">
-              Available for hire
-            </span>
+          {/* Status badge — Perfectly centered across all viewports without green dot */}
+          <div className="absolute inset-x-0 bottom-6 sm:bottom-8 flex justify-center pointer-events-none px-4">
+            <div className="px-4 py-1.5 bg-white/85 backdrop-blur-md rounded-full border border-[#E2E8F0] shadow-lg flex items-center justify-center">
+              <span className="text-[10px] font-mono text-[#475569] font-medium tracking-wider uppercase whitespace-nowrap text-center">
+                Available for hire
+              </span>
+            </div>
           </div>
         </div>
       </div>
