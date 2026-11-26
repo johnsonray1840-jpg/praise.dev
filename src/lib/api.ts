@@ -58,11 +58,15 @@ export async function sendContact(data: { name: string; email: string; body: str
   return res;
 }
 
-export async function sendChat(message: string, sessionId?: string) {
+export async function sendChat(
+  message: string,
+  sessionId?: string,
+  clientHistory?: { role: 'user' | 'assistant' | 'system'; content: string }[]
+) {
   const res = await fetch(`${API_BASE}/chat`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ message, sessionId }),
+    body: JSON.stringify({ message, sessionId, clientHistory }),
   });
   if (!res.ok) throw new Error('Chat request failed');
   return res.json();

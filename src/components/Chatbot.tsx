@@ -1,23 +1,51 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, MessageSquare, X } from 'lucide-react';
+import { Send, MessageSquare, X, Sparkles } from 'lucide-react';
 import { sendChat } from '@/lib/api';
 
 const QUICK_REPLIES = [
-  { label: 'About', value: 'Tell me about Praise' },
-  { label: 'Skills', value: 'What are your skills?' },
-  { label: 'Projects', value: 'Tell me about your projects' },
-  { label: 'Experience', value: 'What is your experience?' },
-  { label: 'Contact', value: 'How can I contact you?' },
+  { label: 'About Praise', value: 'Who is Praise Godswill and what does he do?' },
+  { label: 'Projects', value: 'Tell me about his projects and system architecture' },
+  { label: 'Engineering Approach', value: 'How does Praise approach complex software problems?' },
+  { label: 'Backend & Stack', value: 'What are his backend and full-stack technical capabilities?' },
+  { label: 'Experience', value: 'Walk me through his professional experience and Lazerpay role' },
+  { label: 'Contact & Hire', value: 'How can I contact Praise for a role or project?' },
 ];
+
+/**
+ * Formats bold (**text**) and line-breaks cleanly inside chat bubbles
+ */
+function renderFormattedMessage(text: string) {
+  const lines = text.split('\n');
+  return lines.map((line, lineIdx) => {
+    if (!line.trim()) {
+      return <div key={lineIdx} className="h-2" />;
+    }
+    const parts = line.split(/(\*\*.*?\*\*)/g);
+    return (
+      <div key={lineIdx} className={lineIdx > 0 ? 'mt-1' : ''}>
+        {parts.map((part, partIdx) => {
+          if (part.startsWith('**') && part.endsWith('**')) {
+            return (
+              <strong key={partIdx} className="font-semibold">
+                {part.slice(2, -2)}
+              </strong>
+            );
+          }
+          return <span key={partIdx}>{part}</span>;
+        })}
+      </div>
+    );
+  });
+}
 
 export default function Chatbot() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<{ role: 'user' | 'ai'; text: string }[]>([
     {
       role: 'ai',
-      text: "👋 Hi there! I'm Praise's AI assistant. Ask me about skills, projects, experience, or anything else!",
+      text: "Hello! I'm **RTX256** (Portfolio Edition), Praise Godswill's AI engineering assistant.\n\nAsk me about his **backend & full-stack architecture**, projects like **Jay's Food Court**, his **engineering philosophy**, or how to work with him.",
     },
   ]);
   const [input, setInput] = useState('');
@@ -41,7 +69,6 @@ export default function Chatbot() {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // Notify VisitorPulse when chat is open so they never collide on mobile
   useEffect(() => {
     if (typeof window !== 'undefined') {
       window.dispatchEvent(new CustomEvent('chatbot-toggle', { detail: { open } }));
@@ -61,16 +88,20 @@ export default function Chatbot() {
     setIsTyping(true);
 
     try {
-      const data = await sendChat(message, sessionId);
-      await new Promise((resolve) => setTimeout(resolve, 350));
+      const historyPayload = messages.slice(-10).map((m) => ({
+        role: m.role === 'ai' ? ('assistant' as const) : ('user' as const),
+        content: m.text,
+      }));
+      const data = await sendChat(message, sessionId, historyPayload);
+      await new Promise((resolve) => setTimeout(resolve, 250));
       setMessages((prev) => [
         ...prev,
-        { role: 'ai', text: data.reply || "I'm here to help! What would you like to know?" },
+        { role: 'ai', text: data.reply || "I'm here to help! What would you like to know about Praise?" },
       ]);
     } catch {
       setMessages((prev) => [
         ...prev,
-        { role: 'ai', text: "Sorry, I'm having trouble connecting. Please try again." },
+        { role: 'ai', text: "Sorry, I'm having trouble connecting right now. Please try again." },
       ]);
     } finally {
       setLoading(false);
@@ -87,28 +118,35 @@ export default function Chatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.96 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="w-[calc(100vw-2rem)] max-w-[380px] sm:w-[390px] sm:max-w-none h-[min(500px,78dvh)] sm:h-[520px] bg-white/95 backdrop-blur-2xl rounded-2xl shadow-2xl shadow-[#2563EB]/20 border border-[#E2E8F0] overflow-hidden flex flex-col"
+            className="w-[calc(100vw-2rem)] max-w-[380px] sm:w-[400px] sm:max-w-none h-[min(510px,78dvh)] sm:h-[540px] bg-white/95 backdrop-blur-2xl rounded-2xl shadow-2xl shadow-[#2563EB]/20 border border-[#E2E8F0] overflow-hidden flex flex-col"
           >
             {/* Header */}
-            <div className="relative flex items-center justify-between px-4 py-3.5 sm:px-5 sm:py-4 bg-gradient-to-r from-[#2563EB] to-[#06B6D4] shrink-0">
+            <div className="relative flex items-center justify-between px-4 py-3.5 sm:px-5 sm:py-4 bg-gradient-to-r from-[#0B1120] via-[#1E3A8A] to-[#2563EB] shrink-0">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
-                  <MessageSquare className="w-4 h-4 text-white" />
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-white/15 backdrop-blur flex items-center justify-center border border-white/20">
+                  <Sparkles className="w-4 h-4 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xs sm:text-sm font-bold text-white leading-tight">
-                    Praise&apos;s AI Assistant
-                  </h3>
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-xs sm:text-sm font-bold text-white leading-tight font-mono tracking-wide">
+                      RTX256
+                    </h3>
+                    <span className="px-1.5 py-0.5 text-[9px] font-mono bg-white/15 text-white/90 rounded border border-white/10">
+                      Portfolio AI
+                    </span>
+                  </div>
                   <div className="flex items-center gap-1.5 mt-0.5">
                     <span className="w-1.5 h-1.5 bg-[#22C55E] rounded-full animate-pulse" />
-                    <span className="text-[10px] text-white/90 font-mono">Online</span>
+                    <span className="text-[10px] text-white/80 font-mono">
+                      Praise Godswill • Knowledge Engine
+                    </span>
                   </div>
                 </div>
               </div>
               <button
                 onClick={() => setOpen(false)}
                 aria-label="Close chat"
-                className="w-8 h-8 rounded-full bg-white/15 hover:bg-white/25 transition-colors flex items-center justify-center text-white"
+                className="w-8 h-8 rounded-full bg-white/15 hover:bg-white/25 transition-colors flex items-center justify-center text-white cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -125,13 +163,13 @@ export default function Chatbot() {
                   className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   <div
-                    className={`max-w-[86%] px-3.5 py-2.5 rounded-2xl text-xs sm:text-sm leading-relaxed break-words ${
+                    className={`max-w-[88%] px-3.5 py-2.5 rounded-2xl text-xs sm:text-[13.5px] leading-relaxed break-words ${
                       msg.role === 'user'
                         ? 'bg-[#2563EB] text-white rounded-br-sm'
                         : 'bg-white border border-[#E2E8F0] text-[#0B1120] rounded-bl-sm shadow-sm'
                     }`}
                   >
-                    {msg.text}
+                    {renderFormattedMessage(msg.text)}
                   </div>
                 </motion.div>
               ))}
@@ -172,7 +210,7 @@ export default function Chatbot() {
                     <button
                       key={reply.label}
                       onClick={() => handleSend(reply.value)}
-                      className="px-2.5 py-1 text-[10px] font-mono text-[#2563EB] bg-[#EFF6FF] border border-[#BFDBFE] rounded-full hover:bg-[#2563EB] hover:text-white transition-all duration-200 whitespace-nowrap shrink-0"
+                      className="px-2.5 py-1 text-[10px] font-mono text-[#2563EB] bg-[#EFF6FF] border border-[#BFDBFE] rounded-full hover:bg-[#2563EB] hover:text-white transition-all duration-200 whitespace-nowrap shrink-0 cursor-pointer"
                     >
                       {reply.label}
                     </button>
@@ -188,7 +226,7 @@ export default function Chatbot() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                placeholder="Type a message..."
+                placeholder="Ask RTX256 about Praise..."
                 className="flex-1 min-w-0 px-3.5 py-2 text-base sm:text-sm bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/10 transition-all text-[#0B1120] placeholder:text-[#94A3B8]"
                 disabled={loading}
               />
@@ -196,7 +234,7 @@ export default function Chatbot() {
                 onClick={() => handleSend()}
                 disabled={loading || !input.trim()}
                 aria-label="Send message"
-                className="px-4 py-2 bg-[#2563EB] text-white font-medium rounded-xl hover:bg-[#1D4ED8] disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center shrink-0"
+                className="px-4 py-2 bg-[#2563EB] text-white font-medium rounded-xl hover:bg-[#1D4ED8] disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center shrink-0 cursor-pointer"
               >
                 <Send className="w-4 h-4" />
               </button>
@@ -211,8 +249,8 @@ export default function Chatbot() {
           onClick={() => setOpen(true)}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          aria-label="Open AI chat"
-          className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-xl flex items-center justify-center transition-all duration-300 bg-gradient-to-r from-[#2563EB] to-[#06B6D4] hover:shadow-[#2563EB]/40 shadow-[#2563EB]/30"
+          aria-label="Open RTX256 AI chat"
+          className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-xl flex items-center justify-center transition-all duration-300 bg-gradient-to-r from-[#2563EB] to-[#06B6D4] hover:shadow-[#2563EB]/40 shadow-[#2563EB]/30 cursor-pointer"
         >
           <span className="absolute inset-0 rounded-full bg-[#2563EB] animate-ping opacity-20" />
           <span className="absolute inset-0 rounded-full bg-[#2563EB] animate-pulse opacity-30" />
