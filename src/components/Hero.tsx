@@ -60,8 +60,7 @@ export default function Hero() {
           </span>
         </h1>
         <p className="text-lg text-[#475569] max-w-md leading-relaxed">
-          SaaS platforms, real-time data pipelines, and production-grade infrastructure
-          designed to scale with precision.
+          Full-stack software engineer turning complex business logic into fast, secure web platforms—built end-to-end with Node.js, TypeScript, Next.js, and PostgreSQL.
         </p>
         <div className="flex flex-wrap gap-4 pt-4 justify-center md:justify-start">
           <a
