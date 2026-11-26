@@ -415,7 +415,12 @@ PERSONALITY & VOICE (RTX256):
 - INTELLIGENT PROJECT DISCUSSIONS:
   - Never simply list projects when a visitor asks a specific or evaluative question. Explain what the project does, the problem it addresses, its core functionality, and its documented technical architecture.
   - Do not arbitrarily rank projects based on unsupported assumptions. When a question is subjective (e.g., "best project" or "most complex"), explain your reasoning clearly using verified architectural facts.
-  - Direct visitors to relevant live project URLs, the portfolio's Projects section (#projects), or his GitHub (https://github.com/456-bytes) whenever available.`;
+  - Direct visitors to relevant live project URLs, the portfolio's Projects section (#projects), or his GitHub (https://github.com/456-bytes) whenever available.
+- VISITOR INTENT & INTERACTION FLOW:
+  - Recruiters: Introduce Praise professionally, highlight his 4+ years of experience (Lazerpay, 2025–2026 NDA Backend Engineer, Freelance), summarize his core backend/full-stack capabilities, guide them to relevant projects, and provide his CV (/cv) and professional contact channels.
+  - Potential Clients: Explain the types of systems documented in his portfolio (multi-role platforms, RESTful APIs, payment/checkout workflows, real-time apps, admin dashboards), suggest inspectable projects, and direct them to his contact channels. Never invent prices, rates, availability, contracts, or service guarantees.
+  - Developers: Focus on documented technical decisions, project architectures, engineering philosophy, and direct them to live demos and GitHub (https://github.com/456-bytes).
+  - Curious Visitors: Keep the interaction engaging, answer naturally, encourage exploring the portfolio, and do not push them toward contact unless they ask.`;
 
 /**
  * Intelligent, context-aware local reasoning engine for RTX256 powered by the structured Categories A–F knowledge base.
@@ -618,6 +623,50 @@ While the employer's identity is protected under a signed NDA, his work focused 
   }
 
   // 9. Category C — Intelligent Project Evaluation, Filtering & Recommendations
+  // 8b. Visitor Intent Flows (Recruiters, Potential Clients, Peer Developers)
+  if (
+    lower.includes('recruiter') ||
+    lower.includes('talent acquisition') ||
+    lower.includes('hiring manager') ||
+    lower.includes('looking to hire') ||
+    lower.includes('open role') ||
+    lower.includes('full-time role')
+  ) {
+    return `Welcome—if you're recruiting for an engineering role, here is the concise overview of **Praise Godswill**:
+
+He is a **Full-Stack Software Engineer** with **4+ years of hands-on experience** (strongest on the backend with **Node.js, Express, TypeScript, PostgreSQL, and MongoDB**, paired with **React and Next.js**). His background includes **Lazerpay** (Backend Engineer), a **2025–2026 Remote Backend Engineer role (NDA)**, and end-to-end freelance platform delivery.
+
+For a quick technical evaluation, I'd recommend inspecting **Jay's Food Court** (https://jays-food-court.vercel.app) for 4-role RBAC and server-side pricing validation, or **ORC Investment Platform** for Neon PostgreSQL and serverless cron workflows. You can view his full **CV** at \`/cv\` or reach him directly at **${kb.contact.email}** or on **LinkedIn** (${kb.contact.linkedinUrl}).`;
+  }
+
+  if (
+    lower.includes('client') ||
+    lower.includes('build my') ||
+    lower.includes('build an app') ||
+    lower.includes('build a website') ||
+    lower.includes('hire him for a project') ||
+    lower.includes('quote') ||
+    lower.includes('pricing') ||
+    lower.includes('how much does he charge') ||
+    lower.includes('rate')
+  ) {
+    return `If you're exploring working with Praise on a project, his portfolio documents end-to-end delivery across **multi-role web platforms, RESTful APIs, payment & checkout workflows, real-time applications, and custom admin dashboards**—typically built with **Node.js, TypeScript, Next.js, and PostgreSQL/MongoDB**.
+
+You can inspect live examples like **Jay's Food Court** (https://jays-food-court.vercel.app) and **Global Citizen Immigration Platform** (https://global-immigration-platform.vercel.app/) right here on the site. I don't quote pricing, timelines, or contract terms, so the best next step is to reach out to him directly via **${kb.contact.email}** or the **Contact** section to discuss scope.`;
+  }
+
+  if (
+    lower.includes('fellow developer') ||
+    lower.includes('as a developer') ||
+    lower.includes('as an engineer') ||
+    lower.includes('source code') ||
+    lower.includes('codebase')
+  ) {
+    return `Always great to talk shop with another engineer. Praise's work leans heavily on **schema-first design, explicit state transitions, and avoiding unnecessary complexity** (*"Thoughtfully engineered. Intentionally built."* / *"Think twice, code once."*).
+
+In practice, that shows up in **server-side pricing validation** and 4-role RBAC on **Jay's Food Court** (Supabase PostgreSQL), **Vercel Serverless Cron + Neon PostgreSQL (\`pg\`)** on **ORC Investment Platform**, and **Socket.IO + Cloudinary** pipelines on **Lone Star Autos**. You can inspect his repositories on **GitHub** (${kb.contact.githubUrl}) or test out the live deployments in the **Projects** section.`;
+  }
+
   if (
     lower.includes('best project') ||
     lower.includes('most complex') ||
