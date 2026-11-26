@@ -252,7 +252,7 @@ pdf.addParagraph(
 // 3. TECHNICAL SKILLS
 pdf.addSectionHeader('Technical Skills');
 pdf.addSkillRow('Languages', 'JavaScript (ES6+), TypeScript, SQL, HTML5, CSS3');
-pdf.addSkillRow('Backend', 'Node.js, Express.js, RESTful API Design, Socket.IO, WebSockets, Serverless & Cron Functions, PHP');
+pdf.addSkillRow('Backend', 'Node.js, Express.js, RESTful API Design, Socket.IO, WebSockets, Serverless & Cron Functions');
 pdf.addSkillRow('Frontend', 'React, Next.js (App Router & SSR), Tailwind CSS, Three.js / WebGL, EJS, Responsive UI');
 pdf.addSkillRow('Databases & Storage', 'PostgreSQL (Neon, Supabase, node-postgres), MongoDB (Mongoose), MySQL, Cloudinary');
 pdf.addSkillRow('Auth & Security', 'JWT Authentication, OAuth, Role-Based Access Control (RBAC), Session Management, Rate Limiting');

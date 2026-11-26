@@ -153,7 +153,7 @@ export default function CVPage() {
                   Backend
                 </h3>
                 <p className="text-sm text-[#374151] leading-relaxed">
-                  Node.js, Express.js, RESTful API Design, Socket.IO, WebSockets, Serverless &amp; Cron Functions, PHP
+                  Node.js, Express.js, RESTful API Design, Socket.IO, WebSockets, Serverless &amp; Cron Functions
                 </p>
               </div>
 

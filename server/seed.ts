@@ -20,7 +20,6 @@ const updatedSkills = [
   // Backend
   { name: 'Node.js', category: 'Backend', proficiency: 88 },
   { name: 'Express.js', category: 'Backend', proficiency: 85 },
-  { name: 'PHP', category: 'Backend', proficiency: 80 },
   
   // Databases
   { name: 'MongoDB', category: 'Database', proficiency: 90 },

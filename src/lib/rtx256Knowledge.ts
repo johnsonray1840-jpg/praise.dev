@@ -78,7 +78,6 @@ export const RTX256_KNOWLEDGE_BASE = {
       'Real-time bidirectional event systems with Socket.IO & WebSockets',
       'Scheduled Serverless Cron jobs & background task processing',
       'Transactional email pipelines (Resend API, Nodemailer)',
-      'PHP backend integration',
     ],
     frontendExpertise: [
       'React 19 & Next.js client/server component architecture',
@@ -686,7 +685,7 @@ While the employer's identity is protected under a signed NDA, his work focused 
     const eng = kb.engineering;
     return `Praise's technical stack spans the full lifecycle:
 • **Languages:** ${eng.languages.join(', ')}
-• **Backend:** Node.js, Express.js, RESTful APIs, Socket.IO, WebSockets, Serverless & Cron, PHP
+• **Backend:** Node.js, Express.js, RESTful APIs, Socket.IO, WebSockets, Serverless & Cron
 • **Frontend:** ${eng.frameworks.join(', ')}
 • **Databases & Storage:** PostgreSQL (Neon, Supabase, \`pg\`), MongoDB (Mongoose), MySQL, Cloudinary
 • **Auth & DevOps:** JWT, OAuth, RBAC, Rate Limiting, Docker, AWS, Vercel, Render, Git/GitHub, Resend`;

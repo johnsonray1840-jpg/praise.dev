@@ -24,7 +24,7 @@ const layers: Layer[] = [
     id: 'core',
     title: 'CORE LAYER',
     subtitle: 'Backend & APIs',
-    tools: ['Node.js', 'Express', 'MongoDB', 'REST APIs', 'PHP'],
+    tools: ['Node.js', 'Express', 'PostgreSQL', 'MongoDB', 'REST APIs'],
     description: 'Reliable services, data models, permissions, and operational logic behind the interface.',
     color: '#3B82F6',
   },

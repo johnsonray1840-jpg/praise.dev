@@ -15,7 +15,7 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding >>
 endobj
 6 0 obj
-<< /Length 7752 >>
+<< /Length 7747 >>
 stream
 BT /F2 21 Tf 0.04 0.06 0.1 rg 1 0 0 1 48.00 788.00 Tm (PRAISE GODSWILL) Tj ET
 BT /F3 9 Tf 0.42 0.45 0.5 rg 1 0 0 1 338.00 791.00 Tm ("Thoughtfully engineered. Intentionally built.") Tj ET
@@ -37,7 +37,7 @@ BT /F2 9.2 Tf 0.06 0.09 0.15 rg 1 0 0 1 48.00 569.60 Tm (Languages:) Tj ET
 BT /F1 9.2 Tf 0.22 0.25 0.31 rg 1 0 0 1 163.00 569.60 Tm (JavaScript \(ES6+\), TypeScript, SQL, HTML5, CSS3) Tj ET
 BT /F2 9.2 Tf 0.06 0.09 0.15 rg 1 0 0 1 48.00 554.10 Tm (Backend:) Tj ET
 BT /F1 9.2 Tf 0.22 0.25 0.31 rg 1 0 0 1 163.00 554.10 Tm (Node.js, Express.js, RESTful API Design, Socket.IO, WebSockets, Serverless & Cron) Tj ET
-BT /F1 9.2 Tf 0.22 0.25 0.31 rg 1 0 0 1 163.00 540.60 Tm (Functions, PHP) Tj ET
+BT /F1 9.2 Tf 0.22 0.25 0.31 rg 1 0 0 1 163.00 540.60 Tm (Functions) Tj ET
 BT /F2 9.2 Tf 0.06 0.09 0.15 rg 1 0 0 1 48.00 525.10 Tm (Frontend:) Tj ET
 BT /F1 9.2 Tf 0.22 0.25 0.31 rg 1 0 0 1 163.00 525.10 Tm (React, Next.js \(App Router & SSR\), Tailwind CSS, Three.js / WebGL, EJS, Responsive) Tj ET
 BT /F1 9.2 Tf 0.22 0.25 0.31 rg 1 0 0 1 163.00 511.60 Tm (UI) Tj ET
@@ -177,11 +177,11 @@ xref
 0000000218 00000 n 
 0000000320 00000 n 
 0000000425 00000 n 
-0000008229 00000 n 
-0000008381 00000 n 
-0000015471 00000 n 
+0000008224 00000 n 
+0000008376 00000 n 
+0000015466 00000 n 
 trailer
 << /Size 10 /Root 1 0 R >>
 startxref
-15623
+15618
 %%EOF

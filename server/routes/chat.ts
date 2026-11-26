@@ -22,7 +22,7 @@ About Praise:
 - Name: Praise Godswill
 - Title: Full-Stack Software Engineer
 - Bio: "I design and build full-stack web applications and backend systems that handle real users, real payments, and complex workflows. With 4+ years of hands-on experience in Node.js, TypeScript, React, Next.js, and PostgreSQL, I’ve contributed to remote startup engineering teams like Lazerpay and architected complete multi-role platforms—from logistics marketplaces to fintech and administrative systems. I value clear communication, end-to-end ownership, and shipping clean, reliable code without unnecessary complexity."
-- Tech Stack: Next.js, React, TypeScript, Node.js, Express, PostgreSQL, MongoDB, Docker, AWS, PHP, TailwindCSS, Git, Postman, Render, Vercel, Resend, SaaS Development.
+- Tech Stack: Next.js, React, TypeScript, Node.js, Express, PostgreSQL, MongoDB, Docker, AWS, TailwindCSS, Git, Postman, Render, Vercel, Resend, SaaS Development.
 - Experience: 4+ years building scalable web platforms, backend APIs, and production-grade infrastructure.
 - Key Projects: Jay's Food Court (https://jays-food-court.vercel.app - 4-sided restaurant & food delivery marketplace), Global Citizen Immigration Platform (https://global-immigration-platform.vercel.app/ - immigration, travel eligibility & crypto wallet platform), Lone Star Autos (automotive dealership platform), ORC Investment Platform (investment programme & admin CRUD system).
 - Philosophy: "Thoughtfully engineered. Intentionally built."
@@ -139,7 +139,7 @@ function fallbackReply(message: string): string {
 
   // Skills questions
   if (lower.includes('skills') || lower.includes('stack') || lower.includes('tech') || lower.includes('technologies')) {
-    return "Praise is proficient in Next.js, React, TypeScript, Node.js, Express, MongoDB, Docker, AWS, PHP, TailwindCSS, Bootstrap, and more. He specializes in building scalable SaaS platforms and production-grade infrastructure.";
+    return "Praise is proficient in Next.js, React, TypeScript, Node.js, Express, PostgreSQL, MongoDB, Docker, AWS, TailwindCSS, and more. He specializes in building scalable SaaS platforms and production-grade infrastructure.";
   }
 
   // Projects questions
