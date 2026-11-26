@@ -3,8 +3,8 @@ export const DEFAULT_PROJECTS = [
     _id: 'default-0',
     title: "Jay's Food Court",
     description:
-      'Full-stack restaurant ordering and operations platform supporting mobile-first customer ordering, guest checkout, customisation, kitchen queue management, rider delivery workflows, and real-time order lifecycle tracking.',
-    techStack: ['Next.js', 'TypeScript', 'Supabase', 'PostgreSQL', 'Tailwind CSS', 'Vercel'],
+      '4-sided online food ordering and delivery marketplace featuring role-based dashboards for Customers, Kitchen Staff, Delivery Riders, and Super Admins, online payment checkout, and real-time order lifecycle tracking.',
+    techStack: ['Next.js', 'TypeScript', 'Supabase', 'PostgreSQL', 'Tailwind CSS'],
     liveUrl: 'https://jays-food-court.vercel.app',
     repoUrl: 'https://github.com/456-bytes',
     deployedAt: new Date().toISOString(),
@@ -13,8 +13,8 @@ export const DEFAULT_PROJECTS = [
     _id: 'default-1',
     title: 'Global Citizen Immigration Platform',
     description:
-      'Interactive immigration information and guidance platform featuring a 3D WebGL globe and an AI-powered conversational assistant engineered around 50+ structured immigration topics and pathways.',
-    techStack: ['Next.js', 'React', 'TypeScript', 'Three.js', 'AI Assistant', 'Tailwind CSS', 'Vercel'],
+      'Immigration, eligibility & crypto wallet platform with dedicated User and Admin CRUD dashboards, automated country travel eligibility checker, AI immigration guidance assistant (50+ topics), integrated crypto deposit wallet, and interactive 3D WebGL globe.',
+    techStack: ['Next.js', 'React', 'TypeScript', 'Three.js / WebGL', 'Tailwind CSS'],
     liveUrl: 'https://global-immigration-platform.vercel.app/',
     repoUrl: 'https://github.com/456-bytes',
     deployedAt: new Date().toISOString(),
@@ -23,7 +23,7 @@ export const DEFAULT_PROJECTS = [
     _id: 'default-2',
     title: 'Lone Star Autos',
     description:
-      'Full-stack automotive dealership platform featuring vehicle inventory management, real-time customer communication, administrative analytics dashboard, secure authentication, and cloud media optimisation.',
+      'Full-stack automotive dealership inventory and operations platform featuring RBAC admin dashboards, analytics, automated Cloudinary media optimization, and Socket.IO real-time communication.',
     techStack: ['Node.js', 'Express.js', 'MongoDB', 'Socket.IO', 'Cloudinary', 'JWT'],
     liveUrl: 'https://praise-dev-pi.vercel.app/#projects',
     repoUrl: 'https://github.com/456-bytes',
@@ -33,15 +33,8 @@ export const DEFAULT_PROJECTS = [
     _id: 'default-3',
     title: 'ORC Investment Platform',
     description:
-      'Full-stack investment programme management platform with duration-based ROI tracking, automated serverless cron processing, transactional email notifications, and comprehensive administrative CRUD oversight.',
-    techStack: [
-      'Node.js',
-      'Vanilla JavaScript',
-      'Neon PostgreSQL (pg)',
-      'Tailwind CSS',
-      'Resend / Nodemailer',
-      'Vercel Serverless & Cron',
-    ],
+      'Investment programme and admin CRUD system featuring timed investment programme management, user account oversight, automated Vercel serverless cron jobs for ROI tracking, and Resend transactional email alerts.',
+    techStack: ['Node.js', 'JavaScript', 'Tailwind CSS', 'Neon PostgreSQL', 'Vercel Cron', 'Resend'],
     liveUrl: 'https://praise-dev-pi.vercel.app/#projects',
     repoUrl: 'https://github.com/456-bytes',
     deployedAt: new Date().toISOString(),

@@ -3,7 +3,7 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Kids [7 0 R 9 0 R 11 0 R] /Count 3 >>
+<< /Type /Pages /Kids [7 0 R 9 0 R] /Count 2 >>
 endobj
 3 0 obj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
@@ -15,199 +15,173 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding >>
 endobj
 6 0 obj
-<< /Length 5608 >>
+<< /Length 7752 >>
 stream
-BT /F2 22 Tf 0.04 0.06 0.1 rg 1 0 0 1 52.00 782.00 Tm (PRAISE GODSWILL) Tj ET
-BT /F3 9.2 Tf 0.42 0.45 0.5 rg 1 0 0 1 330.00 785.00 Tm ("Thoughtfully engineered. Intentionally built.") Tj ET
-BT /F2 12.5 Tf 0.11 0.3 0.85 rg 1 0 0 1 52.00 763.00 Tm (Full-Stack Software Engineer) Tj ET
-BT /F1 9.2 Tf 0.28 0.32 0.38 rg 1 0 0 1 52.00 745.00 Tm (Lekki Orchid, Lagos, Nigeria   |   09018403385   |   praisegodswill23@gmail.com) Tj ET
-BT /F1 9 Tf 0.28 0.32 0.38 rg 1 0 0 1 52.00 731.00 Tm (Portfolio: https://praise-dev-pi.vercel.app   |   GitHub: github.com/456-bytes   |   LinkedIn: linkedin.com/in/praise-godswill-85ab38205) Tj ET
-0.75 w 0.88 0.9 0.92 RG 52 723.00 m 543 723.00 l S
-BT /F2 8.8 Tf 0.42 0.45 0.5 rg 1 0 0 1 52.00 706.00 Tm (PROFESSIONAL SUMMARY) Tj ET
-BT /F1 9.6 Tf 0.18 0.21 0.26 rg 1 0 0 1 52.00 689.00 Tm (Full-Stack Software Engineer with over 5 years of hands-on experience designing, building,) Tj ET
-BT /F1 9.6 Tf 0.18 0.21 0.26 rg 1 0 0 1 52.00 674.50 Tm (debugging, and maintaining production web applications and backend systems. Strong backend) Tj ET
-BT /F1 9.6 Tf 0.18 0.21 0.26 rg 1 0 0 1 52.00 660.00 Tm (engineering foundation in Node.js, Express.js, TypeScript, RESTful API design, PostgreSQL,) Tj ET
-BT /F1 9.6 Tf 0.18 0.21 0.26 rg 1 0 0 1 52.00 645.50 Tm (and MongoDB, paired with modern, responsive frontend execution in React and Next.js.) Tj ET
-BT /F1 9.6 Tf 0.18 0.21 0.26 rg 1 0 0 1 52.00 624.00 Tm (Experienced in implementing secure authentication and authorisation workflows \(JWT, OAuth,) Tj ET
-BT /F1 9.6 Tf 0.18 0.21 0.26 rg 1 0 0 1 52.00 609.50 Tm (role-based access control\), real-time event architectures \(Socket.IO\), third-party service) Tj ET
-BT /F1 9.6 Tf 0.18 0.21 0.26 rg 1 0 0 1 52.00 595.00 Tm (integrations, containerised services \(Docker\), and cloud deployment pipelines. Proven track) Tj ET
-BT /F1 9.6 Tf 0.18 0.21 0.26 rg 1 0 0 1 52.00 580.50 Tm (record of taking end-to-end technical ownership across remote startup and freelance) Tj ET
-BT /F1 9.6 Tf 0.18 0.21 0.26 rg 1 0 0 1 52.00 566.00 Tm (engineering environments-delivering reliable, maintainable software systems built around) Tj ET
-BT /F1 9.6 Tf 0.18 0.21 0.26 rg 1 0 0 1 52.00 551.50 Tm (clear operational logic.) Tj ET
-0.75 w 0.88 0.9 0.92 RG 52 532.00 m 543 532.00 l S
-BT /F2 8.8 Tf 0.42 0.45 0.5 rg 1 0 0 1 52.00 515.00 Tm (TECHNICAL SKILLS & CORE COMPETENCIES) Tj ET
-BT /F2 8.6 Tf 0.06 0.09 0.15 rg 1 0 0 1 52.00 498.00 Tm (LANGUAGES) Tj ET
-BT /F1 9.5 Tf 0.24 0.27 0.33 rg 1 0 0 1 52.00 485.50 Tm (JavaScript \(ES6+\), TypeScript, SQL, HTML5, CSS3) Tj ET
-BT /F2 8.6 Tf 0.06 0.09 0.15 rg 1 0 0 1 52.00 467.00 Tm (BACKEND ENGINEERING) Tj ET
-BT /F1 9.5 Tf 0.24 0.27 0.33 rg 1 0 0 1 52.00 454.50 Tm (Node.js, Express.js, RESTful API Design, Socket.IO, WebSockets, Serverless & Cron) Tj ET
-BT /F1 9.5 Tf 0.24 0.27 0.33 rg 1 0 0 1 52.00 441.00 Tm (Functions, PHP) Tj ET
-BT /F2 8.6 Tf 0.06 0.09 0.15 rg 1 0 0 1 52.00 422.50 Tm (FRONTEND ENGINEERING) Tj ET
-BT /F1 9.5 Tf 0.24 0.27 0.33 rg 1 0 0 1 52.00 410.00 Tm (React, Next.js \(App Router & SSR\), Tailwind CSS, Three.js / WebGL, Bootstrap, EJS,) Tj ET
-BT /F1 9.5 Tf 0.24 0.27 0.33 rg 1 0 0 1 52.00 396.50 Tm (Responsive UI) Tj ET
-BT /F2 8.6 Tf 0.06 0.09 0.15 rg 1 0 0 1 52.00 378.00 Tm (DATABASES & STORAGE) Tj ET
-BT /F1 9.5 Tf 0.24 0.27 0.33 rg 1 0 0 1 52.00 365.50 Tm (PostgreSQL \(Neon, Supabase, node-postgres\), MongoDB \(Mongoose\), MySQL, Cloudinary) Tj ET
-BT /F2 8.6 Tf 0.06 0.09 0.15 rg 1 0 0 1 52.00 347.00 Tm (AUTHENTICATION & SECURITY) Tj ET
-BT /F1 9.5 Tf 0.24 0.27 0.33 rg 1 0 0 1 52.00 334.50 Tm (JWT Authentication, OAuth, Role-Based Access Control \(RBAC\), Session Management, Rate) Tj ET
-BT /F1 9.5 Tf 0.24 0.27 0.33 rg 1 0 0 1 52.00 321.00 Tm (Limiting) Tj ET
-BT /F2 8.6 Tf 0.06 0.09 0.15 rg 1 0 0 1 52.00 302.50 Tm (DEVOPS, CLOUD & TOOLING) Tj ET
-BT /F1 9.5 Tf 0.24 0.27 0.33 rg 1 0 0 1 52.00 290.00 Tm (Docker, Vercel, Render, AWS, Firebase, CI/CD Workflows, Git, GitHub, Postman, Resend /) Tj ET
-BT /F1 9.5 Tf 0.24 0.27 0.33 rg 1 0 0 1 52.00 276.50 Tm (Nodemailer) Tj ET
-0.75 w 0.88 0.9 0.92 RG 52 260.00 m 543 260.00 l S
-BT /F2 8.8 Tf 0.42 0.45 0.5 rg 1 0 0 1 52.00 243.00 Tm (PROFESSIONAL EXPERIENCE) Tj ET
-BT /F2 11 Tf 0.04 0.06 0.1 rg 1 0 0 1 52.00 226.00 Tm (Backend Engineer) Tj ET
-BT /F1 9 Tf 0.42 0.45 0.5 rg 1 0 0 1 442.20 226.00 Tm (May 2025 - March 2026) Tj ET
-BT /F2 9.5 Tf 0.11 0.3 0.85 rg 1 0 0 1 52.00 212.00 Tm (Confidential Technology Company \(Remote - NDA\)) Tj ET
-BT /F3 9.3 Tf 0.28 0.32 0.38 rg 1 0 0 1 52.00 196.50 Tm (Worked within a distributed engineering team developing and maintaining backend services,) Tj ET
-BT /F3 9.3 Tf 0.28 0.32 0.38 rg 1 0 0 1 52.00 182.70 Tm (secure authentication layers, and API integrations under a confidentiality agreement.) Tj ET
-BT /F2 9.5 Tf 0.4 0.45 0.52 rg 1 0 0 1 56.00 163.90 Tm (-) Tj ET
-BT /F1 9.5 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 163.90 Tm (Designed, developed, and maintained backend services and RESTful API endpoints) Tj ET
-BT /F1 9.5 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 149.90 Tm (supporting core application workflows within a remote engineering environment.) Tj ET
-BT /F2 9.5 Tf 0.4 0.45 0.52 rg 1 0 0 1 56.00 131.90 Tm (-) Tj ET
-BT /F1 9.5 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 131.90 Tm (Implemented secure authentication and authorisation mechanisms using JWT and OAuth,) Tj ET
-BT /F1 9.5 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 117.90 Tm (enforcing strict access control and request validation across protected service routes.) Tj ET
-BT /F1 8 Tf 0.55 0.58 0.63 rg 1 0 0 1 52 28 Tm (Praise Godswill  |  Full-Stack Software Engineer  |  Page 1 of 3) Tj ET
+BT /F2 21 Tf 0.04 0.06 0.1 rg 1 0 0 1 48.00 788.00 Tm (PRAISE GODSWILL) Tj ET
+BT /F3 9 Tf 0.42 0.45 0.5 rg 1 0 0 1 338.00 791.00 Tm ("Thoughtfully engineered. Intentionally built.") Tj ET
+BT /F2 12 Tf 0.11 0.3 0.85 rg 1 0 0 1 48.00 771.00 Tm (Full-Stack Software Engineer) Tj ET
+BT /F1 9 Tf 0.28 0.32 0.38 rg 1 0 0 1 48.00 755.00 Tm (Lekki Orchid, Lagos, Nigeria   |   +234 901 840 3385   |   praisegodswill23@gmail.com) Tj ET
+BT /F1 8.8 Tf 0.28 0.32 0.38 rg 1 0 0 1 48.00 742.00 Tm (Portfolio: praise-dev-pi.vercel.app   |   GitHub: github.com/456-bytes   |   LinkedIn: linkedin.com/in/praise-godswill-85ab38205) Tj ET
+0.75 w 0.88 0.9 0.92 RG 48 736.00 m 547 736.00 l S
+BT /F2 8.8 Tf 0.42 0.45 0.5 rg 1 0 0 1 48.00 720.00 Tm (PROFESSIONAL SUMMARY) Tj ET
+BT /F1 9.5 Tf 0.18 0.21 0.26 rg 1 0 0 1 48.00 704.00 Tm (Full-Stack Software Engineer with 4+ years of hands-on experience designing, building, and) Tj ET
+BT /F1 9.5 Tf 0.18 0.21 0.26 rg 1 0 0 1 48.00 689.80 Tm (maintaining production web applications and backend systems. Strong backend foundation in) Tj ET
+BT /F1 9.5 Tf 0.18 0.21 0.26 rg 1 0 0 1 48.00 675.60 Tm (Node.js, Express.js, TypeScript, RESTful APIs, PostgreSQL, and MongoDB, paired with responsive) Tj ET
+BT /F1 9.5 Tf 0.18 0.21 0.26 rg 1 0 0 1 48.00 661.40 Tm (frontend execution in React and Next.js. Proven track record of taking end-to-end technical) Tj ET
+BT /F1 9.5 Tf 0.18 0.21 0.26 rg 1 0 0 1 48.00 647.20 Tm (ownership across remote startup and freelance environments-delivering secure authentication) Tj ET
+BT /F1 9.5 Tf 0.18 0.21 0.26 rg 1 0 0 1 48.00 633.00 Tm (flows, real-time architectures, and containerized cloud deployments. Adaptable, collaborative) Tj ET
+BT /F1 9.5 Tf 0.18 0.21 0.26 rg 1 0 0 1 48.00 618.80 Tm (communicator who thrives in fast-paced distributed teams.) Tj ET
+0.75 w 0.88 0.9 0.92 RG 48 601.60 m 547 601.60 l S
+BT /F2 8.8 Tf 0.42 0.45 0.5 rg 1 0 0 1 48.00 585.60 Tm (TECHNICAL SKILLS) Tj ET
+BT /F2 9.2 Tf 0.06 0.09 0.15 rg 1 0 0 1 48.00 569.60 Tm (Languages:) Tj ET
+BT /F1 9.2 Tf 0.22 0.25 0.31 rg 1 0 0 1 163.00 569.60 Tm (JavaScript \(ES6+\), TypeScript, SQL, HTML5, CSS3) Tj ET
+BT /F2 9.2 Tf 0.06 0.09 0.15 rg 1 0 0 1 48.00 554.10 Tm (Backend:) Tj ET
+BT /F1 9.2 Tf 0.22 0.25 0.31 rg 1 0 0 1 163.00 554.10 Tm (Node.js, Express.js, RESTful API Design, Socket.IO, WebSockets, Serverless & Cron) Tj ET
+BT /F1 9.2 Tf 0.22 0.25 0.31 rg 1 0 0 1 163.00 540.60 Tm (Functions, PHP) Tj ET
+BT /F2 9.2 Tf 0.06 0.09 0.15 rg 1 0 0 1 48.00 525.10 Tm (Frontend:) Tj ET
+BT /F1 9.2 Tf 0.22 0.25 0.31 rg 1 0 0 1 163.00 525.10 Tm (React, Next.js \(App Router & SSR\), Tailwind CSS, Three.js / WebGL, EJS, Responsive) Tj ET
+BT /F1 9.2 Tf 0.22 0.25 0.31 rg 1 0 0 1 163.00 511.60 Tm (UI) Tj ET
+BT /F2 9.2 Tf 0.06 0.09 0.15 rg 1 0 0 1 48.00 496.10 Tm (Databases & Storage:) Tj ET
+BT /F1 9.2 Tf 0.22 0.25 0.31 rg 1 0 0 1 163.00 496.10 Tm (PostgreSQL \(Neon, Supabase, node-postgres\), MongoDB \(Mongoose\), MySQL, Cloudinary) Tj ET
+BT /F2 9.2 Tf 0.06 0.09 0.15 rg 1 0 0 1 48.00 480.60 Tm (Auth & Security:) Tj ET
+BT /F1 9.2 Tf 0.22 0.25 0.31 rg 1 0 0 1 163.00 480.60 Tm (JWT Authentication, OAuth, Role-Based Access Control \(RBAC\), Session Management,) Tj ET
+BT /F1 9.2 Tf 0.22 0.25 0.31 rg 1 0 0 1 163.00 467.10 Tm (Rate Limiting) Tj ET
+BT /F2 9.2 Tf 0.06 0.09 0.15 rg 1 0 0 1 48.00 451.60 Tm (DevOps & Tooling:) Tj ET
+BT /F1 9.2 Tf 0.22 0.25 0.31 rg 1 0 0 1 163.00 451.60 Tm (Docker, AWS, Vercel, Render, Firebase, CI/CD Workflows, Git, GitHub, Postman,) Tj ET
+BT /F1 9.2 Tf 0.22 0.25 0.31 rg 1 0 0 1 163.00 438.10 Tm (Resend / Nodemailer) Tj ET
+0.75 w 0.88 0.9 0.92 RG 48 424.60 m 547 424.60 l S
+BT /F2 8.8 Tf 0.42 0.45 0.5 rg 1 0 0 1 48.00 408.60 Tm (CORE SOFT SKILLS & WORK ETHIC) Tj ET
+BT /F2 8.8 Tf 0.06 0.09 0.15 rg 1 0 0 1 48.00 392.60 Tm (- Active Listening:) Tj ET
+BT /F2 8.8 Tf 0.06 0.09 0.15 rg 1 0 0 1 304.00 392.60 Tm (- Adaptability & Unlearning:) Tj ET
+BT /F1 8.7 Tf 0.24 0.27 0.33 rg 1 0 0 1 56.00 380.60 Tm (Translates ambiguous requirements into clear technical specs.) Tj ET
+BT /F1 8.7 Tf 0.24 0.27 0.33 rg 1 0 0 1 312.00 380.60 Tm (Quickly adopts modern frameworks as needs evolve.) Tj ET
+BT /F2 8.8 Tf 0.06 0.09 0.15 rg 1 0 0 1 48.00 365.60 Tm (- Cross-Functional Collaboration:) Tj ET
+BT /F2 8.8 Tf 0.06 0.09 0.15 rg 1 0 0 1 304.00 365.60 Tm (- Continuous Learning:) Tj ET
+BT /F1 8.7 Tf 0.24 0.27 0.33 rg 1 0 0 1 56.00 353.60 Tm (Works seamlessly across distributed remote teams.) Tj ET
+BT /F1 8.7 Tf 0.24 0.27 0.33 rg 1 0 0 1 312.00 353.60 Tm (Masters new technologies to solve novel problems.) Tj ET
+BT /F2 8.8 Tf 0.06 0.09 0.15 rg 1 0 0 1 48.00 338.60 Tm (- End-to-End Ownership:) Tj ET
+BT /F2 8.8 Tf 0.06 0.09 0.15 rg 1 0 0 1 304.00 338.60 Tm (- Proactive Problem-Solving:) Tj ET
+BT /F1 8.7 Tf 0.24 0.27 0.33 rg 1 0 0 1 56.00 326.60 Tm (Accountable from schema design through deployment.) Tj ET
+BT /F1 8.7 Tf 0.24 0.27 0.33 rg 1 0 0 1 312.00 326.60 Tm (Isolates root causes calmly under pressure.) Tj ET
+BT /F2 8.8 Tf 0.06 0.09 0.15 rg 1 0 0 1 48.00 311.60 Tm (- Clear Technical Communication:) Tj ET
+BT /F2 8.8 Tf 0.06 0.09 0.15 rg 1 0 0 1 304.00 311.60 Tm (- Growth Mindset:) Tj ET
+BT /F1 8.7 Tf 0.24 0.27 0.33 rg 1 0 0 1 56.00 299.60 Tm (Documents APIs and logic concisely.) Tj ET
+BT /F1 8.7 Tf 0.24 0.27 0.33 rg 1 0 0 1 312.00 299.60 Tm (Receptive to code reviews and architectural feedback.) Tj ET
+0.75 w 0.88 0.9 0.92 RG 48 284.60 m 547 284.60 l S
+BT /F2 8.8 Tf 0.42 0.45 0.5 rg 1 0 0 1 48.00 268.60 Tm (PROFESSIONAL EXPERIENCE) Tj ET
+BT /F2 10.2 Tf 0.04 0.06 0.1 rg 1 0 0 1 48.00 252.60 Tm (Backend Engineer - Confidential Technology Company \(Remote - NDA\)) Tj ET
+BT /F1 8.8 Tf 0.42 0.45 0.5 rg 1 0 0 1 450.40 252.60 Tm (May 2025 - March 2026) Tj ET
+BT /F2 9.2 Tf 0.4 0.45 0.52 rg 1 0 0 1 52.00 237.60 Tm (-) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 237.60 Tm (Designed and maintained scalable backend services and RESTful API endpoints supporting core) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 224.10 Tm (application workflows in a distributed team.) Tj ET
+BT /F2 9.2 Tf 0.4 0.45 0.52 rg 1 0 0 1 52.00 207.10 Tm (-) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 207.10 Tm (Implemented secure authentication and authorization layers using JWT and OAuth, enforcing) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 193.60 Tm (strict RBAC and request validation across protected routes.) Tj ET
+BT /F2 9.2 Tf 0.4 0.45 0.52 rg 1 0 0 1 52.00 176.60 Tm (-) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 176.60 Tm (Built third-party API integrations and asynchronous data handlers with graceful error) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 163.10 Tm (recovery to ensure reliable service-to-service communication.) Tj ET
+BT /F2 9.2 Tf 0.4 0.45 0.52 rg 1 0 0 1 52.00 146.10 Tm (-) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 146.10 Tm (Diagnosed and resolved production bottlenecks and database query defects across relational) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 132.60 Tm (and document data layers.) Tj ET
+BT /F2 10.2 Tf 0.04 0.06 0.1 rg 1 0 0 1 48.00 107.60 Tm (Full-Stack Software Engineer - Independent / Freelance Engineering \(Remote\)) Tj ET
+BT /F1 8.8 Tf 0.42 0.45 0.5 rg 1 0 0 1 482.60 107.60 Tm (2021 - Present) Tj ET
+BT /F2 9.2 Tf 0.4 0.45 0.52 rg 1 0 0 1 52.00 92.60 Tm (-) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 92.60 Tm (Partner with businesses and founders to architect, build, and deploy custom full-stack web) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 79.10 Tm (platforms from initial concept to production.) Tj ET
+BT /F1 8 Tf 0.55 0.58 0.63 rg 1 0 0 1 48 26 Tm (Praise Godswill - Full-Stack Software Engineer) Tj ET
+BT /F1 8 Tf 0.55 0.58 0.63 rg 1 0 0 1 502 26 Tm (Page 1 of 2) Tj ET
 endstream
 endobj
 7 0 obj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 6 0 R >>
 endobj
 8 0 obj
-<< /Length 6828 >>
+<< /Length 7038 >>
 stream
-BT /F2 9.5 Tf 0.4 0.45 0.52 rg 1 0 0 1 56.00 782.00 Tm (-) Tj ET
-BT /F1 9.5 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 782.00 Tm (Built and maintained third-party API integrations and asynchronous data processing) Tj ET
-BT /F1 9.5 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 768.00 Tm (handlers, ensuring reliable service-to-service communication and graceful error) Tj ET
-BT /F1 9.5 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 754.00 Tm (handling.) Tj ET
-BT /F2 9.5 Tf 0.4 0.45 0.52 rg 1 0 0 1 56.00 736.00 Tm (-) Tj ET
-BT /F1 9.5 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 736.00 Tm (Diagnosed, debugged, and resolved application bottlenecks and production defects across) Tj ET
-BT /F1 9.5 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 722.00 Tm (backend modules and relational/document database layers.) Tj ET
-BT /F2 11 Tf 0.04 0.06 0.1 rg 1 0 0 1 52.00 694.00 Tm (Full-Stack Software Engineer) Tj ET
-BT /F1 9 Tf 0.42 0.45 0.5 rg 1 0 0 1 475.80 694.00 Tm (2021 - Present) Tj ET
-BT /F2 9.5 Tf 0.11 0.3 0.85 rg 1 0 0 1 52.00 680.00 Tm (Independent / Freelance Engineering \(Remote\)) Tj ET
-BT /F3 9.3 Tf 0.28 0.32 0.38 rg 1 0 0 1 52.00 664.50 Tm (Partner with clients and businesses to architect, build, debug, and deploy custom full-stack) Tj ET
-BT /F3 9.3 Tf 0.28 0.32 0.38 rg 1 0 0 1 52.00 650.70 Tm (web applications and operational software systems from concept through production delivery.) Tj ET
-BT /F2 9.5 Tf 0.4 0.45 0.52 rg 1 0 0 1 56.00 631.90 Tm (-) Tj ET
-BT /F1 9.5 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 631.90 Tm (Engineer backend architectures and RESTful APIs using Node.js, Express.js, Next.js Route) Tj ET
-BT /F1 9.5 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 617.90 Tm (Handlers, PostgreSQL, and MongoDB to support complex business logic, CRUD workflows, and) Tj ET
-BT /F1 9.5 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 603.90 Tm (data persistence.) Tj ET
-BT /F2 9.5 Tf 0.4 0.45 0.52 rg 1 0 0 1 56.00 585.90 Tm (-) Tj ET
-BT /F1 9.5 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 585.90 Tm (Implement secure user authentication, role-based administrative dashboards, customer) Tj ET
-BT /F1 9.5 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 571.90 Tm (session handling, and automated transactional email pipelines \(Resend, Nodemailer\).) Tj ET
-BT /F2 9.5 Tf 0.4 0.45 0.52 rg 1 0 0 1 56.00 553.90 Tm (-) Tj ET
-BT /F1 9.5 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 553.90 Tm (Develop responsive, accessible frontend interfaces using React, Next.js, TypeScript, and) Tj ET
-BT /F1 9.5 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 539.90 Tm (Tailwind CSS that translate complex operational data into clean user experiences.) Tj ET
-BT /F2 9.5 Tf 0.4 0.45 0.52 rg 1 0 0 1 56.00 521.90 Tm (-) Tj ET
-BT /F1 9.5 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 521.90 Tm (Maintain, troubleshoot, refactor, and optimise existing client codebases-resolving) Tj ET
-BT /F1 9.5 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 507.90 Tm (runtime bugs, improving database query efficiency, and managing cloud deployments on) Tj ET
-BT /F1 9.5 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 493.90 Tm (Vercel and Render.) Tj ET
-BT /F2 11 Tf 0.04 0.06 0.1 rg 1 0 0 1 52.00 465.90 Tm (Backend Engineer) Tj ET
-BT /F1 9 Tf 0.42 0.45 0.5 rg 1 0 0 1 423.00 465.90 Tm (July 2022 - February 2023) Tj ET
-BT /F2 9.5 Tf 0.11 0.3 0.85 rg 1 0 0 1 52.00 451.90 Tm (Lazerpay \(Remote\)) Tj ET
-BT /F3 9.3 Tf 0.28 0.32 0.38 rg 1 0 0 1 52.00 436.40 Tm (Contributed to backend engineering, system maintenance, and service reliability across) Tj ET
-BT /F3 9.3 Tf 0.28 0.32 0.38 rg 1 0 0 1 52.00 422.60 Tm (existing backend infrastructure within a remote engineering team.) Tj ET
-BT /F2 9.5 Tf 0.4 0.45 0.52 rg 1 0 0 1 56.00 403.80 Tm (-) Tj ET
-BT /F1 9.5 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 403.80 Tm (Maintained and supported existing backend services and API systems, contributing to) Tj ET
-BT /F1 9.5 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 389.80 Tm (ongoing platform stability, functionality, and operational reliability.) Tj ET
-BT /F2 9.5 Tf 0.4 0.45 0.52 rg 1 0 0 1 56.00 371.80 Tm (-) Tj ET
-BT /F1 9.5 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 371.80 Tm (Investigated, debugged, and resolved backend issues across existing codebases,) Tj ET
-BT /F1 9.5 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 357.80 Tm (collaborating with engineering teammates to troubleshoot service behaviour.) Tj ET
-BT /F2 9.5 Tf 0.4 0.45 0.52 rg 1 0 0 1 56.00 339.80 Tm (-) Tj ET
-BT /F1 9.5 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 339.80 Tm (Implemented JWT-based authentication workflows and contributed to backend API) Tj ET
-BT /F1 9.5 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 325.80 Tm (functionality and architectural improvements.) Tj ET
-BT /F2 9.5 Tf 0.4 0.45 0.52 rg 1 0 0 1 56.00 307.80 Tm (-) Tj ET
-BT /F1 9.5 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 307.80 Tm (Containerised backend services using Docker to standardise development and deployment) Tj ET
-BT /F1 9.5 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 293.80 Tm (environments across the engineering team.) Tj ET
-0.75 w 0.88 0.9 0.92 RG 52 267.80 m 543 267.80 l S
-BT /F2 8.8 Tf 0.42 0.45 0.5 rg 1 0 0 1 52.00 250.80 Tm (SELECTED ENGINEERING PROJECTS) Tj ET
-BT /F2 10.6 Tf 0.04 0.06 0.1 rg 1 0 0 1 52.00 233.80 Tm (Jay's Food Court - Full-Stack Restaurant Ordering & Operations Platform) Tj ET
-BT /F1 8.6 Tf 0.11 0.3 0.85 rg 1 0 0 1 390.00 233.80 Tm (https://jays-food-court.vercel.app) Tj ET
-BT /F3 8.7 Tf 0.38 0.42 0.48 rg 1 0 0 1 52.00 219.80 Tm (Next.js  |  TypeScript  |  Supabase  |  PostgreSQL  |  Tailwind CSS  |  Server-Side Order Workflows) Tj ET
-BT /F1 9.4 Tf 0.25 0.29 0.35 rg 1 0 0 1 52.00 204.80 Tm (A full-stack restaurant ordering and internal operations platform designed to coordinate) Tj ET
-BT /F1 9.4 Tf 0.25 0.29 0.35 rg 1 0 0 1 52.00 191.00 Tm (customer ordering, kitchen preparation, and rider delivery workflows within a unified) Tj ET
-BT /F1 9.4 Tf 0.25 0.29 0.35 rg 1 0 0 1 52.00 177.20 Tm (database-driven architecture.) Tj ET
-BT /F2 9.5 Tf 0.4 0.45 0.52 rg 1 0 0 1 56.00 158.40 Tm (-) Tj ET
-BT /F1 9.4 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 158.40 Tm (Engineered a mobile-first customer ordering interface supporting menu and category) Tj ET
-BT /F1 9.4 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 144.40 Tm (management, food customisation, guest checkout, secure customer session handling, and) Tj ET
-BT /F1 9.4 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 130.40 Tm (delivery address management.) Tj ET
-BT /F2 9.5 Tf 0.4 0.45 0.52 rg 1 0 0 1 56.00 112.40 Tm (-) Tj ET
-BT /F1 9.4 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 112.40 Tm (Implemented server-side pricing calculation and structured order lifecycle) Tj ET
-BT /F1 9.4 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 98.40 Tm (management-connecting order placement, kitchen operations queues, rider delivery) Tj ET
-BT /F1 9.4 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 84.40 Tm (workflows, and real-time order status tracking backed by Supabase and PostgreSQL.) Tj ET
-BT /F1 8 Tf 0.55 0.58 0.63 rg 1 0 0 1 52 28 Tm (Praise Godswill  |  Full-Stack Software Engineer  |  Page 2 of 3) Tj ET
+BT /F2 9.2 Tf 0.4 0.45 0.52 rg 1 0 0 1 52.00 788.00 Tm (-) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 788.00 Tm (Engineer backend APIs with Node.js, Express, Next.js Route Handlers, PostgreSQL, and MongoDB) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 774.50 Tm (to power complex CRUD and operational workflows.) Tj ET
+BT /F2 9.2 Tf 0.4 0.45 0.52 rg 1 0 0 1 52.00 757.50 Tm (-) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 757.50 Tm (Build secure multi-role admin dashboards, customer session management, and automated) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 744.00 Tm (transactional email pipelines \(Resend, Nodemailer\).) Tj ET
+BT /F2 9.2 Tf 0.4 0.45 0.52 rg 1 0 0 1 52.00 727.00 Tm (-) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 727.00 Tm (Develop responsive, accessible user interfaces in React, Next.js, TypeScript, and Tailwind) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 713.50 Tm (CSS while managing cloud CI/CD deployments on Vercel and Render.) Tj ET
+BT /F2 10.2 Tf 0.04 0.06 0.1 rg 1 0 0 1 48.00 688.50 Tm (Backend Engineer - Lazerpay \(Remote\)) Tj ET
+BT /F1 8.8 Tf 0.42 0.45 0.5 rg 1 0 0 1 432.00 688.50 Tm (July 2022 - February 2023) Tj ET
+BT /F2 9.2 Tf 0.4 0.45 0.52 rg 1 0 0 1 52.00 673.50 Tm (-) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 673.50 Tm (Maintained and improved core backend services and API infrastructure, contributing to) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 660.00 Tm (overall platform stability and uptime.) Tj ET
+BT /F2 9.2 Tf 0.4 0.45 0.52 rg 1 0 0 1 52.00 643.00 Tm (-) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 643.00 Tm (Investigated and resolved production backend bugs in close collaboration with engineering) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 629.50 Tm (teammates.) Tj ET
+BT /F2 9.2 Tf 0.4 0.45 0.52 rg 1 0 0 1 52.00 612.50 Tm (-) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 612.50 Tm (Implemented JWT-based authentication workflows and contributed to backend API enhancements.) Tj ET
+BT /F2 9.2 Tf 0.4 0.45 0.52 rg 1 0 0 1 52.00 595.50 Tm (-) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 595.50 Tm (Containerized backend services using Docker to standardize local development and deployment) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 582.00 Tm (environments across the team.) Tj ET
+0.75 w 0.88 0.9 0.92 RG 48 559.00 m 547 559.00 l S
+BT /F2 8.8 Tf 0.42 0.45 0.5 rg 1 0 0 1 48.00 543.00 Tm (SELECTED ENGINEERING PROJECTS) Tj ET
+BT /F2 10 Tf 0.04 0.06 0.1 rg 1 0 0 1 48.00 527.00 Tm (Jay's Food Court - Full-Stack Food Delivery & Logistics Marketplace) Tj ET
+BT /F1 8.5 Tf 0.11 0.3 0.85 rg 1 0 0 1 432.60 527.00 Tm (jays-food-court.vercel.app) Tj ET
+BT /F3 8.7 Tf 0.38 0.42 0.48 rg 1 0 0 1 48.00 513.50 Tm (Stack: Next.js, TypeScript, Supabase, PostgreSQL, Tailwind CSS) Tj ET
+BT /F2 9.2 Tf 0.4 0.45 0.52 rg 1 0 0 1 52.00 499.00 Tm (-) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 499.00 Tm (Architected a 4-sided online food ordering and delivery platform featuring dedicated,) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 485.50 Tm (role-based dashboards for Customers, Kitchen Staff, Delivery Riders, and Super Admins.) Tj ET
+BT /F2 9.2 Tf 0.4 0.45 0.52 rg 1 0 0 1 52.00 468.50 Tm (-) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 468.50 Tm (Implemented secure online payment checkout, server-side pricing validation, and real-time) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 455.00 Tm (order lifecycle tracking across customer placement, kitchen prep queues, rider dispatch, and) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 441.50 Tm (administrative oversight.) Tj ET
+BT /F2 10 Tf 0.04 0.06 0.1 rg 1 0 0 1 48.00 416.50 Tm (Global Citizen Immigration Platform - Immigration, Eligibility & Crypto Wallet Platform) Tj ET
+BT /F1 8.5 Tf 0.11 0.3 0.85 rg 1 0 0 1 379.80 416.50 Tm (global-immigration-platform.vercel.app) Tj ET
+BT /F3 8.7 Tf 0.38 0.42 0.48 rg 1 0 0 1 48.00 403.00 Tm (Stack: Next.js, React, TypeScript, Three.js / WebGL, Tailwind CSS) Tj ET
+BT /F2 9.2 Tf 0.4 0.45 0.52 rg 1 0 0 1 52.00 388.50 Tm (-) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 388.50 Tm (Engineered dedicated User and Admin dashboards featuring full administrative CRUD controls,) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 375.00 Tm (an automated country travel eligibility checker, and an AI immigration guidance assistant) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 361.50 Tm (\(50+ topics\).) Tj ET
+BT /F2 9.2 Tf 0.4 0.45 0.52 rg 1 0 0 1 52.00 344.50 Tm (-) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 344.50 Tm (Built an integrated user wallet module supporting cryptocurrency deposits alongside an) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 331.00 Tm (interactive 3D WebGL globe optimized across desktop and mobile devices.) Tj ET
+BT /F2 10 Tf 0.04 0.06 0.1 rg 1 0 0 1 48.00 306.00 Tm (Lone Star Autos - Full-Stack Automotive Dealership Platform) Tj ET
+BT /F3 8.7 Tf 0.38 0.42 0.48 rg 1 0 0 1 48.00 292.50 Tm (Stack: Node.js, Express.js, MongoDB, Socket.IO, Cloudinary, JWT) Tj ET
+BT /F2 9.2 Tf 0.4 0.45 0.52 rg 1 0 0 1 52.00 278.00 Tm (-) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 278.00 Tm (Built a dealership inventory and operations platform featuring RBAC admin dashboards,) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 264.50 Tm (analytics, and automated Cloudinary media optimization.) Tj ET
+BT /F2 9.2 Tf 0.4 0.45 0.52 rg 1 0 0 1 52.00 247.50 Tm (-) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 247.50 Tm (Integrated Socket.IO for real-time communication and live inventory state updates.) Tj ET
+BT /F2 10 Tf 0.04 0.06 0.1 rg 1 0 0 1 48.00 222.50 Tm (ORC Investment Platform - Investment Programme & Admin System) Tj ET
+BT /F3 8.7 Tf 0.38 0.42 0.48 rg 1 0 0 1 48.00 209.00 Tm (Stack: Node.js, JavaScript, Tailwind CSS, Neon PostgreSQL, Vercel Cron, Resend) Tj ET
+BT /F2 9.2 Tf 0.4 0.45 0.52 rg 1 0 0 1 52.00 194.50 Tm (-) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 194.50 Tm (Developed user investment workflows and an admin CRUD portal to manage timed investment) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 181.00 Tm (programmes and user accounts.) Tj ET
+BT /F2 9.2 Tf 0.4 0.45 0.52 rg 1 0 0 1 52.00 164.00 Tm (-) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 164.00 Tm (Implemented automated Vercel serverless cron jobs for programme duration/ROI tracking and) Tj ET
+BT /F1 9.3 Tf 0.2 0.23 0.28 rg 1 0 0 1 63.00 150.50 Tm (transactional email alerts.) Tj ET
+0.75 w 0.88 0.9 0.92 RG 48 127.50 m 547 127.50 l S
+BT /F2 8.8 Tf 0.42 0.45 0.5 rg 1 0 0 1 48.00 111.50 Tm (EDUCATION) Tj ET
+BT /F2 9.8 Tf 0.04 0.06 0.1 rg 1 0 0 1 48.00 95.50 Tm (Bachelor of Science \(B.Sc.\) in Accounting - Nnamdi Azikiwe University \(UNIZIK\)) Tj ET
+BT /F1 9 Tf 0.42 0.45 0.5 rg 1 0 0 1 495.00 95.50 Tm (2021 - 2025) Tj ET
+BT /F1 8 Tf 0.55 0.58 0.63 rg 1 0 0 1 48 26 Tm (Praise Godswill - Full-Stack Software Engineer) Tj ET
+BT /F1 8 Tf 0.55 0.58 0.63 rg 1 0 0 1 502 26 Tm (Page 2 of 2) Tj ET
 endstream
 endobj
 9 0 obj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 8 0 R >>
 endobj
-10 0 obj
-<< /Length 5258 >>
-stream
-BT /F2 10.6 Tf 0.04 0.06 0.1 rg 1 0 0 1 52.00 782.00 Tm (Global Citizen Immigration Platform - Interactive 3D & AI Guidance System) Tj ET
-BT /F1 8.6 Tf 0.11 0.3 0.85 rg 1 0 0 1 331.50 782.00 Tm (https://global-immigration-platform.vercel.app/) Tj ET
-BT /F3 8.7 Tf 0.38 0.42 0.48 rg 1 0 0 1 52.00 768.00 Tm (Next.js  |  React  |  TypeScript  |  Three.js / WebGL  |  Conversational AI Engine  |  Tailwind CSS) Tj ET
-BT /F1 9.4 Tf 0.25 0.29 0.35 rg 1 0 0 1 52.00 753.00 Tm (An immigration-focused digital information platform designed to make immigration guidance) Tj ET
-BT /F1 9.4 Tf 0.25 0.29 0.35 rg 1 0 0 1 52.00 739.20 Tm (accessible through an interactive 3D and conversational AI interface.) Tj ET
-BT /F2 9.5 Tf 0.4 0.45 0.52 rg 1 0 0 1 56.00 720.40 Tm (-) Tj ET
-BT /F1 9.4 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 720.40 Tm (Engineered an AI-powered conversational assistant designed around 50+) Tj ET
-BT /F1 9.4 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 706.40 Tm (immigration-related questions and topics to provide structured, accessible informational) Tj ET
-BT /F1 9.4 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 692.40 Tm (guidance.) Tj ET
-BT /F2 9.5 Tf 0.4 0.45 0.52 rg 1 0 0 1 56.00 674.40 Tm (-) Tj ET
-BT /F1 9.4 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 674.40 Tm (Integrated an interactive 3D WebGL globe alongside a responsive modern frontend) Tj ET
-BT /F1 9.4 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 660.40 Tm (architecture that adapts smoothly across desktop and mobile devices.) Tj ET
-BT /F2 10.6 Tf 0.04 0.06 0.1 rg 1 0 0 1 52.00 632.40 Tm (Lone Star Autos - Full-Stack Automotive Dealership Platform) Tj ET
-BT /F1 8.6 Tf 0.11 0.3 0.85 rg 1 0 0 1 453.00 632.40 Tm (github.com/456-bytes) Tj ET
-BT /F3 8.7 Tf 0.38 0.42 0.48 rg 1 0 0 1 52.00 618.40 Tm (Node.js  |  Express.js  |  MongoDB  |  Socket.IO  |  Cloudinary  |  JWT Authentication) Tj ET
-BT /F1 9.4 Tf 0.25 0.29 0.35 rg 1 0 0 1 52.00 603.40 Tm (A full-stack automotive dealership application combining vehicle inventory management,) Tj ET
-BT /F1 9.4 Tf 0.25 0.29 0.35 rg 1 0 0 1 52.00 589.60 Tm (real-time communication, administrative oversight, and cloud media optimisation.) Tj ET
-BT /F2 9.5 Tf 0.4 0.45 0.52 rg 1 0 0 1 56.00 570.80 Tm (-) Tj ET
-BT /F1 9.4 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 570.80 Tm (Designed the backend REST API architecture and MongoDB schemas with secure) Tj ET
-BT /F1 9.4 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 556.80 Tm (authentication, protected administrative dashboard controls, and dealership analytics.) Tj ET
-BT /F2 9.5 Tf 0.4 0.45 0.52 rg 1 0 0 1 56.00 538.80 Tm (-) Tj ET
-BT /F1 9.4 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 538.80 Tm (Integrated Socket.IO for real-time communication and live state updates, paired with) Tj ET
-BT /F1 9.4 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 524.80 Tm (Cloudinary pipelines for automated vehicle image upload and delivery optimisation.) Tj ET
-BT /F2 10.6 Tf 0.04 0.06 0.1 rg 1 0 0 1 52.00 496.80 Tm (ORC Investment Platform - Investment Programme & Administrative System) Tj ET
-BT /F1 8.6 Tf 0.11 0.3 0.85 rg 1 0 0 1 453.00 496.80 Tm (github.com/456-bytes) Tj ET
-BT /F3 8.7 Tf 0.38 0.42 0.48 rg 1 0 0 1 52.00 482.80 Tm (Node.js  |  Vanilla JS  |  HTML5 / Tailwind CSS / CSS3  |  Neon PostgreSQL \(pg\)  |  Resend / Nodemailer  |  Vercel Cron) Tj ET
-BT /F1 9.4 Tf 0.25 0.29 0.35 rg 1 0 0 1 52.00 467.80 Tm (A full-stack investment programme management platform enabling users to participate in) Tj ET
-BT /F1 9.4 Tf 0.25 0.29 0.35 rg 1 0 0 1 52.00 454.00 Tm (defined-duration investment programmes while providing administrators with centralised) Tj ET
-BT /F1 9.4 Tf 0.25 0.29 0.35 rg 1 0 0 1 52.00 440.20 Tm (operational control.) Tj ET
-BT /F2 9.5 Tf 0.4 0.45 0.52 rg 1 0 0 1 56.00 421.40 Tm (-) Tj ET
-BT /F1 9.4 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 421.40 Tm (Built user-facing investment workflows and an administrative dashboard with full CRUD) Tj ET
-BT /F1 9.4 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 407.40 Tm (functionality to create, manage, and control investment programmes and monitor user) Tj ET
-BT /F1 9.4 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 393.40 Tm (accounts.) Tj ET
-BT /F2 9.5 Tf 0.4 0.45 0.52 rg 1 0 0 1 56.00 375.40 Tm (-) Tj ET
-BT /F1 9.4 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 375.40 Tm (Implemented relational database persistence using Neon PostgreSQL \(pg\), scheduled) Tj ET
-BT /F1 9.4 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 361.40 Tm (serverless cron jobs on Vercel for programme duration and ROI tracking, and) Tj ET
-BT /F1 9.4 Tf 0.2 0.23 0.28 rg 1 0 0 1 68.00 347.40 Tm (transactional email alerts via Resend and Nodemailer.) Tj ET
-0.75 w 0.88 0.9 0.92 RG 52 321.40 m 543 321.40 l S
-BT /F2 8.8 Tf 0.42 0.45 0.5 rg 1 0 0 1 52.00 304.40 Tm (EDUCATION) Tj ET
-BT /F2 10.5 Tf 0.04 0.06 0.1 rg 1 0 0 1 52.00 287.40 Tm (Bachelor of Science \(B.Sc.\) in Accounting) Tj ET
-BT /F1 9.2 Tf 0.42 0.45 0.5 rg 1 0 0 1 495.00 287.40 Tm (2021 - 2025) Tj ET
-BT /F1 9.6 Tf 0.25 0.28 0.34 rg 1 0 0 1 52.00 272.40 Tm (Nnamdi Azikiwe University \(UNIZIK\)) Tj ET
-BT /F2 10.2 Tf 0.04 0.06 0.1 rg 1 0 0 1 52.00 250.40 Tm (Secondary Education) Tj ET
-BT /F1 9.6 Tf 0.25 0.28 0.34 rg 1 0 0 1 52.00 235.40 Tm (Anglican Comprehensive Secondary School, Kubwa, Abuja) Tj ET
-BT /F1 8 Tf 0.55 0.58 0.63 rg 1 0 0 1 52 28 Tm (Praise Godswill  |  Full-Stack Software Engineer  |  Page 3 of 3) Tj ET
-endstream
-endobj
-11 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 10 0 R >>
-endobj
 xref
-0 12
+0 10
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
-0000000128 00000 n 
-0000000225 00000 n 
-0000000327 00000 n 
-0000000432 00000 n 
-0000006092 00000 n 
-0000006244 00000 n 
-0000013124 00000 n 
-0000013276 00000 n 
-0000018587 00000 n 
+0000000121 00000 n 
+0000000218 00000 n 
+0000000320 00000 n 
+0000000425 00000 n 
+0000008229 00000 n 
+0000008381 00000 n 
+0000015471 00000 n 
 trailer
-<< /Size 12 /Root 1 0 R >>
+<< /Size 10 /Root 1 0 R >>
 startxref
-18741
+15623
 %%EOF

@@ -2,8 +2,8 @@ const fs = require('fs');
 const path = require('path');
 
 /**
- * Generates an authentic, 100% text-selectable, ATS-scannable PDF (A4: 595.28 x 841.89 pt)
- * with generous editorial whitespace, distinct paragraph breaks, and breathable vertical rhythm.
+ * Generates an authentic, 100% text-selectable, ATS-scannable 2-Page PDF (A4: 595.28 x 841.89 pt)
+ * matching Praise Godswill's updated CV exactly.
  */
 
 function escapePdfText(str) {
@@ -38,11 +38,11 @@ class PDFBuilder {
   constructor() {
     this.pages = [[]];
     this.currentPage = 0;
-    this.topY = 782;
-    this.bottomMargin = 54;
+    this.topY = 788;
+    this.bottomMargin = 50;
     this.y = this.topY;
-    this.leftMargin = 52;
-    this.rightMargin = 543;
+    this.leftMargin = 48;
+    this.rightMargin = 547;
   }
 
   ensureSpace(needed) {
@@ -69,100 +69,101 @@ class PDFBuilder {
   }
 
   addSectionHeader(title) {
-    this.ensureSpace(48);
+    this.ensureSpace(42);
     this.y -= 10;
     this.addLine(this.y + 12);
-    this.y -= 5;
+    this.y -= 4;
     this.addText(title.toUpperCase(), this.leftMargin, this.y, 'F2', 8.8, [0.42, 0.45, 0.5]);
-    this.y -= 17;
+    this.y -= 16;
   }
 
-  addParagraph(text, font = 'F1', size = 9.6, lineHeight = 14.5, maxChars = 92, color = [0.18, 0.21, 0.26]) {
+  addParagraph(text, font = 'F1', size = 9.5, lineHeight = 14.2, maxChars = 95, color = [0.18, 0.21, 0.26]) {
     const lines = wrapText(text, maxChars);
-    this.ensureSpace(lines.length * lineHeight + 8);
+    this.ensureSpace(lines.length * lineHeight + 6);
     for (const line of lines) {
       this.addText(line, this.leftMargin, this.y, font, size, color);
       this.y -= lineHeight;
     }
-    this.y -= 7; // Paragraph spacing
-  }
-
-  addSkillBlock(category, items) {
-    const wrapped = wrapText(items, 90);
-    this.ensureSpace(wrapped.length * 13.5 + 18);
-    this.addText(category.toUpperCase(), this.leftMargin, this.y, 'F2', 8.6, [0.06, 0.09, 0.15]);
-    this.y -= 12.5;
-    for (const line of wrapped) {
-      this.addText(line, this.leftMargin, this.y, 'F1', 9.5, [0.24, 0.27, 0.33]);
-      this.y -= 13.5;
-    }
     this.y -= 5;
   }
 
-  addRole(title, company, period, summaryParagraph, bullets) {
-    this.ensureSpace(75);
-    this.addText(title, this.leftMargin, this.y, 'F2', 11.0, [0.04, 0.06, 0.1]);
-    const periodX = this.rightMargin - period.length * 4.8;
-    this.addText(period, periodX, this.y, 'F1', 9.0, [0.42, 0.45, 0.5]);
-    this.y -= 14;
-    this.addText(company, this.leftMargin, this.y, 'F2', 9.5, [0.11, 0.3, 0.85]);
-    this.y -= 15.5;
-
-    if (summaryParagraph) {
-      const introLines = wrapText(summaryParagraph, 92);
-      this.ensureSpace(introLines.length * 14 + 6);
-      for (const line of introLines) {
-        this.addText(line, this.leftMargin, this.y, 'F3', 9.3, [0.28, 0.32, 0.38]);
-        this.y -= 13.8;
-      }
-      this.y -= 5;
-    }
-
-    for (const b of bullets) {
-      const lines = wrapText(b, 88);
-      this.ensureSpace(lines.length * 14 + 5);
-      this.addText('-', this.leftMargin + 4, this.y, 'F2', 9.5, [0.4, 0.45, 0.52]);
-      for (const line of lines) {
-        this.addText(line, this.leftMargin + 16, this.y, 'F1', 9.5, [0.2, 0.23, 0.28]);
-        this.y -= 14;
-      }
-      this.y -= 4;
-    }
-    this.y -= 10;
+  addSkillRow(category, items) {
+    this.ensureSpace(16);
+    this.addText(category + ':', this.leftMargin, this.y, 'F2', 9.2, [0.06, 0.09, 0.15]);
+    const wrapped = wrapText(items, 82);
+    wrapped.forEach((line) => {
+      this.addText(line, this.leftMargin + 115, this.y, 'F1', 9.2, [0.22, 0.25, 0.31]);
+      this.y -= 13.5;
+    });
+    this.y -= 2;
   }
 
-  addProject(name, link, stack, overviewParagraph, bullets) {
-    this.ensureSpace(75);
-    this.addText(name, this.leftMargin, this.y, 'F2', 10.6, [0.04, 0.06, 0.1]);
-    if (link) {
-      const linkX = this.rightMargin - link.length * 4.5;
-      this.addText(link, linkX, this.y, 'F1', 8.6, [0.11, 0.3, 0.85]);
+  addSoftSkillsGrid(pairs) {
+    const col1X = this.leftMargin;
+    const col2X = 304;
+    for (let i = 0; i < pairs.length; i += 2) {
+      this.ensureSpace(32);
+      const left = pairs[i];
+      const right = pairs[i + 1];
+
+      // Left column item
+      this.addText('- ' + left.title + ':', col1X, this.y, 'F2', 8.8, [0.06, 0.09, 0.15]);
+      if (right) {
+        this.addText('- ' + right.title + ':', col2X, this.y, 'F2', 8.8, [0.06, 0.09, 0.15]);
+      }
+      this.y -= 12;
+
+      this.addText(left.desc, col1X + 8, this.y, 'F1', 8.7, [0.24, 0.27, 0.33]);
+      if (right) {
+        this.addText(right.desc, col2X + 8, this.y, 'F1', 8.7, [0.24, 0.27, 0.33]);
+      }
+      this.y -= 15;
     }
-    this.y -= 14;
-    this.addText(stack, this.leftMargin, this.y, 'F3', 8.7, [0.38, 0.42, 0.48]);
+    this.y -= 2;
+  }
+
+  addRole(titleAndCompany, period, bullets) {
+    this.ensureSpace(55);
+    this.addText(titleAndCompany, this.leftMargin, this.y, 'F2', 10.2, [0.04, 0.06, 0.1]);
+    const periodX = this.rightMargin - period.length * 4.6;
+    this.addText(period, periodX, this.y, 'F1', 8.8, [0.42, 0.45, 0.5]);
     this.y -= 15;
 
-    if (overviewParagraph) {
-      const overviewLines = wrapText(overviewParagraph, 92);
-      this.ensureSpace(overviewLines.length * 14 + 6);
-      for (const line of overviewLines) {
-        this.addText(line, this.leftMargin, this.y, 'F1', 9.4, [0.25, 0.29, 0.35]);
-        this.y -= 13.8;
+    for (const b of bullets) {
+      const lines = wrapText(b, 92);
+      this.ensureSpace(lines.length * 13.5 + 4);
+      this.addText('-', this.leftMargin + 4, this.y, 'F2', 9.2, [0.4, 0.45, 0.52]);
+      for (const line of lines) {
+        this.addText(line, this.leftMargin + 15, this.y, 'F1', 9.3, [0.2, 0.23, 0.28]);
+        this.y -= 13.5;
       }
-      this.y -= 5;
+      this.y -= 3.5;
     }
+    this.y -= 8;
+  }
+
+  addProject(name, link, stack, bullets) {
+    this.ensureSpace(55);
+    this.addText(name, this.leftMargin, this.y, 'F2', 10.0, [0.04, 0.06, 0.1]);
+    if (link) {
+      const linkX = this.rightMargin - link.length * 4.4;
+      this.addText(link, linkX, this.y, 'F1', 8.5, [0.11, 0.3, 0.85]);
+    }
+    this.y -= 13.5;
+    this.addText(stack, this.leftMargin, this.y, 'F3', 8.7, [0.38, 0.42, 0.48]);
+    this.y -= 14.5;
 
     for (const b of bullets) {
-      const lines = wrapText(b, 88);
-      this.ensureSpace(lines.length * 14 + 5);
-      this.addText('-', this.leftMargin + 4, this.y, 'F2', 9.5, [0.4, 0.45, 0.52]);
+      const lines = wrapText(b, 92);
+      this.ensureSpace(lines.length * 13.5 + 4);
+      this.addText('-', this.leftMargin + 4, this.y, 'F2', 9.2, [0.4, 0.45, 0.52]);
       for (const line of lines) {
-        this.addText(line, this.leftMargin + 16, this.y, 'F1', 9.4, [0.2, 0.23, 0.28]);
-        this.y -= 14;
+        this.addText(line, this.leftMargin + 15, this.y, 'F1', 9.3, [0.2, 0.23, 0.28]);
+        this.y -= 13.5;
       }
-      this.y -= 4;
+      this.y -= 3.5;
     }
-    this.y -= 10;
+    this.y -= 8;
   }
 
   build() {
@@ -183,9 +184,10 @@ class PDFBuilder {
     const totalPages = this.pages.length;
     for (let idx = 0; idx < totalPages; idx++) {
       const cmds = this.pages[idx];
-      // Add subtle page footer
-      const footerText = `Praise Godswill  |  Full-Stack Software Engineer  |  Page ${idx + 1} of ${totalPages}`;
-      cmds.push(`BT /F1 8 Tf 0.55 0.58 0.63 rg 1 0 0 1 52 28 Tm (${escapePdfText(footerText)}) Tj ET`);
+      const footerLeft = 'Praise Godswill - Full-Stack Software Engineer';
+      const footerRight = `Page ${idx + 1} of ${totalPages}`;
+      cmds.push(`BT /F1 8 Tf 0.55 0.58 0.63 rg 1 0 0 1 48 26 Tm (${escapePdfText(footerLeft)}) Tj ET`);
+      cmds.push(`BT /F1 8 Tf 0.55 0.58 0.63 rg 1 0 0 1 502 26 Tm (${escapePdfText(footerRight)}) Tj ET`);
 
       const streamData = cmds.join('\n');
       const streamId = addObj(`<< /Length ${Buffer.byteLength(streamData, 'utf8')} >>\nstream\n${streamData}\nendstream`);
@@ -217,149 +219,143 @@ class PDFBuilder {
 const pdf = new PDFBuilder();
 
 // 1. HEADER
-pdf.addText('PRAISE GODSWILL', 52, pdf.y, 'F2', 22, [0.04, 0.06, 0.1]);
-pdf.addText('"Thoughtfully engineered. Intentionally built."', 330, pdf.y + 3, 'F3', 9.2, [0.42, 0.45, 0.5]);
-pdf.y -= 19;
-pdf.addText('Full-Stack Software Engineer', 52, pdf.y, 'F2', 12.5, [0.11, 0.3, 0.85]);
-pdf.y -= 18;
+pdf.addText('PRAISE GODSWILL', 48, pdf.y, 'F2', 21, [0.04, 0.06, 0.1]);
+pdf.addText('"Thoughtfully engineered. Intentionally built."', 338, pdf.y + 3, 'F3', 9.0, [0.42, 0.45, 0.5]);
+pdf.y -= 17;
+pdf.addText('Full-Stack Software Engineer', 48, pdf.y, 'F2', 12, [0.11, 0.3, 0.85]);
+pdf.y -= 16;
 pdf.addText(
-  'Lekki Orchid, Lagos, Nigeria   |   09018403385   |   praisegodswill23@gmail.com',
-  52,
-  pdf.y,
-  'F1',
-  9.2,
-  [0.28, 0.32, 0.38]
-);
-pdf.y -= 14;
-pdf.addText(
-  'Portfolio: https://praise-dev-pi.vercel.app   |   GitHub: github.com/456-bytes   |   LinkedIn: linkedin.com/in/praise-godswill-85ab38205',
-  52,
+  'Lekki Orchid, Lagos, Nigeria   |   +234 901 840 3385   |   praisegodswill23@gmail.com',
+  48,
   pdf.y,
   'F1',
   9.0,
   [0.28, 0.32, 0.38]
 );
-pdf.y -= 10;
+pdf.y -= 13;
+pdf.addText(
+  'Portfolio: praise-dev-pi.vercel.app   |   GitHub: github.com/456-bytes   |   LinkedIn: linkedin.com/in/praise-godswill-85ab38205',
+  48,
+  pdf.y,
+  'F1',
+  8.8,
+  [0.28, 0.32, 0.38]
+);
+pdf.y -= 8;
 
-// 2. PROFESSIONAL SUMMARY (2 Distinct Paragraphs)
+// 2. PROFESSIONAL SUMMARY
 pdf.addSectionHeader('Professional Summary');
 pdf.addParagraph(
-  'Full-Stack Software Engineer with over 5 years of hands-on experience designing, building, debugging, and maintaining production web applications and backend systems. Strong backend engineering foundation in Node.js, Express.js, TypeScript, RESTful API design, PostgreSQL, and MongoDB, paired with modern, responsive frontend execution in React and Next.js.'
-);
-pdf.addParagraph(
-  'Experienced in implementing secure authentication and authorisation workflows (JWT, OAuth, role-based access control), real-time event architectures (Socket.IO), third-party service integrations, containerised services (Docker), and cloud deployment pipelines. Proven track record of taking end-to-end technical ownership across remote startup and freelance engineering environments-delivering reliable, maintainable software systems built around clear operational logic.'
+  'Full-Stack Software Engineer with 4+ years of hands-on experience designing, building, and maintaining production web applications and backend systems. Strong backend foundation in Node.js, Express.js, TypeScript, RESTful APIs, PostgreSQL, and MongoDB, paired with responsive frontend execution in React and Next.js. Proven track record of taking end-to-end technical ownership across remote startup and freelance environments-delivering secure authentication flows, real-time architectures, and containerized cloud deployments. Adaptable, collaborative communicator who thrives in fast-paced distributed teams.'
 );
 
 // 3. TECHNICAL SKILLS
-pdf.addSectionHeader('Technical Skills & Core Competencies');
-pdf.addSkillBlock('Languages', 'JavaScript (ES6+), TypeScript, SQL, HTML5, CSS3');
-pdf.addSkillBlock('Backend Engineering', 'Node.js, Express.js, RESTful API Design, Socket.IO, WebSockets, Serverless & Cron Functions, PHP');
-pdf.addSkillBlock('Frontend Engineering', 'React, Next.js (App Router & SSR), Tailwind CSS, Three.js / WebGL, Bootstrap, EJS, Responsive UI');
-pdf.addSkillBlock('Databases & Storage', 'PostgreSQL (Neon, Supabase, node-postgres), MongoDB (Mongoose), MySQL, Cloudinary');
-pdf.addSkillBlock('Authentication & Security', 'JWT Authentication, OAuth, Role-Based Access Control (RBAC), Session Management, Rate Limiting');
-pdf.addSkillBlock('DevOps, Cloud & Tooling', 'Docker, Vercel, Render, AWS, Firebase, CI/CD Workflows, Git, GitHub, Postman, Resend / Nodemailer');
+pdf.addSectionHeader('Technical Skills');
+pdf.addSkillRow('Languages', 'JavaScript (ES6+), TypeScript, SQL, HTML5, CSS3');
+pdf.addSkillRow('Backend', 'Node.js, Express.js, RESTful API Design, Socket.IO, WebSockets, Serverless & Cron Functions, PHP');
+pdf.addSkillRow('Frontend', 'React, Next.js (App Router & SSR), Tailwind CSS, Three.js / WebGL, EJS, Responsive UI');
+pdf.addSkillRow('Databases & Storage', 'PostgreSQL (Neon, Supabase, node-postgres), MongoDB (Mongoose), MySQL, Cloudinary');
+pdf.addSkillRow('Auth & Security', 'JWT Authentication, OAuth, Role-Based Access Control (RBAC), Session Management, Rate Limiting');
+pdf.addSkillRow('DevOps & Tooling', 'Docker, AWS, Vercel, Render, Firebase, CI/CD Workflows, Git, GitHub, Postman, Resend / Nodemailer');
 
-// 4. PROFESSIONAL EXPERIENCE
+// 4. CORE SOFT SKILLS & WORK ETHIC
+pdf.addSectionHeader('Core Soft Skills & Work Ethic');
+pdf.addSoftSkillsGrid([
+  { title: 'Active Listening', desc: 'Translates ambiguous requirements into clear technical specs.' },
+  { title: 'Adaptability & Unlearning', desc: 'Quickly adopts modern frameworks as needs evolve.' },
+  { title: 'Cross-Functional Collaboration', desc: 'Works seamlessly across distributed remote teams.' },
+  { title: 'Continuous Learning', desc: 'Masters new technologies to solve novel problems.' },
+  { title: 'End-to-End Ownership', desc: 'Accountable from schema design through deployment.' },
+  { title: 'Proactive Problem-Solving', desc: 'Isolates root causes calmly under pressure.' },
+  { title: 'Clear Technical Communication', desc: 'Documents APIs and logic concisely.' },
+  { title: 'Growth Mindset', desc: 'Receptive to code reviews and architectural feedback.' },
+]);
+
+// 5. PROFESSIONAL EXPERIENCE
 pdf.addSectionHeader('Professional Experience');
 
 pdf.addRole(
-  'Backend Engineer',
-  'Confidential Technology Company (Remote - NDA)',
+  'Backend Engineer - Confidential Technology Company (Remote - NDA)',
   'May 2025 - March 2026',
-  'Worked within a distributed engineering team developing and maintaining backend services, secure authentication layers, and API integrations under a confidentiality agreement.',
   [
-    'Designed, developed, and maintained backend services and RESTful API endpoints supporting core application workflows within a remote engineering environment.',
-    'Implemented secure authentication and authorisation mechanisms using JWT and OAuth, enforcing strict access control and request validation across protected service routes.',
-    'Built and maintained third-party API integrations and asynchronous data processing handlers, ensuring reliable service-to-service communication and graceful error handling.',
-    'Diagnosed, debugged, and resolved application bottlenecks and production defects across backend modules and relational/document database layers.',
+    'Designed and maintained scalable backend services and RESTful API endpoints supporting core application workflows in a distributed team.',
+    'Implemented secure authentication and authorization layers using JWT and OAuth, enforcing strict RBAC and request validation across protected routes.',
+    'Built third-party API integrations and asynchronous data handlers with graceful error recovery to ensure reliable service-to-service communication.',
+    'Diagnosed and resolved production bottlenecks and database query defects across relational and document data layers.',
   ]
 );
 
 pdf.addRole(
-  'Full-Stack Software Engineer',
-  'Independent / Freelance Engineering (Remote)',
+  'Full-Stack Software Engineer - Independent / Freelance Engineering (Remote)',
   '2021 - Present',
-  'Partner with clients and businesses to architect, build, debug, and deploy custom full-stack web applications and operational software systems from concept through production delivery.',
   [
-    'Engineer backend architectures and RESTful APIs using Node.js, Express.js, Next.js Route Handlers, PostgreSQL, and MongoDB to support complex business logic, CRUD workflows, and data persistence.',
-    'Implement secure user authentication, role-based administrative dashboards, customer session handling, and automated transactional email pipelines (Resend, Nodemailer).',
-    'Develop responsive, accessible frontend interfaces using React, Next.js, TypeScript, and Tailwind CSS that translate complex operational data into clean user experiences.',
-    'Maintain, troubleshoot, refactor, and optimise existing client codebases-resolving runtime bugs, improving database query efficiency, and managing cloud deployments on Vercel and Render.',
+    'Partner with businesses and founders to architect, build, and deploy custom full-stack web platforms from initial concept to production.',
+    'Engineer backend APIs with Node.js, Express, Next.js Route Handlers, PostgreSQL, and MongoDB to power complex CRUD and operational workflows.',
+    'Build secure multi-role admin dashboards, customer session management, and automated transactional email pipelines (Resend, Nodemailer).',
+    'Develop responsive, accessible user interfaces in React, Next.js, TypeScript, and Tailwind CSS while managing cloud CI/CD deployments on Vercel and Render.',
   ]
 );
 
 pdf.addRole(
-  'Backend Engineer',
-  'Lazerpay (Remote)',
+  'Backend Engineer - Lazerpay (Remote)',
   'July 2022 - February 2023',
-  'Contributed to backend engineering, system maintenance, and service reliability across existing backend infrastructure within a remote engineering team.',
   [
-    'Maintained and supported existing backend services and API systems, contributing to ongoing platform stability, functionality, and operational reliability.',
-    'Investigated, debugged, and resolved backend issues across existing codebases, collaborating with engineering teammates to troubleshoot service behaviour.',
-    'Implemented JWT-based authentication workflows and contributed to backend API functionality and architectural improvements.',
-    'Containerised backend services using Docker to standardise development and deployment environments across the engineering team.',
+    'Maintained and improved core backend services and API infrastructure, contributing to overall platform stability and uptime.',
+    'Investigated and resolved production backend bugs in close collaboration with engineering teammates.',
+    'Implemented JWT-based authentication workflows and contributed to backend API enhancements.',
+    'Containerized backend services using Docker to standardize local development and deployment environments across the team.',
   ]
 );
 
-// 5. SELECTED PROJECTS
+// 6. SELECTED ENGINEERING PROJECTS
 pdf.addSectionHeader('Selected Engineering Projects');
 
 pdf.addProject(
-  "Jay's Food Court - Full-Stack Restaurant Ordering & Operations Platform",
-  'https://jays-food-court.vercel.app',
-  'Next.js  |  TypeScript  |  Supabase  |  PostgreSQL  |  Tailwind CSS  |  Server-Side Order Workflows',
-  'A full-stack restaurant ordering and internal operations platform designed to coordinate customer ordering, kitchen preparation, and rider delivery workflows within a unified database-driven architecture.',
+  "Jay's Food Court - Full-Stack Food Delivery & Logistics Marketplace",
+  'jays-food-court.vercel.app',
+  'Stack: Next.js, TypeScript, Supabase, PostgreSQL, Tailwind CSS',
   [
-    'Engineered a mobile-first customer ordering interface supporting menu and category management, food customisation, guest checkout, secure customer session handling, and delivery address management.',
-    'Implemented server-side pricing calculation and structured order lifecycle management-connecting order placement, kitchen operations queues, rider delivery workflows, and real-time order status tracking backed by Supabase and PostgreSQL.',
+    'Architected a 4-sided online food ordering and delivery platform featuring dedicated, role-based dashboards for Customers, Kitchen Staff, Delivery Riders, and Super Admins.',
+    'Implemented secure online payment checkout, server-side pricing validation, and real-time order lifecycle tracking across customer placement, kitchen prep queues, rider dispatch, and administrative oversight.',
   ]
 );
 
 pdf.addProject(
-  'Global Citizen Immigration Platform - Interactive 3D & AI Guidance System',
-  'https://global-immigration-platform.vercel.app/',
-  'Next.js  |  React  |  TypeScript  |  Three.js / WebGL  |  Conversational AI Engine  |  Tailwind CSS',
-  'An immigration-focused digital information platform designed to make immigration guidance accessible through an interactive 3D and conversational AI interface.',
+  'Global Citizen Immigration Platform - Immigration, Eligibility & Crypto Wallet Platform',
+  'global-immigration-platform.vercel.app',
+  'Stack: Next.js, React, TypeScript, Three.js / WebGL, Tailwind CSS',
   [
-    'Engineered an AI-powered conversational assistant designed around 50+ immigration-related questions and topics to provide structured, accessible informational guidance.',
-    'Integrated an interactive 3D WebGL globe alongside a responsive modern frontend architecture that adapts smoothly across desktop and mobile devices.',
+    'Engineered dedicated User and Admin dashboards featuring full administrative CRUD controls, an automated country travel eligibility checker, and an AI immigration guidance assistant (50+ topics).',
+    'Built an integrated user wallet module supporting cryptocurrency deposits alongside an interactive 3D WebGL globe optimized across desktop and mobile devices.',
   ]
 );
 
 pdf.addProject(
   'Lone Star Autos - Full-Stack Automotive Dealership Platform',
-  'github.com/456-bytes',
-  'Node.js  |  Express.js  |  MongoDB  |  Socket.IO  |  Cloudinary  |  JWT Authentication',
-  'A full-stack automotive dealership application combining vehicle inventory management, real-time communication, administrative oversight, and cloud media optimisation.',
+  '',
+  'Stack: Node.js, Express.js, MongoDB, Socket.IO, Cloudinary, JWT',
   [
-    'Designed the backend REST API architecture and MongoDB schemas with secure authentication, protected administrative dashboard controls, and dealership analytics.',
-    'Integrated Socket.IO for real-time communication and live state updates, paired with Cloudinary pipelines for automated vehicle image upload and delivery optimisation.',
+    'Built a dealership inventory and operations platform featuring RBAC admin dashboards, analytics, and automated Cloudinary media optimization.',
+    'Integrated Socket.IO for real-time communication and live inventory state updates.',
   ]
 );
 
 pdf.addProject(
-  'ORC Investment Platform - Investment Programme & Administrative System',
-  'github.com/456-bytes',
-  'Node.js  |  Vanilla JS  |  HTML5 / Tailwind CSS / CSS3  |  Neon PostgreSQL (pg)  |  Resend / Nodemailer  |  Vercel Cron',
-  'A full-stack investment programme management platform enabling users to participate in defined-duration investment programmes while providing administrators with centralised operational control.',
+  'ORC Investment Platform - Investment Programme & Admin System',
+  '',
+  'Stack: Node.js, JavaScript, Tailwind CSS, Neon PostgreSQL, Vercel Cron, Resend',
   [
-    'Built user-facing investment workflows and an administrative dashboard with full CRUD functionality to create, manage, and control investment programmes and monitor user accounts.',
-    'Implemented relational database persistence using Neon PostgreSQL (pg), scheduled serverless cron jobs on Vercel for programme duration and ROI tracking, and transactional email alerts via Resend and Nodemailer.',
+    'Developed user investment workflows and an admin CRUD portal to manage timed investment programmes and user accounts.',
+    'Implemented automated Vercel serverless cron jobs for programme duration/ROI tracking and transactional email alerts.',
   ]
 );
 
-// 6. EDUCATION
+// 7. EDUCATION
 pdf.addSectionHeader('Education');
-pdf.ensureSpace(70);
-pdf.addText('Bachelor of Science (B.Sc.) in Accounting', 52, pdf.y, 'F2', 10.5, [0.04, 0.06, 0.1]);
-pdf.addText('2021 - 2025', 495, pdf.y, 'F1', 9.2, [0.42, 0.45, 0.5]);
-pdf.y -= 15;
-pdf.addText('Nnamdi Azikiwe University (UNIZIK)', 52, pdf.y, 'F1', 9.6, [0.25, 0.28, 0.34]);
-pdf.y -= 22;
-pdf.addText('Secondary Education', 52, pdf.y, 'F2', 10.2, [0.04, 0.06, 0.1]);
-pdf.y -= 15;
-pdf.addText('Anglican Comprehensive Secondary School, Kubwa, Abuja', 52, pdf.y, 'F1', 9.6, [0.25, 0.28, 0.34]);
+pdf.ensureSpace(30);
+pdf.addText('Bachelor of Science (B.Sc.) in Accounting - Nnamdi Azikiwe University (UNIZIK)', 48, pdf.y, 'F2', 9.8, [0.04, 0.06, 0.1]);
+pdf.addText('2021 - 2025', 495, pdf.y, 'F1', 9.0, [0.42, 0.45, 0.5]);
 
 const outPath = path.join(__dirname, '..', 'public', 'cv.pdf');
 fs.writeFileSync(outPath, pdf.build(), 'utf8');
-console.log('✅ Generated breathable, spacious ATS-compliant PDF at', outPath, 'Pages:', pdf.pages.length);
+console.log('✅ Generated updated 2-page ATS-compliant PDF at', outPath, 'Pages:', pdf.pages.length);
