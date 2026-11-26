@@ -70,7 +70,7 @@ export default function Navbar() {
           >
             <span className="text-xl tracking-tight">PG</span>
             <span className="text-[10px] text-[#94A3B8] font-medium tracking-widest uppercase hidden sm:inline">
-              Systems Architect
+              Full-Stack Software Engineer
             </span>
             <span className="w-1.5 h-1.5 bg-[#2563EB] rounded-full animate-pulse" />
           </Link>

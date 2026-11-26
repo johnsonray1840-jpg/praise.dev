@@ -47,7 +47,7 @@ export default function Hero() {
       {/* Left: Text Content */}
       <div className="relative z-10 w-full md:w-1/2 text-center md:text-left space-y-6 animate-fade-in">
         <p className="text-sm font-mono text-[#2563EB] font-semibold tracking-[0.3em] uppercase">
-          Software Engineer
+          Full-Stack Software Engineer
         </p>
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.12]">
           Thoughtfully

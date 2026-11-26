@@ -14,12 +14,12 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Praise Godswill | Software Engineer & Systems Architect",
+  title: "Praise Godswill | Full-Stack Software Engineer",
   description: "Production-grade interactive portfolio of Praise Godswill featuring real-time telemetry, 3D systems, interactive terminal, and AI assistant.",
-  keywords: ["Software Engineer", "Full Stack Developer", "Next.js", "React", "TypeScript", "Three.js", "Node.js", "Praise Godswill"],
+  keywords: ["Full-Stack Software Engineer", "Software Engineer", "Full Stack Developer", "Next.js", "React", "TypeScript", "Three.js", "Node.js", "Praise Godswill"],
   authors: [{ name: "Praise Godswill" }],
   openGraph: {
-    title: "Praise Godswill | Software Engineer & Systems Architect",
+    title: "Praise Godswill | Full-Stack Software Engineer",
     description: "Interactive portfolio featuring real-time telemetry, 3D systems, interactive terminal, and AI assistant.",
     type: "website",
   },
