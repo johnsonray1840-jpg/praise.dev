@@ -109,10 +109,6 @@ export default function Footer() {
             <span className="w-px h-3 bg-[#E2E8F0]" />
             <span>v3.0.0</span>
             <span className="w-px h-3 bg-[#E2E8F0]" /> */}
-            <span className="flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 bg-[#22C55E] rounded-full animate-pulse" />
-              Live
-            </span>
           </div>
         </div>
       </div>
