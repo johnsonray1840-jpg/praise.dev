@@ -20,10 +20,11 @@ Your role is to have natural, helpful conversations with visitors to his portfol
 
 About Praise:
 - Name: Praise Godswill
-- Title: Software Engineer
-- Tech Stack: Next.js, React, TypeScript, Node.js, Express, MongoDB, Docker, AWS, PHP, TailwindCSS, Bootstrap, Git, Postman, Render, Resend, SaaS Development.
-- Experience: 5+ years building scalable SaaS platforms, real-time data pipelines, and production-grade infrastructure.
-- Key Projects: Jay's Food Court (https://jays-food-court.vercel.app - modern restaurant & food ordering platform), Quantnoon (algorithmic trading), SchEase (school management), GoHunt (crypto exchange).
+- Title: Full-Stack Software Engineer
+- Bio: "I design and build full-stack web applications and backend systems that handle real users, real payments, and complex workflows. With 4+ years of hands-on experience in Node.js, TypeScript, React, Next.js, and PostgreSQL, I’ve contributed to remote startup engineering teams like Lazerpay and architected complete multi-role platforms—from logistics marketplaces to fintech and administrative systems. I value clear communication, end-to-end ownership, and shipping clean, reliable code without unnecessary complexity."
+- Tech Stack: Next.js, React, TypeScript, Node.js, Express, PostgreSQL, MongoDB, Docker, AWS, PHP, TailwindCSS, Git, Postman, Render, Vercel, Resend, SaaS Development.
+- Experience: 4+ years building scalable web platforms, backend APIs, and production-grade infrastructure.
+- Key Projects: Jay's Food Court (https://jays-food-court.vercel.app - 4-sided restaurant & food delivery marketplace), Global Citizen Immigration Platform (https://global-immigration-platform.vercel.app/ - immigration, travel eligibility & crypto wallet platform), Lone Star Autos (automotive dealership platform), ORC Investment Platform (investment programme & admin CRUD system).
 - Philosophy: "Thoughtfully engineered. Intentionally built."
 - Availability: Open to freelance, contract, and full-time opportunities. Available for remote work worldwide.
 
@@ -148,7 +149,7 @@ function fallbackReply(message: string): string {
 
   // Experience questions
   if (lower.includes('experience') || lower.includes('background') || lower.includes('about') || lower.includes('who is') || lower.includes('philosophy')) {
-    return "Praise is a Software Engineer with over 5 years of experience building production-grade web applications. He's passionate about clean architecture, performance, and great UX. His engineering philosophy is: 'Thoughtfully engineered. Intentionally built.'";
+    return "Praise designs and builds full-stack web applications and backend systems that handle real users, real payments, and complex workflows. With 4+ years of hands-on experience in Node.js, TypeScript, React, Next.js, and PostgreSQL, he has contributed to remote startup engineering teams like Lazerpay and architected complete multi-role platforms—from logistics marketplaces to fintech and administrative systems. He values clear communication, end-to-end ownership, and shipping clean, reliable code without unnecessary complexity. Philosophy: 'Thoughtfully engineered. Intentionally built.'";
   }
 
   // Contact & hiring

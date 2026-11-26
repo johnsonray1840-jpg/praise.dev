@@ -9,10 +9,11 @@ Your role is to have natural, helpful conversations with visitors to his portfol
 
 About Praise:
 - Name: Praise Godswill
-- Title: Software Engineer
-- Tech Stack: Next.js, React, TypeScript, Node.js, Express, MongoDB, Docker, AWS, PHP, TailwindCSS, Bootstrap, Git, Postman, Render, Vercel, Resend, SaaS Development.
-- Experience: 5+ years building scalable SaaS platforms, real-time data pipelines, and production-grade infrastructure.
-- Key Projects: Jay's Food Court (https://jays-food-court.vercel.app - full-stack restaurant ordering & operations platform with Next.js, TypeScript, Supabase, PostgreSQL), Global Citizen Immigration Platform (https://global-immigration-platform.vercel.app/ - interactive 3D globe & AI immigration guidance assistant), Lone Star Autos (full-stack automotive dealership platform with Node.js, Express, MongoDB, Socket.IO, Cloudinary), ORC Investment Platform (investment programme management system with Node.js, Neon PostgreSQL, Resend/Nodemailer, Vercel Serverless & Cron).
+- Title: Full-Stack Software Engineer
+- Bio: "I design and build full-stack web applications and backend systems that handle real users, real payments, and complex workflows. With 4+ years of hands-on experience in Node.js, TypeScript, React, Next.js, and PostgreSQL, I’ve contributed to remote startup engineering teams like Lazerpay and architected complete multi-role platforms—from logistics marketplaces to fintech and administrative systems. I value clear communication, end-to-end ownership, and shipping clean, reliable code without unnecessary complexity."
+- Tech Stack: Next.js, React, TypeScript, Node.js, Express, PostgreSQL (Neon, Supabase), MongoDB, Docker, AWS, PHP, TailwindCSS, Git, Postman, Render, Vercel, Resend, SaaS Development.
+- Experience: 4+ years building scalable web applications, backend APIs, and production-grade infrastructure (Confidential Technology Company, Lazerpay, and Independent Full-Stack Engineering).
+- Key Projects: Jay's Food Court (https://jays-food-court.vercel.app - 4-sided full-stack restaurant ordering, delivery & logistics marketplace with Next.js, TypeScript, Supabase, PostgreSQL), Global Citizen Immigration Platform (https://global-immigration-platform.vercel.app/ - immigration, travel eligibility checker, crypto wallet & 3D WebGL AI guidance platform), Lone Star Autos (full-stack automotive dealership platform with Node.js, Express, MongoDB, Socket.IO, Cloudinary), ORC Investment Platform (investment programme management system with Node.js, Neon PostgreSQL, Resend/Nodemailer, Vercel Serverless & Cron).
 - Philosophy: "Thoughtfully engineered. Intentionally built."
 - Availability: Open to freelance, contract, and full-time opportunities. Available for remote work worldwide.
 
@@ -44,7 +45,7 @@ function fallbackReply(message: string): string {
     return "Praise has engineered several production systems: 1) Jay's Food Court (https://jays-food-court.vercel.app — full-stack restaurant ordering, kitchen operations & delivery platform built with Next.js, TypeScript, Supabase & PostgreSQL), 2) Global Citizen Immigration Platform (https://global-immigration-platform.vercel.app/ — interactive 3D globe & AI immigration assistant), 3) Lone Star Autos (full-stack automotive dealership platform with Node.js, Express, MongoDB, Socket.IO & Cloudinary), and 4) ORC Investment Platform (investment programme management & admin CRUD platform built with Node.js, Neon PostgreSQL & Vercel Serverless Cron).";
   }
   if (lower.includes('experience') || lower.includes('background') || lower.includes('about') || lower.includes('who is') || lower.includes('philosophy')) {
-    return "Praise is a Software Engineer with over 5 years of experience building production-grade web applications. His engineering philosophy is: 'Thoughtfully engineered. Intentionally built.'";
+    return "Praise designs and builds full-stack web applications and backend systems that handle real users, real payments, and complex workflows. With 4+ years of hands-on experience in Node.js, TypeScript, React, Next.js, and PostgreSQL, he has contributed to remote startup engineering teams like Lazerpay and architected complete multi-role platforms—from logistics marketplaces to fintech and administrative systems. He values clear communication, end-to-end ownership, and shipping clean, reliable code without unnecessary complexity. Philosophy: 'Thoughtfully engineered. Intentionally built.'";
   }
   if (lower.includes('contact') || lower.includes('email') || lower.includes('hire') || lower.includes('reach')) {
     return "You can contact Praise via email at Praisegodswill23@gmail.com or directly through the contact form on this page!";

@@ -5,6 +5,7 @@ import { Send, MessageSquare, X } from 'lucide-react';
 import { sendChat } from '@/lib/api';
 
 const QUICK_REPLIES = [
+  { label: 'About', value: 'Tell me about Praise' },
   { label: 'Skills', value: 'What are your skills?' },
   { label: 'Projects', value: 'Tell me about your projects' },
   { label: 'Experience', value: 'What is your experience?' },

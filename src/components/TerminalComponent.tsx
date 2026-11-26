@@ -115,18 +115,37 @@ export default function TerminalComponent() {
       if (mainCmd === 'about') {
         if (compact) {
           term.writeln('\x1b[1;36m━━━ PRAISE GODSWILL ━━━\x1b[0m');
-          term.writeln('\x1b[1mFull-Stack Software Engineer\x1b[0m');
-          term.writeln('\x1b[90m5+ years building production web apps,\x1b[0m');
-          term.writeln('\x1b[90mREST APIs, databases & cloud systems.\x1b[0m');
-          term.writeln('\x1b[36m"Thoughtfully engineered. Intentionally built."\x1b[0m');
+          term.writeln('\x1b[1mFull-Stack Software Engineer\x1b[0m\n');
+          term.writeln('\x1b[90mI design and build full-stack web applications');
+          term.writeln('and backend systems that handle real users,');
+          term.writeln('real payments, and complex workflows.');
+          term.writeln('With 4+ years of hands-on experience in');
+          term.writeln('Node.js, TypeScript, React, Next.js, and');
+          term.writeln('PostgreSQL, I\'ve contributed to remote');
+          term.writeln('startup engineering teams like Lazerpay and');
+          term.writeln('architected complete multi-role platforms—from');
+          term.writeln('logistics marketplaces to fintech and');
+          term.writeln('administrative systems. I value clear');
+          term.writeln('communication, end-to-end ownership, and');
+          term.writeln('shipping clean, reliable code without');
+          term.writeln('unnecessary complexity.\x1b[0m\n');
+          term.writeln('\x1b[36mPhilosophy: "Thoughtfully engineered. Intentionally built."\x1b[0m');
         } else {
-          term.writeln('\x1b[1;36m╔══════════════════════════════════════════════════════════════╗\x1b[0m');
-          term.writeln('\x1b[36m║\x1b[0m  \x1b[1mPraise Godswill\x1b[0m — Full-Stack Software Engineer              \x1b[36m║\x1b[0m');
-          term.writeln('\x1b[36m║\x1b[0m                                                              \x1b[36m║\x1b[0m');
-          term.writeln('\x1b[36m║\x1b[0m  \x1b[90mFull-stack engineer with strong backend capabilities,\x1b[0m       \x1b[36m║\x1b[0m');
-          term.writeln('\x1b[36m║\x1b[0m  \x1b[90mclean architecture, and reliable system delivery.\x1b[0m          \x1b[36m║\x1b[0m');
-          term.writeln('\x1b[36m║\x1b[0m  \x1b[36mPhilosophy: "Thoughtfully engineered. Intentionally built."\x1b[0m \x1b[36m║\x1b[0m');
-          term.writeln('\x1b[1;36m╚══════════════════════════════════════════════════════════════╝\x1b[0m');
+          term.writeln('\x1b[1;36m╔════════════════════════════════════════════════════════════════════╗\x1b[0m');
+          term.writeln('\x1b[36m║\x1b[0m  \x1b[1mPraise Godswill\x1b[0m — Full-Stack Software Engineer                    \x1b[36m║\x1b[0m');
+          term.writeln('\x1b[36m╠════════════════════════════════════════════════════════════════════╣\x1b[0m');
+          term.writeln('\x1b[36m║\x1b[0m  \x1b[90mI design and build full-stack web applications and backend\x1b[0m        \x1b[36m║\x1b[0m');
+          term.writeln('\x1b[36m║\x1b[0m  \x1b[90msystems that handle real users, real payments, and complex\x1b[0m        \x1b[36m║\x1b[0m');
+          term.writeln('\x1b[36m║\x1b[0m  \x1b[90mworkflows. With 4+ years of hands-on experience in Node.js,\x1b[0m       \x1b[36m║\x1b[0m');
+          term.writeln('\x1b[36m║\x1b[0m  \x1b[90mTypeScript, React, Next.js, and PostgreSQL, I\'ve contributed\x1b[0m      \x1b[36m║\x1b[0m');
+          term.writeln('\x1b[36m║\x1b[0m  \x1b[90mto remote startup engineering teams like Lazerpay and\x1b[0m             \x1b[36m║\x1b[0m');
+          term.writeln('\x1b[36m║\x1b[0m  \x1b[90marchitected complete multi-role platforms—from logistics\x1b[0m          \x1b[36m║\x1b[0m');
+          term.writeln('\x1b[36m║\x1b[0m  \x1b[90mmarketplaces to fintech and administrative systems. I value\x1b[0m       \x1b[36m║\x1b[0m');
+          term.writeln('\x1b[36m║\x1b[0m  \x1b[90mclear communication, end-to-end ownership, and shipping clean,\x1b[0m    \x1b[36m║\x1b[0m');
+          term.writeln('\x1b[36m║\x1b[0m  \x1b[90mreliable code without unnecessary complexity.\x1b[0m                     \x1b[36m║\x1b[0m');
+          term.writeln('\x1b[36m║\x1b[0m                                                                    \x1b[36m║\x1b[0m');
+          term.writeln('\x1b[36m║\x1b[0m  \x1b[36mPhilosophy: "Thoughtfully engineered. Intentionally built."\x1b[0m       \x1b[36m║\x1b[0m');
+          term.writeln('\x1b[1;36m╚════════════════════════════════════════════════════════════════════╝\x1b[0m');
         }
         return;
       }

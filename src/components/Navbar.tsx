@@ -12,7 +12,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
 
-      const sections = ['terminal', 'projects', 'skills', 'contact'];
+      const sections = ['about', 'terminal', 'projects', 'skills', 'contact'];
       let current = '';
       for (const section of sections) {
         const el = document.getElementById(section);
@@ -31,6 +31,7 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
+    { href: '#about', label: 'About', icon: Cpu, isExternalPage: false },
     { href: '#terminal', label: 'Terminal', icon: Terminal, isExternalPage: false },
     { href: '#projects', label: 'Projects', icon: FolderGit2, isExternalPage: false },
     { href: '#skills', label: 'Skills', icon: Cpu, isExternalPage: false },
