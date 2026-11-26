@@ -4,6 +4,7 @@ import { connectDB } from '@/lib/mongodb';
 import { checkRateLimit } from '@/lib/serverAuth';
 import {
   RTX256_SYSTEM_PROMPT,
+  retrieveRelevantKnowledgeContext,
   generateRTX256Response,
   type ChatTurn,
 } from '@/lib/rtx256Knowledge';
@@ -45,7 +46,7 @@ export async function POST(req: NextRequest) {
           content: m.content,
         }))
       : Array.isArray(clientHistory)
-      ? clientHistory.slice(-10)
+      ? [...clientHistory.slice(-10), { role: 'user', content: message }]
       : [{ role: 'user', content: message }];
 
     let reply = '';
@@ -53,12 +54,18 @@ export async function POST(req: NextRequest) {
 
     if (OPENAI_API_KEY && OPENAI_API_KEY.startsWith('sk-')) {
       try {
+        const dynamicKnowledgeContext = retrieveRelevantKnowledgeContext(
+          message,
+          historyTurns.slice(0, -1)
+        );
+        const fullSystemPrompt = `${RTX256_SYSTEM_PROMPT}\n\n=== VERIFIED KNOWLEDGE BASE (CATEGORIES A-F) ===\n${dynamicKnowledgeContext}`;
+
         const response = await axios.post(
           'https://api.openai.com/v1/chat/completions',
           {
             model: 'gpt-4o-mini',
-            messages: [{ role: 'system', content: RTX256_SYSTEM_PROMPT }, ...historyTurns],
-            temperature: 0.65,
+            messages: [{ role: 'system', content: fullSystemPrompt }, ...historyTurns],
+            temperature: 0.6,
             max_tokens: 650,
           },
           {
