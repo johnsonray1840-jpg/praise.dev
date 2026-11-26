@@ -674,7 +674,11 @@ While the employer's identity is protected under a signed NDA, his work focused 
   }
 
   // 8. Category B — Backend & Full-Stack Engineering Capabilities
-  if (lower.includes('backend') || lower.includes('api') || lower.includes('database') || lower.includes('sql') || lower.includes('node') || lower.includes('auth')) {
+  if (
+    (lower.includes('backend') || /\bapi\b/i.test(lower) || lower.includes('database') || /\bsql\b/i.test(lower) || lower.includes('node') || /\bauth\b/i.test(lower)) &&
+    !lower.includes('project') &&
+    !lower.includes('built')
+  ) {
     return `Backend engineering is one of Praise's core strengths. He works extensively with **Node.js, Express.js, Next.js Route Handlers, and TypeScript**, designing RESTful APIs backed by **PostgreSQL (Supabase, Neon, \`pg\`)** and **MongoDB (Mongoose)**. He also implements **JWT/OAuth authentication, Role-Based Access Control (RBAC), Socket.IO real-time events, Docker containerization, and Vercel Serverless Cron jobs**.`;
   }
 
@@ -756,6 +760,7 @@ For a quick technical evaluation, I'd recommend inspecting **Jay's Food Court** 
 
   if (
     lower.includes('client') ||
+    lower.includes('work with him') ||
     lower.includes('build my') ||
     lower.includes('build an app') ||
     lower.includes('build a website') ||
