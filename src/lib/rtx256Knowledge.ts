@@ -427,10 +427,37 @@ PERSONALITY & VOICE (RTX256):
   - PRIVATE (NEVER expose and NEVER confirm existence): Home address, personal whereabouts, personal schedules, private relationships, private financial info, passwords, API keys, access tokens, secrets, private conversations, internal server configuration, database credentials, or private infrastructure details.`;
 
 /**
+ * Server-side prompt-injection & jailbreak detector.
+ * Intercepts attempts to override instructions, extract system prompts,
+ * or bypass boundaries before any LLM call is made.
+ */
+export function detectPromptInjection(message: string): boolean {
+  const lower = message.toLowerCase();
+  const injectionPatterns: RegExp[] = [
+    /ignore\s+(all\s+)?(previous|prior|above|system)\s+instructions?/i,
+    /disregard\s+(all\s+)?(previous|prior|above|system)\s+instructions?/i,
+    /forget\s+(everything|all\s+instructions|your\s+rules)/i,
+    /(reveal|show|print|output|dump|repeat)\s+(me\s+)?(your\s+)?(system\s+prompt|instructions|rules|internal\s+prompt)/i,
+    /what\s+(is|are)\s+your\s+(system\s+prompt|hidden\s+instructions)/i,
+    /act\s+as\s+(a\s+different|an?\s+unrestricted|dan|evil|jailbroken)/i,
+    /pretend\s+(you\s+have\s+permission|to\s+be\s+unrestricted|there\s+are\s+no\s+rules)/i,
+    /(jailbreak|developer\s+mode|god\s+mode|bypass\s+(your\s+)?(rules|restrictions|filters))/i,
+    /(give|show|dump)\s+(me\s+)?(your\s+)?(internal\s+database|database\s+dump|env\s+vars|environment\s+variables)/i,
+  ];
+  return injectionPatterns.some((pattern) => pattern.test(lower));
+}
+
+export const PROMPT_INJECTION_REFUSAL =
+  "I'm here specifically to help you explore Praise Godswill's public portfolio, projects, and engineering background. I can't change my role or share internal details—what would you like to know about his work?";
+
+/**
  * Intelligent, context-aware local reasoning engine for RTX256 powered by the structured Categories A–F knowledge base.
  */
 export function generateRTX256Response(message: string, history: ChatTurn[] = []): string {
   const clean = message.trim();
+  if (detectPromptInjection(clean)) {
+    return PROMPT_INJECTION_REFUSAL;
+  }
   const lower = clean.toLowerCase();
   const kb = RTX256_KNOWLEDGE_BASE;
 

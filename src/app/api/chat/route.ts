@@ -5,8 +5,22 @@ import {
   RTX256_SYSTEM_PROMPT,
   retrieveRelevantKnowledgeContext,
   generateRTX256Response,
+  detectPromptInjection,
+  PROMPT_INJECTION_REFUSAL,
   type ChatTurn,
 } from '@/lib/rtx256Knowledge';
+
+const MAX_MESSAGE_LENGTH = 1500;
+
+function sanitizeText(input: string): string {
+  return input.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '').trim();
+}
+
+function sanitizeOutput(output: string): string {
+  return output
+    .replace(/sk-[a-zA-Z0-9_-]{16,}/g, '[redacted]')
+    .replace(/mongodb\+srv:\/\/[^\s]+/gi, '[redacted]');
+}
 
 export async function POST(req: NextRequest) {
   const rateLimitResponse = checkRateLimit(
@@ -25,10 +39,31 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Message is required' }, { status: 400 });
     }
 
+    const cleanMessage = sanitizeText(message);
+    if (!cleanMessage) {
+      return NextResponse.json({ error: 'Message is required' }, { status: 400 });
+    }
+    if (cleanMessage.length > MAX_MESSAGE_LENGTH) {
+      return NextResponse.json(
+        { error: `Message must be ${MAX_MESSAGE_LENGTH} characters or fewer.` },
+        { status: 400 }
+      );
+    }
+
     // Ephemeral session ID only — visitor conversations are kept in-session
     // rather than persisted permanently, prioritizing privacy and minimal retention.
     const sessionIdValue =
-      sessionId || `session_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`;
+      typeof sessionId === 'string' && sessionId.length <= 64
+        ? sanitizeText(sessionId)
+        : `session_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`;
+
+    // Server-side prompt-injection gate: intercept before any LLM call
+    if (detectPromptInjection(cleanMessage)) {
+      return NextResponse.json({
+        reply: PROMPT_INJECTION_REFUSAL,
+        sessionId: sessionIdValue,
+      });
+    }
 
     const sanitizedHistory: ChatTurn[] = Array.isArray(clientHistory)
       ? clientHistory
@@ -39,11 +74,15 @@ export async function POST(req: NextRequest) {
               typeof m.content === 'string'
           )
           .slice(-12)
+          .map((m) => ({
+            role: m.role,
+            content: sanitizeText(m.content).slice(0, MAX_MESSAGE_LENGTH),
+          }))
       : [];
 
     const historyTurns: ChatTurn[] = [
       ...sanitizedHistory,
-      { role: 'user', content: message },
+      { role: 'user', content: cleanMessage },
     ];
 
     let reply = '';
@@ -75,15 +114,15 @@ export async function POST(req: NextRequest) {
         );
         reply = response.data.choices[0].message.content.trim();
       } catch {
-        reply = generateRTX256Response(message, sanitizedHistory);
+        reply = generateRTX256Response(cleanMessage, sanitizedHistory);
       }
     } else {
-      reply = generateRTX256Response(message, sanitizedHistory);
+      reply = generateRTX256Response(cleanMessage, sanitizedHistory);
     }
 
-    return NextResponse.json({ reply, sessionId: sessionIdValue });
-  } catch (error) {
-    console.error('RTX256 Chat error:', error);
+    return NextResponse.json({ reply: sanitizeOutput(reply), sessionId: sessionIdValue });
+  } catch {
+    console.error('RTX256 Chat error: request processing failed');
     return NextResponse.json({ error: 'Failed to process chat' }, { status: 500 });
   }
 }
